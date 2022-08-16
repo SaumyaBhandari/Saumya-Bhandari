@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+}
+
+
+/* for the naviation bar */
+.navbar{
+    padding: 0vh 0vw 0vh 8vw;
+    width: 100%;
+    height: 0px;
+    position: sticky;
+    display: flex;
+}
+
+.navbar img{
+    width: 16vw;
+    height: 16vh;
+    flex-basis: 10%;
+}
+
+.navbar ul{
+    flex-basis: 80%;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 6vh 0vw 0vh 24vw;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #efefef;
+    font-size: 2.2vh;
+    font-weight: bolder;
+    padding: 1vh 1vh;
+    margin: 2vw 1vh;
+}
+
+
+
+
+
+
+
+
+
+/* for the landing page */
+#landing-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0vh 0vw 0vh 8vw;
+    margin: 0vh 0vw 0vh 0vw;
+}
+
+.landing-page-text{
+    flex-basis: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    color: #efefef;
+    font-size: 2.5vh;
+    font-weight: regular;
+    margin: 2vh 0vh;
+}
+
+.landing-page-text h3{
+    color: #F6BB26;
+    padding: 2vh 0vh;
+    font-size: 4vh;
+}
+
+.landing-page-text h1{
+    font-size: 10vh;
+    padding: 0vh 0vh;
+    font-weight: bold;
+}
+
+/* .landing-page-text-middle{
+    transform: rotate(90deg);
+    justify-content: center;
+    flex-direction: column;
+    text-align: justify;
+    color: #efefef;
+    font-size: 2vh;
+    font-weight: regular;
+    padding: 1vh 1vh;
+    padding: 0vh 0vw 0vh 0vw;
+} */
+
+.landing-page-image{
+    flex-basis: 40%;
+    margin: 8vh 0vw 0vw 14vw;
+}
+
+.landing-page-image img{ 
+    width: 100%;
+    height: 90vh;
+}
+
+
+
+
+
+
+
+
+
+/* for navigation buttons */
+
+.navigation-buttons{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    color: #efefef;
+    font-weight: regular;
+    margin: -8vh 0vh;
+}
+
+.navigation-button{
+    height: 12px;
+    width: 12px;
+    margin: 0vh 1vh;
+    background-color: #F6BB26;
+    border-radius: 50%;
+    transition-duration: .5s;
+    cursor: pointer;
+}
+
+.navigation-button:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 4px 1px rgb(255, 255, 255);
+}
+
+#navigation-button-1{
+    height: 24px;
+    width: 24px;
+    transform: translate(-33%, -33%);
+    box-shadow: 0px 0px 8px 2px rgb(255, 255, 255);
+}
