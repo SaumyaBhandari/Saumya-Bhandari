@@ -127,6 +127,7 @@ body{
     flex-basis: 60%;
     height: 90vh;
     z-index: 1;
+    padding: 8vh 0vw 0vh 0vw;
 }
 
 
