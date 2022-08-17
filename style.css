@@ -68,7 +68,7 @@ body{
 }
 
 .landing-page-text{
-    flex-basis: 45%;
+    flex-basis: 60%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -94,25 +94,44 @@ body{
 
 
 .landing-page-image{
-    flex-basis: 30%;
-    margin: 10vh 0vw 0vw 20vw;
+    flex-basis: 40%;
+    margin: 10vh 0vw 0vw 10vw;
     display: flex;
     flex-wrap: nowrap;
 }
 
 
 #dialogueBox{
-    /* visibility: hidden; */
-    flex-basis: 50%;
+    opacity: 0;
     height: 30vh;
     width: 16vw;
-    margin: 16vh -6vw 0vh 0vw;
+    margin: -16vh -8vw 0vh 0vw;
     z-index: 2;
     display: block;
     rotate: -16deg;
+    cursor: pointer;
 }
 
 
+.landing-page-image:hover > #dialogueBox{
+    animation-name: make-visible;
+    animation-duration: .1s;
+    visibility: visible;
+    opacity: 1;
+    margin: 16vh -8vw 0vh 0vw;
+}
+
+@keyframes make-visible{
+    from{
+        opacity: 0;
+        margin: 0vh -8vw 0vh 0vw;
+    }
+    to{
+        opacity: 1;
+        margin: 16vh -8vw 0vh 0vw;
+    }
+
+}
 
 .dialogueBox-text{
     padding: 1vh 4vw;
@@ -124,11 +143,13 @@ body{
 
 
 .portrait{ 
-    flex-basis: 60%;
     height: 90vh;
     z-index: 1;
     padding: 8vh 0vw 0vh 0vw;
+    cursor: pointer;
 }
+
+
 
 
 
