@@ -45,6 +45,10 @@ body{
     margin: 2vw 1vh;
 }
 
+.navButton1{
+    color: #F6BB26;
+}
+
 
 
 
@@ -64,7 +68,7 @@ body{
 }
 
 .landing-page-text{
-    flex-basis: 50%;
+    flex-basis: 60%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -73,7 +77,7 @@ body{
     color: #efefef;
     font-size: 2.5vh;
     font-weight: regular;
-    margin: 2vh 0vh;
+    margin: 8vh 0vw 0vh 0vw;
 }
 
 .landing-page-text h3{
@@ -88,27 +92,43 @@ body{
     font-weight: bold;
 }
 
-/* .landing-page-text-middle{
-    transform: rotate(90deg);
-    justify-content: center;
-    flex-direction: column;
-    text-align: justify;
-    color: #efefef;
-    font-size: 2vh;
-    font-weight: regular;
-    padding: 1vh 1vh;
-    padding: 0vh 0vw 0vh 0vw;
-} */
 
 .landing-page-image{
-    flex-basis: 40%;
-    margin: 8vh 0vw 0vw 14vw;
+    flex-basis: 10%;
+    margin: 10vh 0vw 0vw 10vw;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
-.landing-page-image img{ 
-    width: 100%;
-    height: 90vh;
+
+#dialogueBox{
+    /* visibility: hidden; */
+    flex-basis: 50%;
+    height: 30vh;
+    width: 16vw;
+    margin: 16vh -6vw 0vh 0vw;
+    z-index: 2;
+    display: block;
+    rotate: -16deg;
 }
+
+
+
+.dialogueBox-text{
+    padding: 1vh 4vw;
+    font-size: 2.4vh;
+    font-weight: bolder;
+    rotate: 1deg;
+    margin: -19vh 0vw 0vh -3vw;
+}
+
+
+.portrait{ 
+    flex-basis: 60%;
+    height: 90vh;
+    z-index: 1;
+}
+
 
 
 
@@ -149,6 +169,6 @@ body{
 #navigation-button-1{
     height: 24px;
     width: 24px;
-    transform: translate(-33%, -33%);
+    transform: translate(-30%, -30%);
     box-shadow: 0px 0px 8px 2px rgb(255, 255, 255);
 }
