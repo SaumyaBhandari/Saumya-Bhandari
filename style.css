@@ -16,10 +16,13 @@ body{
 /* for the naviation bar */
 .navbar{
     padding: 0vh 0vw 0vh 8vw;
-    width: 100%;
     height: 0px;
     position: sticky;
+    top: -2vh;
+    right: 0vw;
+    left: 0vw;
     display: flex;
+    z-index: 100;
 }
 
 .navbar img{
@@ -53,12 +56,24 @@ body{
 
 
 
+#whole-body{
+    width: 100vw;
+    height: 100vh;
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 
 
 
 
 /* for the landing page */
 #landing-page{
+    /* position: absolute; */
     width: 100%;
     height: 100vh;
     display: flex;
@@ -141,7 +156,6 @@ body{
     margin: -19vh 0vw 0vh -3vw;
 }
 
-
 .portrait{ 
     height: 90vh;
     z-index: 1;
@@ -157,12 +171,61 @@ body{
 
 
 
+/* for the about page */
+
+#about-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0vh 0vw 0vh 0vw;
+    margin: 0vh 0vw 0vh 0vw;
+}
+
+.about-page-image{
+    flex-basis: 40%;
+    margin: 18vh 0vw 0vh 0vw;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.about-page-text{
+    flex-basis: 60%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: lighter;
+    text-align: left;
+    color: #efefef;
+    font-size: 2.5vh;
+    margin: 4vh 8vw 0vh 8vw;
+}
+
+.about-page-text h2{
+    color: #F6BB26;
+    padding: 1vh 1vh;
+    margin: 0vw 1vh;
+}
+
+.about-page-text p{
+    padding: 1vh 1vh;
+    margin: 0vw 1vh;
+}
+
+.about
+
+
+
+
+
+
 
 
 
 /* for navigation buttons */
 
-.navigation-buttons{
+/* .navigation-buttons{
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -193,4 +256,4 @@ body{
     width: 1vh;
     transform: translate(-30%, -30%);
     box-shadow: 0px 0px 8px 2px rgb(255, 255, 255);
-}
+} */
