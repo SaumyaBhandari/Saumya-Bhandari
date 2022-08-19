@@ -195,7 +195,7 @@ body{
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: column;
-    font-weight: lighter;
+    font-weight: regular;
     text-align: left;
     color: #efefef;
     font-size: 2.5vh;
@@ -204,16 +204,23 @@ body{
 
 .about-page-text h2{
     color: #F6BB26;
-    padding: 1vh 1vh;
-    margin: 0vw 1vh;
+    margin: 1vh;
 }
 
 .about-page-text p{
-    padding: 1vh 1vh;
-    margin: 0vw 1vh;
+    margin: 1vh;
 }
 
-.about
+.readMoreButton-about{
+    padding: 1vh 2vh;
+    margin: 0vw 0vh;
+    background-color: transparent;
+    width: fit-content;
+    font-size: 2.2vh;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 1px solid #F6BB26;
+}
 
 
 
@@ -225,15 +232,17 @@ body{
 
 /* for navigation buttons */
 
-/* .navigation-buttons{
+.navigation-buttons{
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: row;
     text-align: center;
     color: #efefef;
+    position:sticky;
+    bottom: 3vh;
     font-weight: regular;
-    margin: -8vh 0vh;
+    
 }
 
 .navigation-button{
@@ -256,4 +265,8 @@ body{
     width: 1vh;
     transform: translate(-30%, -30%);
     box-shadow: 0px 0px 8px 2px rgb(255, 255, 255);
-} */
+}
+
+
+
+
