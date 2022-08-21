@@ -239,6 +239,56 @@ body{
 
 
 
+/* C.V */
+#CV{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0vh 0vw 0vh 0vw;
+    margin: 0vh 0vw 0vh 0vw;
+}
+
+.CV-page-text{
+    flex-basis: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: regular;
+    text-align: left;
+    color: #efefef;
+    font-size: 2.5vh;
+    margin: 4vh 8vw 0vh 8vw;
+}
+
+
+.CV-page-image{
+    flex-basis: 60%;
+    margin: 10vh 0vw 0vh 0vw;
+    scale: 80%;
+}
+
+.CV-page-image .cv-image{
+    border: 2px solid #F6BB26;
+    padding: 2vh;
+    filter: blur(2px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* for navigation buttons */
 
