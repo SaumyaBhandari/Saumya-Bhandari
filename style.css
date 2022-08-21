@@ -219,8 +219,18 @@ body{
     font-size: 2.2vh;
     font-weight: bolder;
     cursor: pointer;
-    border: 1px solid #F6BB26;
+    border: 2px solid #F6BB26;
+    transition-duration: .5s;
 }
+
+.readMoreButton-about:hover{
+    background-color: #efefef;
+    color: #212121;
+}
+
+
+
+
 
 
 
