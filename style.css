@@ -277,14 +277,16 @@ body{
 
 .CV-page-image{
     flex-basis: 60%;
-    margin: 10vh 0vw 0vh 0vw;
-    scale: 80%;
+    margin: 18vh 0vw 0vh 4vw;
+    
 }
 
 .CV-page-image .cv-image{
     border: 2px solid #F6BB26;
     padding: 2vh;
-    filter: blur(1.5px);
+    filter: blur(1px);
+    height: 84%;
+    width: 70%;
 }
 
 
