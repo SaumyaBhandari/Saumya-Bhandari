@@ -212,7 +212,7 @@ body{
 }
 
 .readMoreButton-about{
-    padding: 1vh 2vh;
+    padding: 1vh 3vh;
     margin: 0vw 0vh;
     background-color: transparent;
     width: fit-content;
@@ -262,6 +262,18 @@ body{
     margin: 4vh 8vw 0vh 8vw;
 }
 
+.CV-page-text .ViewCVbutton-cv{
+    padding: 1vh 3vh;
+    margin: 0vw 0vh;
+    background-color: transparent;
+    width: fit-content;
+    font-size: 2.2vh;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 2px solid #F6BB26;
+    transition-duration: .5s;
+}
+
 
 .CV-page-image{
     flex-basis: 60%;
@@ -272,7 +284,7 @@ body{
 .CV-page-image .cv-image{
     border: 2px solid #F6BB26;
     padding: 2vh;
-    filter: blur(2px);
+    filter: blur(1.5px);
 }
 
 
