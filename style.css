@@ -119,9 +119,7 @@ body{
 #dialogueBox{
     transition-duration: .3s;
     opacity: 0;
-    height: 250px;
-    width: 350px;
-    left: 55%;
+    left: 57%;
     z-index: 2;
     position: absolute;
     rotate: -16deg;
@@ -148,13 +146,6 @@ body{
 
 }
 
-.dialogueBox-text{
-    padding: 1vh 4vw;
-    font-size: 2.4vh;
-    font-weight: bolder;
-    rotate: 1deg;
-    margin: -20vh 0vw 0vh -2vw;
-}
 
 .portrait{ 
     height: 90vh;
