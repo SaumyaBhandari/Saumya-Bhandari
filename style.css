@@ -117,12 +117,13 @@ body{
 
 
 #dialogueBox{
+    transition-duration: .3s;
     opacity: 0;
-    height: 30vh;
-    width: 16vw;
-    margin: -16vh -8vw 0vh 0vw;
+    height: 250px;
+    width: 350px;
+    left: 55%;
     z-index: 2;
-    display: block;
+    position: absolute;
     rotate: -16deg;
     cursor: pointer;
 }
@@ -131,19 +132,18 @@ body{
 .landing-page-image:hover > #dialogueBox{
     animation-name: make-visible;
     animation-duration: .1s;
-    visibility: visible;
     opacity: 1;
-    margin: 16vh -8vw 0vh 0vw;
+    margin: 12vh 0vw 0vh 0vw;
 }
 
 @keyframes make-visible{
     from{
         opacity: 0;
-        margin: 0vh -8vw 0vh 0vw;
+        margin: 0vh 0vw 0vh 0vw;
     }
     to{
         opacity: 1;
-        margin: 16vh -8vw 0vh 0vw;
+        margin: 16vh 0vw 0vh 0vw;
     }
 
 }
@@ -153,7 +153,7 @@ body{
     font-size: 2.4vh;
     font-weight: bolder;
     rotate: 1deg;
-    margin: -19vh 0vw 0vh -3vw;
+    margin: -20vh 0vw 0vh -2vw;
 }
 
 .portrait{ 
