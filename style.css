@@ -118,12 +118,15 @@ body{
 
 #dialogueBox{
     transition-duration: .3s;
-    opacity: 0;
-    left: 57%;
+    opacity: 1;
+    left: 56vw;
+    top: 16vh;
     z-index: 2;
     position: absolute;
     rotate: -16deg;
     cursor: pointer;
+    height: fit-content;
+    width: fit-content;
 }
 
 
@@ -131,17 +134,17 @@ body{
     animation-name: make-visible;
     animation-duration: .1s;
     opacity: 1;
-    margin: 12vh 0vw 0vh 0vw;
+    top: 12vh;
 }
 
 @keyframes make-visible{
     from{
         opacity: 0;
-        margin: 0vh 0vw 0vh 0vw;
+        top: 0vh;
     }
     to{
         opacity: 1;
-        margin: 16vh 0vw 0vh 0vw;
+        top: 16vh;
     }
 
 }
@@ -171,6 +174,31 @@ body{
     flex-wrap: nowrap;
     padding: 0vh 0vw 0vh 0vw;
     margin: 0vh 0vw 0vh 0vw;
+}
+
+.about_image{
+    position: absolute;
+    top: 120vh;
+    left: 60vw;
+    opacity: 0.2;
+    height: fit-content;
+    width: fit-content;
+    z-index: -1;
+    animation: upndown infinite;
+    animation-duration: 12s;
+    background-attachment: fixed;
+}
+
+@keyframes upndown{
+    0%{
+        top: 120vh;
+    }
+    50%{
+        top: 130vh;
+    }
+    100%{
+        top: 120vh;
+    }
 }
 
 .about-page-image{
@@ -214,9 +242,9 @@ body{
     transition-duration: .5s;
 }
 
-.readMoreButton-about:hover{
-    background-color: #efefef;
-    color: #212121;
+.readMoreButton-about:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
 }
 
 
@@ -238,6 +266,20 @@ body{
     flex-wrap: nowrap;
     padding: 0vh 0vw 0vh 0vw;
     margin: 0vh 0vw 0vh 0vw;
+}
+
+.background-cv-landing{
+    position: absolute;
+    top: 235vh;
+    left: 40vw;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.background-cv-landing img{
+    height: 30vh;
+    /* width: 24vh; */
+    transform: rotate(100deg);
 }
 
 .CV-page-text{
@@ -265,6 +307,11 @@ body{
     transition-duration: .5s;
 }
 
+.CV-page-text .ViewCVbutton-cv:hover{
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
 
 .CV-page-image{
     flex-basis: 60%;
@@ -273,12 +320,53 @@ body{
 }
 
 .CV-page-image .cv-image{
-    border: 2px solid #F6BB26;
     padding: 2vh;
+    border: 2px solid #F6BB26;
     filter: blur(1px);
     height: 84%;
     width: 70%;
 }
+
+.CV-page-image .cv-image_overlay{
+    opacity: 0;
+    height: 84%;
+    padding: 2vh;
+    width: 70%;
+    background-color: #363535e2;
+    transform: translate(0%, -100%);
+    transition-duration: .3s;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #efefef;
+    font-size: 2.5vh;
+    font-weight: regular;
+}
+
+.CV-page-image:hover > .cv-image_overlay{
+    opacity: 1;
+}
+
+.cv-image_overlay .download-CV{
+    cursor: pointer;
+    transition-duration: .1s;
+}
+.cv-image_overlay .download-CV:hover{
+    text-decoration: underline;
+    color: #F6BB26;
+}
+.cv-image_overlay .view-Cv-pdf{
+    cursor: pointer;
+    transition-duration: .1s;
+    
+}
+.cv-image_overlay .view-Cv-pdf:hover{
+    text-decoration: underline;
+    color: #F6BB26;
+}
+
 
 
 
