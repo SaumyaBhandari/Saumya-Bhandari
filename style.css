@@ -185,8 +185,8 @@ body{
     top: 120vh;
     left: 60vw;
     opacity: 0.2;
-    height: fit-content;
-    width: fit-content;
+    /* height: fit-content;
+    width: fit-content; */
     z-index: 0;
     animation: upndown infinite;
     animation-duration: 12s;
@@ -220,6 +220,7 @@ body{
     flex-direction: column;
     font-weight: regular;
     text-align: left;
+    z-index: 1;
     color: #efefef;
     font-size: 2.5vh;
     margin: 4vh 8vw 0vh 8vw;
@@ -319,7 +320,7 @@ body{
 
 
 .CV-page-image{
-    flex-basis: 60%;
+    flex-basis: 45%;
     margin: 18vh 0vw 0vh 4vw;
     
 }
@@ -353,55 +354,34 @@ body{
 .CV-page-image:hover > .cv-image_overlay{
     opacity: 1;
 }
+.download-CV, .view-Cv-pdf, .ViewCVbutton-cv{
+    color: white;
+}
 
-.cv-image_overlay .download-CV{
+.cv-image_overlay .download-CV, .view-Cv-pdf{
     cursor: pointer;
     transition-duration: .1s;
 }
-.cv-image_overlay .download-CV:hover{
+.cv-image_overlay .download-CV:hover, .view-Cv-pdf:hover{
     text-decoration: underline;
     color: #F6BB26;
-}
-.cv-image_overlay .view-Cv-pdf{
-    cursor: pointer;
-    transition-duration: .1s;
-    
-}
-.cv-image_overlay .view-Cv-pdf:hover{
-    text-decoration: underline;
-    color: #F6BB26;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+} 
 
 
 
 /* for navigation buttons */
 
-.navigation-buttons{
+.navigation-buttons {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: row;
     text-align: center;
     color: #efefef;
-    position:sticky;
+    position: sticky;
     bottom: 3vh;
     font-weight: regular;
-    
-}
+  }
 
 .navigation-button{
     height: .5vh;
@@ -427,4 +407,67 @@ body{
 
 
 
+/* Footer styles */
+footer {
+    background-color: #38383871;
+    color: #fff;
+    margin: 20px 0;
+    padding: 20px 0;
+    text-align: center;
+    height: 25vh;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-phone, .footer-email {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+
+.footer-content::before {
+    content: "";
+    background-color: #F6BB26;
+    height: 4px;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.footer-content::after {
+    content: "";
+    background-color: #F6BB26;
+    height: 4px;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.footer-phone::before {
+    content: "\260E";
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+.footer-email::before {
+    content: "\2709";
+    font-size: 24px;
+    margin-right: 5px;
+}
 

@@ -5,18 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saumya Bhandari</title>
-    <!-- Logo in the title bar -->
     <link rel="icon" href="Images/logo.png">
-    <!-- link css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- navigation bar -->
     <div class="navbar">
-        <!-- insert logo here -->
         <img src="Images/logo.png" alt="logo" class="logo">
-
         <ul>
             <li><a class="navButton1" href="index.html">Main Page</a></li>
             <li><a class="navButton2" href="about.html">About Me</a></li>
@@ -27,94 +22,73 @@
         </ul>
     </div>
 
-    <!-- Creating a landing page -->
-
-
-    <div  id="landing-page"  >
-        
+    <div id="landing-page">
         <img id='dialogueBox'src="Images/dialogue.png" alt="dialogueBox" class="dialogueBox">
-
         <div class="landing-page-text">
             <h3>Greetings!<br> Ladies and Gentlemen. I am,</h3>
             <h1>Saumya<br> Bhandari</h1>
-            <h3>Machine Learning Developer</h3>
-            <p>I research and develop <b>Machine Learning</b> systems with my expertise on Prediction & Classification based ML models and my specialization in Computer Vision, Convolutional Neural Networks and Transformers.</p>
+            <h3>Machine Learning Engineer</h3>
+            <p>I research and develop <b>Machine Learning</b> systems in the domain of Computer Vision; using Convolutional Neural Networks with Transformers.</p>
         </div>
-
-        <!-- load the dialogue box image from images/dialogueBox.png -->
-      
-        
         <div class="landing-page-image">
-                
-            <img class='portrait'src="Images/Image_Landing.png" alt="landing-page" >
+            <img class='portrait'src="Images/Image_Landing.png" alt="landing-page">
         </div>
-
     </div>
 
-
-    <div id="about-page"> 
-
+    <div id="about-page">
         <div class="about_image">
             <img src="Images/background.png" alt="">
         </div>
         <div class="about-page-image">
-            <img class='about-portrait'src="Images/Image_About.png" alt="about-page" >
+            <img class='about-portrait'src="Images/Image_About.png" alt="about-page">
         </div>
-
         <div class="about-page-text">
             <h2>Who am I?</h2>
-            <p>I'm a science enthusiast who loves to discuss and research about theories in differnet topics of Computer Science, Mathematics, History and Philosophy. I mostly spend my time learning about anything new that catches my attention.  </p>
-            <p>I engage with <b>Mathematics</b> as my interest write Programmes as my work. I love watching movies; alot of them! Wanna talk about movies? Let's go!<br>I also love to write poems and essays, speak and interact with alot of people around me. I love to present myself through public speaking. <br><br>Click the button below to read more interesting stuffs about me!</p>
+            <p>I'm a science enthusiast with a passion for Computer Science, Mathematics, History, and Philosophy. I spend my time exploring new ideas and concepts that catch my interest.</p>
+            <p>During the day, I work with numbers, writing programs and solving mathematical puzzles using Neural Networks. In my downtime, I'm a movie buff who enjoys discussing films of all genres. If you're a movie lover too, let's chat!</p>
+            <p>I also have a creative side—I write poems and essays, and I love connecting with people through public speaking. If you're curious to learn more about me, click the button below.</p>
             <p class="readMoreButton-about">Read More</p>
-
         </div>
     </div>
 
-
-    <div id="My-Projects"></div>
-
-
-
-
-
-
     <div id="CV">
-
-        <div class="background-cv-landing">
+        <!-- <div class="background-cv-landing">
             <img src="Images/backtround-pattern.png" alt="" srcset="">
-        </div>
+        </div> -->
         <div class="CV-page-text">
-            <p>The chances are, that you want to Hire me. So I made things easy for you. You can find my CV by clicking the button of your choice, according to your convinience. 
-            <br><br>To put things short, I develop mostly computer vision based AI systems and am pretty good with designs. Look at my C.V to know more about my achievemnents, skills and experience.
+            <p>You're probably thinking about hiring me, right? Well, I've got you covered! Finding my CV is a breeze – just click the button that suits you best.
+            <br><br>In a nutshell, I specialize in crafting cutting-edge computer vision AI systems, and I've got quite the knack for design too. Dive into my CV to discover more about my accomplishments, skills, and the journey that got me here. Let's connect!"
             </p>
             <br><br>
-            <p class="ViewCVbutton-cv">View CV</p>
+            <a class="ViewCVbutton-cv" href="CV - Saumya Bhandari July 2023.pdf", target="_blank">View CV</a>
         </div>
-
+    
         <div class="CV-page-image">
             <img class='cv-image'src="Images/CV.png" alt="about-page" >
             <div class="cv-image_overlay"> 
-                <a class="download-CV" href="CV - Saumya Bhandari March 2023.pdf" download="CV-Saumya-Bhandari-March-2023.pdf">Download</a><br>
-                <a class="view-Cv-pdf" href="CV - Saumya Bhandari March 2023.pdf" target="_blank">View In Other Tab</a>
+                <a class="download-CV" href="CV - Saumya Bhandari July 2023.pdf" download="CV-Saumya-Bhandari-July-2023.pdf">Download</a><br>
+                <a class="view-Cv-pdf" href="CV - Saumya Bhandari July 2023.pdf" target="_blank">View In Other Tab</a>
             </div>
         </div>
-
     </div>
 
-
-    <!-- naviation buttons -->
     <div class="navigation-buttons">
-        <a href="index.html" class= "navigation-button" id="navigation-button-1"></a>
-        <a href="about.html" class= "navigation-button" id="navigation-button-2"></a>
-        <a href="portfolio.html" class= "navigation-button" id="navigation-button-3"></a>
-        <a href="contact.html" class= "navigation-button" id="navigation-button-4"></a>
-        <a href="contact.html" class= "navigation-button" id="navigation-button-5"></a>
-        <a href="contact.html" class= "navigation-button" id="navigation-button-6"></a>
+        <a href="index.html" class= "navigation-button" id="navigation-button-1" data-section="1"></a>
+        <a href="about.html" class= "navigation-button" id="navigation-button-2" data-section="2"></a>
+        <a href="portfolio.html" class= "navigation-button" id="navigation-button-3" data-section="3"></a>
+        <a href="contact.html" class= "navigation-button" id="navigation-button-4" data-section="4"></a>
     </div>
- 
 
+    <footer>
+        <div class="footer-content">
+            <div class="footer-name">Saumya Bhandary</div>
+            <div class="footer-contact">
+                <div class="footer-phone">Phone: +977-9843866411</div>
+                <div class="footer-email">Email: saumyabhandary22@gmail.com</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
-<script src="script.js"></script>
-
 </html>
