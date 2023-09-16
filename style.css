@@ -128,8 +128,8 @@ body{
     position: absolute;
     rotate: -16deg;
     cursor: pointer;
-    height: fit-content;
-    width: fit-content;
+    /* height: fit-content;
+    width: fit-content; */
 }
 
 
@@ -185,8 +185,8 @@ body{
     top: 120vh;
     left: 60vw;
     opacity: 0.2;
-    /* height: fit-content;
-    width: fit-content; */
+    height: 100%;
+    width: 100%;
     z-index: 0;
     animation: upndown infinite;
     animation-duration: 12s;
