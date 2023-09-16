@@ -292,7 +292,7 @@ body{
     text-align: left;
     color: white;
     font-size: 1.8rem;
-    margin: -1vh 0vh 4vh 0vh;
+    margin: -vh 0vh 4vh 0vh;
 }
 
 .myprojects_text ul {
@@ -509,7 +509,7 @@ footer {
     margin: 20px 0;
     padding: 20px 0;
     text-align: center;
-    height: 25vh;
+    height: 60vh;
 }
 
 .footer-content {
@@ -541,17 +541,17 @@ footer {
 .footer-content::before {
     content: "";
     background-color: #F6BB26;
-    height: 4px;
+    height: 1px;
     width: 60%;
-    margin: 10px auto;
+    margin: 10vh auto;
 }
 
 .footer-content::after {
     content: "";
     background-color: #F6BB26;
-    height: 4px;
+    height: 1px;
     width: 60%;
-    margin: 10px auto;
+    margin: 10vh auto;
 }
 
 .footer-phone::before {
