@@ -265,6 +265,89 @@ body{
 
 
 
+/* My Projects styles */
+#My-Projects {
+    width: 100%;
+    padding: 4vh 0;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #212121;
+    text-align: center;
+    color: #efefef;
+}
+.myprojects_text{
+    flex-basis: 50%;
+    padding: 4%;
+    text-align: left;
+}
+
+.myprojects_text h1 {
+    text-align: left;
+    color: #F6BB26;
+    font-size: 2.5rem;
+    margin: 2vh 0;
+}
+.myprojects_text h2 {
+    text-align: left;
+    color: white;
+    font-size: 1.8rem;
+    margin: -1vh 0vh 4vh 0vh;
+}
+
+.myprojects_text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.myprojects_text ul li {
+    margin-bottom: 4vh;
+}
+
+.myprojects_text ul li h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 1vh 0;
+}
+
+.myprojects_text ul li p {
+    font-size: 1rem;
+    line-height: 140%;
+    margin: 0;
+}
+
+.learn-more-button {
+    display: inline-block;
+    padding: 1vh 2vh;
+    background-color: transparent;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bolder;
+    text-decoration: none;
+    border: 2px solid #F6BB26;
+    transition-duration: 0.5s;
+}
+
+.learn-more-button:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.myprojectsImages{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+}
+
+.myprojectsImages img{
+    height: 50%;
+    margin: 2%;
+    width: 80%;
+    flex-basis: 40%;
+    border: 1px dashed rgba(255, 255, 255, 0.534);
+    padding: 2%;
+}
 
 
 
@@ -304,7 +387,13 @@ body{
     text-align: left;
     color: #efefef;
     font-size: 2.5vh;
-    margin: 4vh 8vw 0vh 8vw;
+    margin: 0vh 8vw 0vh 8vw;
+}
+
+.CV-page-text h1{
+    color: #F6BB26;
+    font-size: 2.5rem;
+    margin: 2vh 0vw;
 }
 
 .CV-page-text .ViewCVbutton-cv{
