@@ -287,14 +287,14 @@ body{
 .myprojects_text h1 {
     text-align: left;
     color: #F6BB26;
-    font-size: 2.5rem;
+    font-size: 4vh;
     margin: 2vh 0;
 }
 .myprojects_text h2 {
     text-align: left;
     color: white;
-    font-size: 1.8rem;
-    margin: -vh 0vh 4vh 0vh;
+    font-size: 3vh;
+    margin: 0vh 0vh 4vh 0vh;
 }
 
 .myprojects_text ul {
@@ -307,13 +307,13 @@ body{
 }
 
 .myprojects_text ul li h3 {
-    font-size: 1.4rem;
+    font-size: 2.5vh;
     font-weight: bold;
-    margin: 1vh 0;
+    margin: 2vh 0vh 0vh 0vh;
 }
 
 .myprojects_text ul li p {
-    font-size: 1rem;
+    font-size: 1.8vh;
     line-height: 140%;
     margin: 0;
 }
@@ -323,7 +323,7 @@ body{
     padding: 1vh 2vh;
     background-color: transparent;
     color: white;
-    font-size: 1.4rem;
+    font-size: 2vh;
     font-weight: bolder;
     text-decoration: none;
     border: 2px solid #F6BB26;
@@ -394,7 +394,7 @@ body{
 
 .CV-page-text h1{
     color: #F6BB26;
-    font-size: 2.5rem;
+    font-size: 4vh;
     margin: 2vh 0vw;
 }
 
@@ -523,9 +523,9 @@ footer {
 }
 
 .footer-name {
-    font-size: 24px;
+    font-size: 4vh;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
 }
 
 .footer-contact {
@@ -535,8 +535,8 @@ footer {
 }
 
 .footer-phone, .footer-email {
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 2vh;
+    margin-bottom: 1vh;
 }
 
 
