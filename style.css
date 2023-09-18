@@ -123,7 +123,7 @@ body{
     transition-duration: .3s;
     opacity: 1;
     z-index: 2;
-    translate: -60%;
+    translate: 0%;
     scale: 0.5;
     flex-basis: 10%;
     rotate: -16deg;
