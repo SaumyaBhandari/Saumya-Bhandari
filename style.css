@@ -15,44 +15,98 @@ body{
 }
 
 
-/* for the naviation bar */
-.navbar{
-    padding: 0vh 0vw 0vh 8vw;
-    height: 0px;
-    position: sticky;
-    top: -2vh;
-    right: 0vw;
-    left: 0vw;
+/* Default styles for the navigation bar */
+.navbar {
+    padding: 2vh 4vw;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    position: sticky;
+    top: 0;
     z-index: 100;
 }
 
-.navbar img{
+.navbar img {
     width: 16vw;
-    height: 16vh;
-    flex-basis: 10%;
+    height: auto;
 }
 
-.navbar ul{
-    flex-basis: 80%;
+.navbar ul {
     list-style: none;
     display: flex;
-    flex-wrap: nowrap;
-    margin: 6vh 0vw 0vh 24vw;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar ul li a{
+.navbar ul li {
+    margin: 2vw;
+}
+
+.navbar ul li a {
     text-decoration: none;
     color: #efefef;
     font-size: 2.2vh;
     font-weight: bolder;
-    padding: 1vh 1vh;
-    margin: 2vw 1vh;
+    padding: 1vh 1vw;
 }
 
-.navButton1{
+.navButton1 {
     color: #F6BB26;
 }
+
+/* Media query for screens smaller than 768px (tablets) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4vh 4vw;
+    }
+
+    .navbar img {
+        width: 30vw;
+        margin-bottom: 2vh;
+    }
+
+    .navbar ul {
+        margin-top: 2vh;
+    }
+
+    .navbar ul li {
+        margin: 1vh 2vw;
+    }
+
+    .navbar ul li a {
+        font-size: 2.5vh;
+        padding: 1vh 2vw;
+    }
+}
+
+/* Media query for screens smaller than 480px (mobile phones) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 4vh 4vw;
+    }
+
+    .navbar img {
+        width: 50vw;
+    }
+
+    .navbar ul {
+        margin-top: 3vh;
+    }
+
+    .navbar ul li {
+        margin: 2vh 2vw;
+    }
+
+    .navbar ul li a {
+        font-size: 3vh;
+        padding: 2vh 3vw;
+    }
+}
+
 
 
 
@@ -73,94 +127,93 @@ body{
 
 
 
-/* for the landing page */
-#landing-page{
-    /* position: absolute; */
+//* Default styles for the landing page */
+#landing-page {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
-    padding: 0vh 0vw 0vh 8vw;
-    margin: 0vh 0vw 0vh 0vw;
+    padding: 0vh 4vw;
+    margin: 0;
     background-color: #212121;
 }
 
-.landing-page-text{
+.landing-page-text {
     flex-basis: 60%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
-    text-align: left;
+    text-align: center; /* Center text on all screens */
     color: #efefef;
     font-size: 2.5vh;
-    margin: 4vh 0vw 0vh 0vw;
+    margin: 10vh 0;
 }
 
-.landing-page-text h3{
+.landing-page-text h3 {
     color: #F6BB26;
-    padding: 2vh 0vh;
+    padding: 2vh 0;
     font-weight: lighter;
     font-size: 4vh;
 }
 
-.landing-page-text h1{
+.landing-page-text h1 {
     font-size: 10vh;
-    padding: 0vh 0vh;
+    padding: 0;
     font-weight: bolder;
 }
 
-
-.landing-page-image{
+.landing-page-image {
     flex-basis: 40%;
-    flex-direction: column;
-    margin: 10vh 0vw 0vw 16vw;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    align-items: center; /* Center vertically on all screens */
+    justify-content: center; /* Center horizontally on all screens */
+    margin: 10vh 0;
 }
 
-.dialogueBox{
-    transition-duration: .3s;
+.dialogueBox {
+    transition-duration: 0.3s;
     opacity: 1;
     z-index: 2;
-    translate: 0%;
-    scale: 0.5;
-    flex-basis: 10%;
-    rotate: -16deg;
+    transform: scale(0.5) rotate(-16deg);
     cursor: pointer;
 }
-.landing-page-image .portrait{
-    flex-basis: 90%;
-    transform: translate(0%, 0%);
+
+.landing-page-image .portrait {
+    width: 70%; /* Adjust the width for smaller screens */
 }
 
-
-.landing-page-image:hover > #dialogueBox{
-    animation-name: make-visible;
-    animation-duration: .1s;
-    opacity: 1;
-    top: 12vh;
-}
-
-@keyframes make-visible{
-    from{
-        opacity: 0;
-        top: 0vh;
-    }
-    to{
-        opacity: 1;
-        top: 16vh;
+/* Media query for screens smaller than 768px (tablets and mobiles) */
+@media screen and (max-width: 768px) {
+    #landing-page {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements vertically */
+        padding: 10vh 4vw;
     }
 
+    .landing-page-text {
+        flex-basis: 100%; /* Take up full width */
+        text-align: center; /* Center text on small screens */
+        margin-top: 5vh;
+    }
+
+    .landing-page-text h1 {
+        font-size: 8vh; /* Reduce font size for smaller screens */
+    }
+
+    .landing-page-image {
+        flex-basis: 100%; /* Take up full width */
+        margin-top: 5vh;
+    }
+
+    .portrait {
+        width: 100%; /* Adjust the width for small screens */
+        height: auto; /* Maintain aspect ratio */
+        padding: 0;
+    }
 }
 
-
-.portrait{ 
-    height: 90vh;
-    z-index: 1;
-    padding: 8vh 0vw 0vh 0vw;
-    cursor: pointer;
-}
 
 
 
