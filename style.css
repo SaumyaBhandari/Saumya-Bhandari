@@ -19,20 +19,22 @@ body{
 .navbar {
     padding: 2vh 4vw;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
 .navbar img {
+    flex-basis: 10%;
     width: 16vw;
     height: auto;
 }
 
 .navbar ul {
+    /* flex-basis: 95%; */
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +43,7 @@ body{
 }
 
 .navbar ul li {
-    margin: 2vw;
+    margin: 1vw;
 }
 
 .navbar ul li a {
@@ -127,24 +129,23 @@ body{
 
 
 
-//* Default styles for the landing page */
+/* Default styles for the landing page */
 #landing-page {
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding: 0vh 4vw;
     margin: 0;
     background-color: #212121;
 }
 
 .landing-page-text {
-    flex-basis: 60%;
+    flex-basis: 55%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     flex-direction: column;
-    text-align: center; /* Center text on all screens */
+    text-align: left; /* Center text on all screens */
     color: #efefef;
     font-size: 2.5vh;
     margin: 10vh 0;
@@ -164,24 +165,15 @@ body{
 }
 
 .landing-page-image {
-    flex-basis: 40%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center; /* Center vertically on all screens */
-    justify-content: center; /* Center horizontally on all screens */
-    margin: 10vh 0;
+    flex-basis: 45%;
 }
 
-.dialogueBox {
-    transition-duration: 0.3s;
-    opacity: 1;
-    z-index: 2;
-    transform: scale(0.5) rotate(-16deg);
-    cursor: pointer;
-}
 
 .landing-page-image .portrait {
-    width: 70%; /* Adjust the width for smaller screens */
+    width: 85%; /* Adjust the width for smaller screens */
+    height: 90%;
+    margin-left: 8vw;
+    margin-top: -10vh;
 }
 
 /* Media query for screens smaller than 768px (tablets and mobiles) */
