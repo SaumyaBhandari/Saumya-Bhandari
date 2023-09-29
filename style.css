@@ -56,6 +56,32 @@ body{
     color: #F6BB26;
 }
 
+/* Media query for screens smaller than 768px (tablets) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4vh 4vw;
+    }
+
+    .navbar img {
+        width: 30vw;
+        margin-bottom: 2vh;
+    }
+
+    .navbar ul {
+        margin-top: 2vh;
+    }
+
+    .navbar ul li {
+        margin: 1vh 2vw;
+    }
+
+    .navbar ul li a {
+        font-size: 2.5vh;
+        padding: 1vh 2vw;
+    }
+}
 
 /* Media query for screens smaller than 480px (mobile phones) */
 @media screen and (max-width: 480px) {
@@ -101,7 +127,7 @@ body{
 
 
 
-/* Default styles for the landing page */
+//* Default styles for the landing page */
 #landing-page {
     width: 100%;
     height: 100vh;
@@ -158,6 +184,35 @@ body{
     width: 70%; /* Adjust the width for smaller screens */
 }
 
+/* Media query for screens smaller than 768px (tablets and mobiles) */
+@media screen and (max-width: 768px) {
+    #landing-page {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements vertically */
+        padding: 10vh 4vw;
+    }
+
+    .landing-page-text {
+        flex-basis: 100%; /* Take up full width */
+        text-align: center; /* Center text on small screens */
+        margin-top: 5vh;
+    }
+
+    .landing-page-text h1 {
+        font-size: 8vh; /* Reduce font size for smaller screens */
+    }
+
+    .landing-page-image {
+        flex-basis: 100%; /* Take up full width */
+        margin-top: 5vh;
+    }
+
+    .portrait {
+        width: 100%; /* Adjust the width for small screens */
+        height: auto; /* Maintain aspect ratio */
+        padding: 0;
+    }
+}
 
 
 
