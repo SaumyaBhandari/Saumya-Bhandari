@@ -1,53 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saumya Bhandari</title>
-    <link rel="icon" href="Images/logo.png">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saumya Bhandari</title>
+    <link rel="icon" href="Images/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
     <div class="navbar">
-        <img src="Images/logo.png" alt="logo" class="logo">
+        <img src="Images/logo.png" alt="logo" class="logo" />
         <ul>
             <li><a class="navButton1" href="index.html">Main Page</a></li>
             <li><a class="navButton2" href="about.html">About Me</a></li>
             <li><a class="navButton3" href="portfolio.html">My Projects</a></li>
             <li><a class="navButton4" href="contact.html">C.V.</a></li>
             <li><a class="navButton5" href="contact.html">Contact Me</a></li>
-            <li><a class="navButton6" href="contact.html">I Have a Blog Too!</a></li>
+            <li>
+                <a class="navButton6" href="contact.html">I Have a Blog Too!</a>
+            </li>
         </ul>
     </div>
 
     <div id="landing-page">
         <div class="landing-page-text">
-            <h3>Greetings!<br> Ladies and Gentlemen. I am,</h3>
-            <h1>Saumya<br> Bhandari</h1>
+            <h3>
+                Greetings!<br />
+                Ladies and Gentlemen. I am,
+            </h3>
+            <h1>
+                Saumya<br />
+                Bhandari
+            </h1>
             <h3>Machine Learning Engineer</h3>
-            <p>I research and develop <b>Machine Learning</b> systems in the domain of Computer Vision; using Convolutional Neural Networks with Transformers.</p>
+            <p>
+                I research and develop <b>Machine Learning</b> systems in the domain
+                of Computer-Vision and Natural Language Processing (Document
+                Understanding). I Love to tinker around with architecture of
+                Convolutional Neural Network as well as Transformers.
+            </p>
         </div>
         <div class="landing-page-image">
-            <img class='portrait'src="Images/Image_Landing.png" alt="landing-page">
+            <div class="landing-image" alt="landing-page"> </div>
         </div>
+    </div>
     </div>
 
     <div id="about-page">
-
         <div class="about-page-image-section">
-            <img class='about-portrait'src="Images/Image_About.png" alt="about-page">
+            <!-- <img class="about-portrait" src="Images/Image_About.png" alt="about-page" /> -->
         </div>
         <div class="about-page-text-section">
-            <img class="about_image" src="Images/background.png" alt="">
+            <img class="about_image" src="Images/background.png" alt="" />
             <div class="about-page-text">
                 <h2>Who am I?</h2>
-                <p>I'm a science enthusiast with a passion for Computer Science, Mathematics, History, and Philosophy. I spend my time exploring new ideas and concepts that catch my interest.</p>
-                <p>During the day, I work with numbers, writing programs and solving mathematical puzzles using Neural Networks. In my downtime, I'm a movie buff who enjoys discussing films of all genres. If you're a movie lover too, let's chat!</p>
-                <p>I also have a creative side—I write poems and essays, and I love connecting with people through public speaking. If you're curious to learn more about me, click the button below.</p>
-                <p class="readMoreButton-about">Read More</p>
-            </div> 
+                <p>
+                    I'm a science enthusiast with a passion for Computer Science,
+                    Mathematics, Politics, and Philosophy. I spend my time exploring new
+                    ideas and concepts that catch my interest. I am also a bodybuilder competing in different national
+                    competitions time to time.
+                    I love riding my bike across the hilly terrain of Nepal enjoying the majestic views of my Country!
+                </p>
+                <p>
+                    During the day, I work with numbers, writing programs and solving
+                    mathematical puzzles using Neural Networks. In my downtime, I'm a
+                    movie buff who enjoys discussing films of all genres. If you're a
+                    movie lover too, let's chat!
+                </p>
+
+                <p>
+                    I also have a creative side where I write poems and essays, and I love
+                    connecting with people through public speaking. If you're curious to
+                    learn more about me, click the button below.
+                </p>
+                <div class="readMoreButton-about">Read More</div>
+            </div>
         </div>
     </div>
 
@@ -58,26 +88,47 @@
             <ul>
                 <li>
                     <h3>Enhancing Chest X-ray Diagnosis</h3>
-                    <p>Developing a robust multi-label classification model employing Self-Supervised Learning to accurately identify various findings and diseases within chest X-ray images. Utilizing a combination of CNNs and a Mask Auto Encoder - Vision Transformer (ViT) based model to improve the AUROC score of the prediction and classification model. <br>Additionally, incorporating Contrastive CLIP loss for generating detailed reports.</p>
+                    <p>
+                        Developing a robust multi-label classification model employing
+                        Self-Supervised Learning to accurately identify various findings
+                        and diseases within chest X-ray images. Utilizing a combination of
+                        CNNs and a Mask Auto Encoder - Vision Transformer (ViT) based
+                        model to improve the AUROC score of the prediction and
+                        classification model. <br />Additionally, incorporating
+                        Contrastive CLIP loss for generating detailed reports.
+                    </p>
                 </li>
                 <li>
                     <h3>CNN-Transformer Based Network for Video Processing</h3>
-                    <p>Developing a deep learning model that uses CNNs and Transformers to process sequences of image frames in videos, applied in multi-task video processing like handling frame breakages, next frame prediction, and object tracking.</p>
+                    <p>
+                        Developing a deep learning model that uses CNNs and Transformers
+                        to process sequences of image frames in videos, applied in
+                        multi-task video processing like handling frame breakages, next
+                        frame prediction, and object tracking.
+                    </p>
                 </li>
                 <li>
                     <h3>Plant Disease Detection and Diagnosis</h3>
-                    <p>Particularly within the context of Nepal's unique dataset, I developed a CNN model which classifies the leaf of a plant to different classes of disease.
-                        <br>To achieve this, I employed Meta's Segment Anything Model (SAM) for dataset generation. For classification, I utilized the EfficientNet architecture and trained the model in a Domain Adversarial Setup, ensuring robust classification with domain-invariant feature vectors from the available standard Plant Village dataset and the collected dataset.</p>
+                    <p>
+                        Particularly within the context of Nepal's unique dataset, I
+                        developed a CNN model which classifies the leaf of a plant to
+                        different classes of disease. <br />To achieve this, I employed
+                        Meta's Segment Anything Model (SAM) for dataset generation. For
+                        classification, I utilized the EfficientNet architecture and
+                        trained the model in a Domain Adversarial Setup, ensuring robust
+                        classification with domain-invariant feature vectors from the
+                        available standard Plant Village dataset and the collected
+                        dataset.
+                    </p>
                 </li>
-            </ul>            
+            </ul>
             <a href="myprojects.html" class="learn-more-button">Learn More</a>
         </div>
         <div class="myprojectsImages">
-            <img src="Images/xray.png" alt="">
-            <img src="Images/TransCNN.png" alt="">
+            <img src="Images/xray.png" alt="" />
+            <img src="Images/TransCNN.png" alt="" />
         </div>
     </div>
-    
 
     <div id="CV">
         <!-- <div class="background-cv-landing">
@@ -85,27 +136,30 @@
         </div> -->
         <div class="CV-page-text">
             <h1>My CV</h1>
-            <p>You're probably thinking about hiring me, right? Well, I've got you covered! Finding my CV is a breeze – just click the button that suits you best.
-            <br><br>In a nutshell, I specialize in crafting cutting-edge computer vision AI systems, and I've got quite the knack for design too. Dive into my CV to discover more about my accomplishments, skills, and the journey that got me here. Let's connect!"
+            <p>
+                You're probably thinking about hiring me, right? Well, I've got you
+                covered! Finding my CV is a breeze, just click the button that suits
+                you best. <br /><br />In a nutshell, I specialize in crafting
+                cutting-edge computer vision AI systems, and I've got quite the knack
+                for design too. Dive into my CV to discover more about my
+                accomplishments, skills, and the journey that got me here. Let's
+                connect!"
             </p>
-            <br><br>
-            <a class="ViewCVbutton-cv" href="CV - Saumya Bhandari October 2023.pdf", target="_blank">View CV</a>
+            <br /><br />
+            <a class="ViewCVbutton-cv" href="CV - Saumya Bhandari October 2023.pdf" , target="_blank">View
+                CV</a>
         </div>
-    
+
         <div class="CV-page-image">
-            <img class='cv-image'src="Images/CV.png" alt="about-page" >
-            <div class="cv-image_overlay"> 
-                <a class="download-CV" href="CV - Saumya Bhandari October 2023.pdf" download="CV-Saumya-Bhandari-October-2023.pdf">Download</a><br>
-                <a class="view-Cv-pdf" href="CV - Saumya Bhandari October 2023.pdf" target="_blank">View In Other Tab</a>
+            <img class="cv-image" src="Images/CV.png" alt="about-page" />
+            <div class="cv-image_overlay">
+                <a class="download-CV" href="CV - Saumya Bhandari October 2023.pdf"
+                    download="CV-Saumya-Bhandari-October-2023.pdf">Download</a><br />
+                <a class="view-Cv-pdf" href="CV - Saumya Bhandari October 2023.pdf" target="_blank">View In
+                    Other
+                    Tab</a>
             </div>
         </div>
-    </div>
-
-    <div class="navigation-buttons">
-        <a href="index.html" class= "navigation-button" id="navigation-button-1" data-section="1"></a>
-        <a href="about.html" class= "navigation-button" id="navigation-button-2" data-section="2"></a>
-        <a href="portfolio.html" class= "navigation-button" id="navigation-button-3" data-section="3"></a>
-        <a href="contact.html" class= "navigation-button" id="navigation-button-4" data-section="4"></a>
     </div>
 
     <footer>
@@ -120,6 +174,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
-
-
