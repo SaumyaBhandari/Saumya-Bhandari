@@ -1,46 +1,133 @@
-var pageHeight = window.innerHeight;
-var isAnimating = false;
-document.body.style.transform = 'translate3d(0px,0px,0px)';
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section');
 
+    // --- Mobile Menu Toggle ---
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('is-active');
+        });
+    }
 
+    // --- Smooth Scrolling & Close Mobile Menu on Link Click ---
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Close mobile menu if open
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('is-active');
+            }
 
-
-// Get all navigation buttons
-const navButtons = document.querySelectorAll('.navigation-button');
-
-// Get the height of each section
-const sections = document.querySelectorAll('section');
-const sectionHeights = Array.from(sections).map(section => section.getBoundingClientRect().height);
-
-// Calculate the cumulative heights of the sections
-const sectionCumulativeHeights = sectionHeights.reduce((acc, val) => [...acc, val + acc[acc.length - 1]], [0]);
-
-// Activate the navigation button corresponding to the current section
-document.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const windowHeight = window.innerHeight;
-  const totalHeight = document.documentElement.scrollHeight;
-
-  const scrollBottom = scrollTop + windowHeight;
-
-  // Find the index of the section that is currently visible
-  const visibleSectionIndex = sectionCumulativeHeights.findIndex(height => height > scrollTop + windowHeight / 2);
-
-  // Activate the navigation button corresponding to the current section
-  if (visibleSectionIndex !== -1) {
-    navButtons.forEach(button => button.classList.remove('active'));
-    navButtons[visibleSectionIndex].classList.add('active');
-  }
-});
-
-// Scroll to the section corresponding to the clicked navigation button
-navButtons.forEach(button => {
-  const sectionIndex = parseInt(button.getAttribute('data-section')) - 1;
-  button.addEventListener('click', event => {
-    event.preventDefault();
-    window.scrollTo({
-      top: sectionCumulativeHeights[sectionIndex],
-      behavior: 'smooth',
+            // Smooth scroll for internal links
+            if (link.hash !== "") {
+                const targetElement = document.querySelector(link.hash);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for sticky navbar height
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
     });
-  });
+
+    // --- Active Nav Link Highlighting on Scroll ---
+    const highlightMenu = () => {
+        let scrollPos = window.scrollY + 90; // Offset for navbar
+
+        sections.forEach(section => {
+            if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                const targetId = section.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    };
+
+    window.addEventListener('scroll', highlightMenu);
+    window.addEventListener('load', highlightMenu);
+
+
+    // --- Scroll Animations (Fade-in effect) ---
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('reveal');
+        observer.observe(section);
+    });
+
+    // Add reveal styles to CSS
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link.active {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        /* Mobile Menu Styles */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                left: -100%;
+                opacity: 1;
+                transition: all 0.5s ease;
+                background: var(--primary-color);
+            }
+            .nav-menu.active {
+                left: 0;
+                opacity: 1;
+                transition: all 0.5s ease;
+                z-index: 99;
+            }
+            .nav-item {
+                width: 100%;
+            }
+            .nav-link {
+                text-align: center;
+                padding: 2rem;
+                width: 100%;
+                display: table;
+            }
+            .nav-toggle .bar {
+                background-color: var(--heading-color);
+            }
+            .nav-toggle.is-active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .nav-toggle.is-active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .nav-toggle.is-active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    `;
+    document.head.appendChild(style);
 });

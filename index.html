@@ -1,174 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saumya Bhandari</title>
     <link rel="icon" href="Images/logo.png" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="navbar">
-        <img src="Images/logo.png" alt="logo" class="logo" />
-        <ul>
-            <li><a class="navButton1" href="index.html">Main Page</a></li>
-            <li><a class="navButton2" href="about.html">About Me</a></li>
-            <li><a class="navButton3" href="portfolio.html">My Projects</a></li>
-            <li><a class="navButton4" href="cv.pdf" target="_blank">C.V.</a></li>
-            <li><a class="navButton5" href="contact.html">Contact Me</a></li>
-            <li>
-                <a class="navButton6" href="contact.html">I Have a Blog Too!</a>
-            </li>
-        </ul>
-    </div>
-
-    <div id="landing-page">
-        <div class="landing-page-text">
-            <h3>
-                Greetings!<br />
-                Ladies and Gentlemen. I am,
-            </h3>
-            <h1>
-                Saumya<br />
-                Bhandari
-            </h1>
-            <h3>Machine Learning Engineer</h3>
-            <p>
-                I research and develop <b>Machine Learning</b> systems in the domain
-                of Computer-Vision and Natural Language Processing (Document
-                Understanding). I Love to tinker around with architecture of
-                Convolutional Neural Network as well as Transformers.
-            </p>
-        </div>
-        <div class="landing-page-image">
-            <div class="landing-image" alt="landing-page"> </div>
-        </div>
-    </div>
-    </div>
-
-    <div id="about-page">
-        <div class="about-page-image-section">
-            <!-- <img class="about-portrait" src="Images/Image_About.png" alt="about-page" /> -->
-        </div>
-        <div class="about-page-text-section">
-            <img class="about_image" src="Images/background.png" alt="" />
-            <div class="about-page-text">
-                <h2>Who am I?</h2>
-                <p>
-                    I'm a science enthusiast with a passion for Computer Science,
-                    Mathematics, Politics, and Philosophy. I spend my time exploring new
-                    ideas and concepts that catch my interest. I am also a bodybuilder competing in different national
-                    competitions time to time.
-                    I love riding my bike across the hilly terrain of Nepal enjoying the majestic views of my Country!
-                </p>
-                <p>
-                    During the day, I work with numbers, writing programs and solving
-                    mathematical puzzles using Neural Networks. In my downtime, I'm a
-                    movie buff who enjoys discussing films of all genres. If you're a
-                    movie lover too, let's chat!
-                </p>
-
-                <p>
-                    I also have a creative side where I write poems and essays, and I love
-                    connecting with people through public speaking. If you're curious to
-                    learn more about me, click the button below.
-                </p>
-                <div class="readMoreButton-about">Read More</div>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Saumya Bhandari</a>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-        </div>
-    </div>
-
-    <div id="My-Projects">
-        <div class="myprojects_text">
-            <h1>My Projects</h1>
-            <h2>Interesting works that I've done in the Industry</h2>
-            <ul>
-                <li>
-                    <h3>Enhancing Chest X-ray Diagnosis</h3>
-                    <p>
-                        Developing a robust multi-label classification model employing
-                        Self-Supervised Learning to accurately identify various findings
-                        and diseases within chest X-ray images. Utilizing a combination of
-                        CNNs and a Mask Auto Encoder - Vision Transformer (ViT) based
-                        model to improve the AUROC score of the prediction and
-                        classification model. <br />Additionally, incorporating
-                        Contrastive CLIP loss for generating detailed reports.
-                    </p>
-                </li>
-                <li>
-                    <h3>CNN-Transformer Based Network for Video Processing</h3>
-                    <p>
-                        Developing a deep learning model that uses CNNs and Transformers
-                        to process sequences of image frames in videos, applied in
-                        multi-task video processing like handling frame breakages, next
-                        frame prediction, and object tracking.
-                    </p>
-                </li>
-                <li>
-                    <h3>Plant Disease Detection and Diagnosis</h3>
-                    <p>
-                        Particularly within the context of Nepal's unique dataset, I
-                        developed a CNN model which classifies the leaf of a plant to
-                        different classes of disease. <br />To achieve this, I employed
-                        Meta's Segment Anything Model (SAM) for dataset generation. For
-                        classification, I utilized the EfficientNet architecture and
-                        trained the model in a Domain Adversarial Setup, ensuring robust
-                        classification with domain-invariant feature vectors from the
-                        available standard Plant Village dataset and the collected
-                        dataset.
-                    </p>
-                </li>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="cv.pdf" target="_blank" class="nav-link nav-link-btn">CV</a></li>
             </ul>
-            <a href="myprojects.html" class="learn-more-button">Learn More</a>
         </div>
-        <div class="myprojectsImages">
-            <img src="Images/xray.png" alt="" />
-            <img src="Images/TransCNN.png" alt="" />
-        </div>
-    </div>
+    </header>
 
-    <div id="CV">
-        <!-- <div class="background-cv-landing">
-            <img src="Images/backtround-pattern.png" alt="" srcset="">
-        </div> -->
-        <div class="CV-page-text">
-            <h1>My CV</h1>
-            <p>
-                You're probably thinking about hiring me, right? Well, I've got you
-                covered! Finding my CV is a breeze, just click the button that suits
-                you best. <br /><br />In a nutshell, I specialize in crafting
-                cutting-edge computer vision AI systems, and I've got quite the knack
-                for design too. Dive into my CV to discover more about my
-                accomplishments, skills, and the journey that got me here. Let's
-                connect!"
-            </p>
-            <br /><br />
-            <a class="ViewCVbutton-cv" href="cv.pdf" , target="_blank">View
-                CV</a>
-        </div>
-
-        <div class="CV-page-image">
-            <img class="cv-image" src="Images/cvImage.png" alt="about-page" />
-            <div class="cv-image_overlay">
-                <a class="download-CV" href="cv.pdf"
-                    download="cv.pdf">Download</a><br />
-                <a class="view-Cv-pdf" href="cv.pdf" target="_blank">View In
-                    Other
-                    Tab</a>
+    <main>
+        <section id="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>Saumya Bhandari</h1>
+                    <h2>AI Leader & Machine Learning Engineer</h2>
+                    <p>
+                        Co-founder and AI lead with a passion for building cutting-edge AI systems from the ground up. Specializing in Computer Vision, LLMs, and MLOps.
+                    </p>
+                    <div class="social-icons">
+                        <a href="https://github.com/saumya-bhandari" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/saumyabhandari" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:saumyabhandary22@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="Images/Image_Landing.png" alt="Saumya Bhandari">
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <section id="about">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="Images/Image_About.png" alt="About Saumya Bhandari">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        I'm a science enthusiast with a passion for Computer Science, Mathematics, Politics, and Philosophy. I spend my time exploring new ideas and concepts that catch my interest. I am also a bodybuilder competing in different national competitions time to time.
+                    </p>
+                    <p>
+                        During the day, I architect and build intelligent systems. In my downtime, I'm a movie buff, a writer of poems and essays, and I love connecting with people through public speaking.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Recent Projects</h2>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Images/pb_ref.png" alt="Project 1">
+                    </div>
+                    <h3>AI Pickleball Officiant @ PointRef Inc.</h3>
+                    <p>Shipping the world's first real-time AI pickleball officiant on iOS/macOS with 99% foul-call accuracy at &lt;150ms latency. Leading multi-object tracking, 3D court registration, and performance optimization.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Images/staging.png" alt="Project 3">
+                    </div>
+                    <h3>AI Consultant @ PadStyler</h3>
+                    <p>Increased buyer engagement by 86% with a diffusion-based inpainting pipeline for virtual staging. <br>Tech: Pytorch, Websockets, Redis-Session Management, AWS deployment, FastAPI, Diffusion Models, Photogrammetry, Image Segmentation.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Images/selfcomplai.png" alt="Project 2">
+                    </div>
+                    <h3>Leading AI Division @ InstaComplay</h3>
+                    <p>Architect of a multi-agent RAG system for compliance audits (PDPL, ISO-27001), reducing audit cycles from 6 months to 20 days and auto-generating compliance templates.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Images/xray.png" alt="Project 3">
+                    </div>
+                    <h3>Junior Researcher @ Wiseyak</h3>
+                    <p> Delivered chest X-ray multi-label classiﬁer (10 diseases) AUROC 0.91 on highly-imbalanced data; Grad-CAM explainability integrated in radiologist cockpit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-container">
+                <h2>Get In Touch</h2>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
+                <a href="mailto:saumyabhandary22@gmail.com" class="btn">Say Hello</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-name">Saumya Bhandary</div>
-            <div class="footer-contact">
-                <div class="footer-phone">Phone: +977-9843866411</div>
-                <div class="footer-email">Email: saumyabhandary22@gmail.com</div>
+        <div class="footer-container">
+            <div class="footer-socials">
+                <a href="https://github.com/saumya-bhandari" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/saumyabhandari" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:saumyabhandary22@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
+            <p>&copy; 2024 Saumya Bhandari. All rights reserved.</p>
         </div>
     </footer>
 
