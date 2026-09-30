@@ -4,20 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saumya Bhandari</title>
+    <title>Saumya Bhandari — Machine Learning Engineer &amp; Fractal Philosopher</title>
+    <meta name="description" content="Personal portfolio and life's work of Saumya Bhandari — Researcher in Computer Vision, Deep Learning, Multi-Agent Systems, and Fractal Philosopher of Thoughts." />
     <link rel="icon" href="Images/logo.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-    <header class="navbar">
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">Saumya Bhandari</a>
-            <div class="nav-toggle" id="mobile-menu">
+            <a href="#hero" class="nav-logo">
+                <img src="Images/logo.png" alt="Saumya Bhandari Logo" class="logo-mark" />
+                <span class="logo-text">Saumya Bhandari</span>
+            </a>
+            <div class="nav-toggle" id="mobile-menu" aria-label="Toggle navigation">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -25,104 +30,1026 @@
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#timeline" class="nav-link">Timeline</a></li>
+                <li class="nav-item"><a href="#philosophy" class="nav-link">Fractal Thoughts</a></li>
+                <li class="nav-item"><a href="#studies" class="nav-link">Studies</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Life's Work</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="cv.pdf" target="_blank" class="nav-link nav-link-btn">CV</a></li>
+                <li class="nav-item"><a href="cv.pdf" target="_blank" class="nav-link nav-link-btn"><i class="fas fa-file-pdf"></i> CV</a></li>
             </ul>
         </div>
     </header>
 
     <main>
+        <!-- Page 1: Hero Section (Landing Page) -->
         <section id="hero">
+            <canvas id="fractal-canvas" aria-hidden="true"></canvas>
             <div class="hero-container">
                 <div class="hero-text">
-                    <h1>Saumya Bhandari</h1>
-                    <h2>AI Leader & Machine Learning Engineer</h2>
-                    <p>
-                        Co-founder and AI lead with a passion for building cutting-edge AI systems from the ground up. Specializing in Computer Vision, LLMs, and MLOps.
+                    <div class="hero-eyebrow">
+                        <span class="status-pulse"></span>
+                        <span>Greetings &bull; I am</span>
+                    </div>
+                    <h1 class="hero-name">Saumya Bhandari</h1>
+                    <h2 class="hero-fractal-title">A Fractal Philosopher of my Thoughts</h2>
+                    <p class="hero-subtext">
+                        Machine Learning &amp; Computer Vision Specialist
                     </p>
+                    <p class="hero-bio">
+                        Navigating the recursive geometries of intelligence, code, and consciousness. Architecting cutting-edge machine learning, computer vision, and agentic systems, while mapping the self-similar patterns of thoughts, neural architectures, and human existence.
+                    </p>
+
+                    <!-- Technical & Philosophical Chips -->
+                    <div class="hero-badges">
+                        <span class="hero-badge"><i class="fas fa-brain"></i> Fractal Philosopher</span>
+                        <span class="hero-badge"><i class="fas fa-eye"></i> Computer Vision</span>
+                        <span class="hero-badge"><i class="fas fa-network-wired"></i> Deep Learning</span>
+                        <span class="hero-badge"><i class="fas fa-robot"></i> Multi-Agent Systems</span>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="#timeline" class="btn btn-primary"><i class="fas fa-stream"></i> Life's Timeline</a>
+                        <a href="#philosophy" class="btn btn-secondary"><i class="fas fa-infinity"></i> Fractal Thoughts</a>
+                        <a href="#projects" class="btn btn-secondary"><i class="fas fa-cubes"></i> Life's Work</a>
+                        <a href="cv.pdf" target="_blank" class="btn btn-outline"><i class="fas fa-arrow-down"></i> CV</a>
+                    </div>
+
                     <div class="social-icons">
-                        <a href="https://github.com/saumya-bhandari" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/saumyabhandari" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:saumyabhandary22@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/saumya-bhandari" target="_blank" title="GitHub" rel="noopener"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/saumyabhandari" target="_blank" title="LinkedIn" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:saumyabhandary22@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+9779843866411" title="Phone"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="Images/Image_Landing.png" alt="Saumya Bhandari">
+
+                <div class="hero-image-col">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-glow-ring"></div>
+                        <img src="Images/Image_Landing.png" alt="Saumya Bhandari Portrait" class="hero-avatar" />
+                        <div class="hero-floating-card top-float">
+                            <i class="fas fa-microchip"></i>
+                            <div>
+                                <span class="float-label">Focus Area</span>
+                                <span class="float-val">Computer Vision &amp; Generative AI</span>
+                            </div>
+                        </div>
+                        <div class="hero-floating-card bottom-float">
+                            <i class="fas fa-infinity"></i>
+                            <div>
+                                <span class="float-label">Intellectual Mode</span>
+                                <span class="float-val">Fractal Philosophy</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Page 2: About Section -->
         <section id="about">
             <div class="about-container">
                 <div class="about-image">
-                    <img src="Images/Image_About.png" alt="About Saumya Bhandari">
+                    <div class="about-img-frame">
+                        <img src="Images/Image_About.png" alt="About Saumya Bhandari">
+                        <div class="about-caption-box">
+                            <span class="about-tag">AI Researcher &amp; Engineer</span>
+                            <span class="about-location"><i class="fas fa-location-dot"></i> Kathmandu, Nepal / Remote</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-text">
-                    <h2>About Me</h2>
-                    <p>
-                        I'm a science enthusiast with a passion for Computer Science, Mathematics, Politics, and Philosophy. I spend my time exploring new ideas and concepts that catch my interest. I am also a bodybuilder competing in different national competitions time to time.
+                    <div class="section-tag"><i class="fas fa-user"></i> The Human Behind The Code</div>
+                    <h2>Who am I?</h2>
+                    <p class="about-lead">
+                        I am an AI engineer, researcher, and thinker who views technology as applied philosophy.
                     </p>
                     <p>
-                        During the day, I architect and build intelligent systems. In my downtime, I'm a movie buff, a writer of poems and essays, and I love connecting with people through public speaking.
+                        I have a lifelong passion for <strong>Computer Science, Mathematics, Politics, and Philosophy</strong>. I spend my days building intelligent agentic systems and 3D computer vision algorithms, and my nights pondering recursive epistemology and the fractal structures underlying human mindsets.
                     </p>
+                    <p>
+                        Beyond the terminal, I am a <strong>competitive bodybuilder</strong> competing in national championships from time to time. I believe physical exertion and mental discipline are self-similar reflections of the same drive: sculpting reality under progressive tension.
+                    </p>
+                    <p>
+                        I love riding my motorcycle across the majestic, winding Himalayan terrains of Nepal, writing poetry and philosophical essays, discussing cinema, and connecting with people through heartfelt conversations and public speaking.
+                    </p>
+                    <div class="about-stats-grid">
+                        <div class="stat-card highlight-stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Shipping AI</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">First-Class</span>
+                            <span class="stat-label">B.Sc. (Hons) CS</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Production Deployments</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">3D &amp; Agents</span>
+                            <span class="stat-label">Specialized Architecture</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Page 3: Horizontal Timeline Section -->
+        <section id="timeline" class="timeline-section">
+            <div class="timeline-header-wrap">
+                <div class="section-tag"><i class="fas fa-infinity"></i> Non-Linear Odyssey &bull; Linearity is an Illusion</div>
+                <h2 class="section-title">The Non-Linear Spiral of My Life</h2>
+                <p class="timeline-intro">
+                    Linearity is an illusion. Time, thought, and love do not travel in straight lines — they weave through recursive curves, harmonic undulations, and golden spirals.
+                </p>
+
+                <!-- Navigation Controls -->
+                <div class="timeline-bar-actions">
+                    <div class="timeline-legend">
+                        <span class="legend-chip"><span class="legend-indicator compact"></span> Compact = Pre-2018 Roots</span>
+                        <span class="legend-chip"><span class="legend-indicator medium"></span> Medium = 2018–2022 University</span>
+                        <span class="legend-chip"><span class="legend-indicator wedding"></span> <i class="fas fa-heart" style="color:#f43f5e;font-size:0.75rem;"></i> Spiral = 25 Feb 2025 Marriage</span>
+                        <span class="legend-chip"><span class="legend-indicator elevated"></span> Very Big = Post-2022 Systems &amp; Visual Artifacts</span>
+                        <span class="legend-chip"><span class="legend-indicator active"></span> Active Node = Giles (Present)</span>
+                    </div>
+                    <div class="timeline-nav-buttons">
+                        <button class="t-btn" id="btn-timeline-left" aria-label="Scroll timeline left" title="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                        <button class="t-btn" id="btn-timeline-right" aria-label="Scroll timeline right" title="Scroll right"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Progress indicator -->
+                <div class="timeline-scrollbar-container">
+                    <div class="timeline-scrollbar-fill" id="timeline-progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Horizontal Timeline Track Container -->
+            <div class="timeline-outer-scroll" id="timeline-outer-scroll">
+                <div class="timeline-horizontal-track" id="timeline-track">
+                    <!-- Sinuous Harmonic Curve SVG Spline & Spirals -->
+                    <svg class="timeline-curve-svg" id="timeline-curve-svg" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="goldTimelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+                                <stop offset="15%" stop-color="#a78bfa" stop-opacity="0.8"/>
+                                <stop offset="35%" stop-color="#c5a059" stop-opacity="1"/>
+                                <stop offset="55%" stop-color="#f43f5e" stop-opacity="1"/>
+                                <stop offset="70%" stop-color="#fb7185" stop-opacity="1"/>
+                                <stop offset="85%" stop-color="#c5a059" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="#10b981" stop-opacity="1"/>
+                            </linearGradient>
+                            <linearGradient id="roseGoldSpiral" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fda4af"/>
+                                <stop offset="50%" stop-color="#f43f5e"/>
+                                <stop offset="100%" stop-color="#fbbf24"/>
+                            </linearGradient>
+                            <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                            </filter>
+                        </defs>
+                        <!-- Dynamic cubic spline path rendered by script.js -->
+                        <g id="spline-path-group"></g>
+                    </svg>
+
+                    <!-- Background Ambient Golden Spirals -->
+                    <div class="timeline-ambient-spirals" aria-hidden="true">
+                        <div class="ambient-spiral spiral-1"></div>
+                        <div class="ambient-spiral spiral-2"></div>
+                        <div class="ambient-spiral spiral-3"></div>
+                    </div>
+
+                    <!-- 1. BORN 2000 (BEFORE 2018: COMPACT) -->
+                    <div class="t-column t-col-compact t-wave-mid" data-year="2000">
+                        <div class="t-elevated-space"></div>
+                        <div class="t-node-point">
+                            <div class="t-dot origin-dot"></div>
+                            <span class="t-year-badge">2000</span>
+                        </div>
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag birth">Origin</span>
+                            </div>
+                            <h3 class="t-card-title">Born</h3>
+                            <h4 class="t-card-sub">Kathmandu, Nepal</h4>
+                            <p class="t-card-desc">
+                                Genesis of the journey. Early fascination with mathematics, nature's geometries, and cosmos mechanics.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 2. SLC 2016 (BEFORE 2018: COMPACT) -->
+                    <div class="t-column t-col-compact t-wave-down-1" data-year="2016">
+                        <div class="t-elevated-space"></div>
+                        <div class="t-node-point">
+                            <div class="t-dot"></div>
+                            <span class="t-year-badge">2016</span>
+                        </div>
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag edu">SLC</span>
+                            </div>
+                            <h3 class="t-card-title">Completed SLC</h3>
+                            <h4 class="t-card-sub">Secondary School</h4>
+                            <p class="t-card-desc">
+                                Graduated secondary school with distinction, cementing rigorous scientific and analytical foundations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3. HIGH SCHOOL 2018 (AFTER 2018: MEDIUM) -->
+                    <div class="t-column t-col-medium t-wave-up-1" data-year="2018">
+                        <div class="t-elevated-space"></div>
+                        <div class="t-node-point">
+                            <div class="t-dot"></div>
+                            <span class="t-year-badge">2018</span>
+                        </div>
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag edu">Pre-University</span>
+                            </div>
+                            <h3 class="t-card-title">High School Graduation</h3>
+                            <h4 class="t-card-sub">Science &amp; Mathematics</h4>
+                            <p class="t-card-desc">
+                                Graduated high school focused on Mathematics, Physics, and Computing. Commenced self-taught deep dives into algorithms and neural representations.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4. HERALD COLLEGE 2019-2022 (AFTER 2018: MEDIUM) -->
+                    <div class="t-column t-col-medium highlight-col t-wave-up-2" data-year="2019-2022">
+                        <div class="t-elevated-space">
+                            <div class="academic-award-capsule">
+                                <i class="fas fa-trophy"></i> Hult Prize Winner &bull; StAR Rep
+                            </div>
+                        </div>
+                        <div class="t-node-point">
+                            <div class="t-dot honor-dot"></div>
+                            <span class="t-year-badge">2019 – 2022</span>
+                        </div>
+                        <div class="t-content-card honor-card">
+                            <div class="card-meta">
+                                <span class="badge-tag honors">First-Class Honours</span>
+                            </div>
+                            <h3 class="t-card-title">B.Sc. (Hons) Computer Science</h3>
+                            <h4 class="t-card-sub">Herald College Kathmandu</h4>
+                            <p class="t-card-desc">
+                                Graduated with <strong>First-Class Honours</strong>. Student Academic Representative (StAR) for 2 years (2019–2021). Hult Prize 2021 On-Campus Winner. Founded and led 3 student-run tech communities.
+                            </p>
+                            <div class="t-thesis-box">
+                                <i class="fas fa-graduation-cap"></i> <strong>Thesis:</strong> Pathfinder — An Image Segmentation-Based Navigation System for Self-Driving Systems.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. WISEYAK FEB 2022 - OCT 2023 (POST 2022: VERY BIG, ELEVATED WORK IMAGES!) -->
+                    <div class="t-column t-col-large has-image-col t-wave-down-2" data-year="2022-2023">
+                        <!-- Elevated Image Branch (comes higher on the timeline scale) -->
+                        <div class="t-elevated-space elevated-active">
+                            <div class="elevated-card-cluster">
+                                <div class="elevated-image-card" onclick="openLightbox('Images/xray.png', 'Wiseyak Inc. — Chest X-Ray Multi-Label Diagnosis (AUROC >0.91)', 'Grad-CAM explainability integrated into radiologist cockpit with CLIP + GPT-2 report generation.')" title="Click to view full image">
+                                    <div class="elevated-img-wrap">
+                                        <img src="Images/xray.png" alt="Chest X-Ray Multi-label Diagnosis Grad-CAM" loading="lazy">
+                                        <div class="elevated-hover-overlay"><i class="fas fa-search-plus"></i> View Artifact</div>
+                                    </div>
+                                    <div class="elevated-caption-text">
+                                        <span class="art-title">Chest X-Ray Grad-CAM</span>
+                                        <span class="art-sub">AUROC >0.91 (Wiseyak)</span>
+                                    </div>
+                                </div>
+                                <div class="elevated-image-card" onclick="openLightbox('Images/TransCNN.png', 'Wiseyak Inc. — TransCNN Hybrid Architecture', 'CNN-Transformer hybrid for medical video denoising & next-frame prediction.')" title="Click to view full image">
+                                    <div class="elevated-img-wrap">
+                                        <img src="Images/TransCNN.png" alt="TransCNN Hybrid Architecture" loading="lazy">
+                                        <div class="elevated-hover-overlay"><i class="fas fa-search-plus"></i> View Artifact</div>
+                                    </div>
+                                    <div class="elevated-caption-text">
+                                        <span class="art-title">TransCNN Architecture</span>
+                                        <span class="art-sub">Video Denoising Hybrid</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Vertical Stem Line extending from baseline upwards -->
+                            <div class="vertical-elevation-stem">
+                                <span class="stem-dot top"></span>
+                                <span class="stem-dot bottom"></span>
+                            </div>
+                        </div>
+
+                        <div class="t-node-point">
+                            <div class="t-dot elevated-dot"></div>
+                            <span class="t-year-badge">Feb 2022 – Oct 2023</span>
+                        </div>
+
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag work">Medical AI Researcher</span>
+                            </div>
+                            <h3 class="t-card-title">Machine Learning Researcher</h3>
+                            <h4 class="t-card-sub">Wiseyak Inc.</h4>
+                            <p class="t-card-desc">
+                                Joined in <strong>Feb 2022 as Machine Learning Researcher</strong>. Delivered chest X-ray multi-label classifier (AUROC >0.91) on highly imbalanced data with Grad-CAM explainability in radiologist cockpit. Designed TransCNN video hybrid for temporal denoising and built plant disease DANN using Meta SAM.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>PyTorch</span>
+                                <span>Grad-CAM</span>
+                                <span>CLIP Embeddings</span>
+                                <span>Transformers</span>
+                                <span>Meta SAM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. NAAMCHE JAN - APR 2024 (POST 2022: VERY BIG) -->
+                    <div class="t-column t-col-large t-wave-up-1" data-year="2024-early">
+                        <div class="t-elevated-space"></div>
+                        <div class="t-node-point">
+                            <div class="t-dot"></div>
+                            <span class="t-year-badge">Jan – Apr 2024</span>
+                        </div>
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag work">PropTech AI</span>
+                            </div>
+                            <h3 class="t-card-title">Machine Learning Engineer</h3>
+                            <h4 class="t-card-sub">Naamche (ReAlpha)</h4>
+                            <p class="t-card-desc">
+                                Fine-tuned SegFormer for semantic room segmentation; deployed diffusion-based inpainting boosting buyer engagement 86% on SageMaker serverless endpoints. Collaborated on "Claire" virtual real-estate RAG advisor.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>SegFormer</span>
+                                <span>Stable Diffusion</span>
+                                <span>SageMaker Serverless</span>
+                                <span>Pinecone</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. MEDICAL RECOVERY MAY - OCT 2024 (POST 2022: VERY BIG) -->
+                    <div class="t-column t-col-large t-wave-down-2" data-year="2024-mid">
+                        <div class="t-elevated-space">
+                            <div class="academic-award-capsule recovery-badge">
+                                <i class="fas fa-heart-pulse"></i> Health &amp; Introspection
+                            </div>
+                        </div>
+                        <div class="t-node-point">
+                            <div class="t-dot recovery-dot"></div>
+                            <span class="t-year-badge">May – Oct 2024</span>
+                        </div>
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag recovery">Personal Healing</span>
+                            </div>
+                            <h3 class="t-card-title">Medical Recovery &amp; Rehabilitation</h3>
+                            <h4 class="t-card-sub">Kathmandu, Nepal</h4>
+                            <p class="t-card-desc">
+                                Planned medical leave for personal health recovery and rehabilitation. A pivotal period of deep philosophical contemplation, intense bodybuilding training, and mathematical study before returning to engineering.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 8. ACCUWIZ II / PADSTYLER (POST 2022: VERY BIG, ELEVATED WORK IMAGE!) -->
+                    <div class="t-column t-col-large has-image-col t-wave-up-2" data-year="2024-2025">
+                        <div class="t-elevated-space elevated-active">
+                            <div class="elevated-card-cluster">
+                                <div class="elevated-image-card" onclick="openLightbox('Images/staging.png', 'PadStyler.com — 11-Modality Generative Virtual Staging', 'Depth-aware SegFormer + YOLO + MiDaS mask algebra locking structural room boundaries; productionized on AWS FastAPI.')" title="Click to view full image">
+                                    <div class="elevated-img-wrap">
+                                        <img src="Images/staging.png" alt="PadStyler Virtual Staging Generative AI" loading="lazy">
+                                        <div class="elevated-hover-overlay"><i class="fas fa-search-plus"></i> View Artifact</div>
+                                    </div>
+                                    <div class="elevated-caption-text">
+                                        <span class="art-title">PadStyler Staging</span>
+                                        <span class="art-sub">11-Modality Vision Engine</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vertical-elevation-stem">
+                                <span class="stem-dot top"></span>
+                                <span class="stem-dot bottom"></span>
+                            </div>
+                        </div>
+
+                        <div class="t-node-point">
+                            <div class="t-dot elevated-dot"></div>
+                            <span class="t-year-badge">Nov 2024 – Jun 2025</span>
+                        </div>
+
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag work">Industry AI</span>
+                            </div>
+                            <h3 class="t-card-title">AI Engineer II</h3>
+                            <h4 class="t-card-sub">Accuwiz Tech</h4>
+                            <p class="t-card-desc">
+                                Delivered core generative vision engine across 11 renovation modalities for PadStyler.com with depth-aware mask algebra. Engineered Ordaana real-time voice-to-voice AI receptionist (400–800ms latency) via xAI Grok Voice &amp; WebSockets.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>FastAPI</span>
+                                <span>SegFormer</span>
+                                <span>YOLOv11</span>
+                                <span>MiDaS Depth</span>
+                                <span>Grok Voice</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. SACRED UNION: MARRIED TO TRISHNA SAUMYA KC (25TH FEB 2025) -->
+                    <div class="t-column t-col-large marriage-milestone t-wave-spiral" data-year="2025-marriage">
+                        <div class="t-elevated-space elevated-active">
+                            <div class="marriage-elevated-cluster">
+                                <div class="marriage-spiral-ornament">
+                                    <!-- Rotating Golden Fibonacci Spiral Glyph -->
+                                    <svg class="spiral-svg-glyph" viewBox="0 0 100 100" aria-hidden="true">
+                                        <path d="M 50,50 A 4,4 0 0,1 54,50 A 8,8 0 0,1 46,50 A 13,13 0 0,1 59,50 A 18,18 0 0,1 41,50 A 24,24 0 0,1 65,50 A 30,30 0 0,1 35,50 A 37,37 0 0,1 72,50" fill="none" stroke="url(#roseGoldSpiral)" stroke-width="2.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <div class="wedding-ring-icon-center">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                </div>
+                                <div class="marriage-date-pill">
+                                    <i class="fas fa-ring"></i> 25th February 2025
+                                </div>
+                            </div>
+                            <div class="vertical-elevation-stem wedding-stem">
+                                <span class="stem-dot top wedding-stem-dot"></span>
+                                <span class="stem-dot bottom wedding-stem-dot"></span>
+                            </div>
+                        </div>
+
+                        <div class="t-node-point">
+                            <div class="t-dot wedding-dot">
+                                <div class="wedding-ring-halo"></div>
+                            </div>
+                            <span class="t-year-badge wedding-year-badge"><i class="fas fa-heart"></i> 25 Feb 2025</span>
+                        </div>
+
+                        <div class="t-content-card wedding-card">
+                            <div class="card-meta">
+                                <span class="badge-tag wedding-tag"><i class="fas fa-infinity"></i> Love of My Life &bull; Sacred Union</span>
+                            </div>
+                            <h3 class="t-card-title wedding-title">Married to Trishna Saumya KC</h3>
+                            <h4 class="t-card-sub wedding-sub"><i class="fas fa-gem"></i> Eternal Companion &amp; Soulmate</h4>
+                            <p class="t-card-desc wedding-desc">
+                                On the <strong>25th of February 2025</strong>, I married the love of my life, <strong>Trishna Saumya KC</strong>. A sacred, non-linear convergence where two independent recursive paths folded into a unified fractal reality. My anchor, endless muse, and lifelong partner across every dimension of existence.
+                            </p>
+                            <div class="tech-chip-row wedding-chip-row">
+                                <span><i class="fas fa-heart"></i> Trishna Saumya KC</span>
+                                <span>25 Feb 2025</span>
+                                <span>Sacred Union</span>
+                                <span>Fractal Love</span>
+                                <span>Infinity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10. INSTACOMPLY / SELFCOMPL.AI (POST 2022: VERY BIG, ELEVATED WORK IMAGE!) -->
+                    <div class="t-column t-col-large has-image-col t-wave-down-1" data-year="2024-2026">
+                        <div class="t-elevated-space elevated-active">
+                            <div class="elevated-card-cluster">
+                                <div class="elevated-image-card" onclick="openLightbox('Images/selfcomplai.png', 'SelfCompl.ai — Multi-Agent Compliance & Audit Gateway', 'Architected multi-agent RAG system for GDPR, ISO-27001, and SOC2 audits with HITL feedback loops.')" title="Click to view full image">
+                                    <div class="elevated-img-wrap">
+                                        <img src="Images/selfcomplai.png" alt="SelfCompl.ai Platform" loading="lazy">
+                                        <div class="elevated-hover-overlay"><i class="fas fa-search-plus"></i> View Artifact</div>
+                                    </div>
+                                    <div class="elevated-caption-text">
+                                        <span class="art-title">SelfCompl.ai Platform</span>
+                                        <span class="art-sub">Multi-Agent Governance</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vertical-elevation-stem">
+                                <span class="stem-dot top"></span>
+                                <span class="stem-dot bottom"></span>
+                            </div>
+                        </div>
+
+                        <div class="t-node-point">
+                            <div class="t-dot elevated-dot"></div>
+                            <span class="t-year-badge">Oct 2024 – Feb 2026</span>
+                        </div>
+
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag advisory">Advisory / Contract</span>
+                            </div>
+                            <h3 class="t-card-title">Consulting AI Engineer</h3>
+                            <h4 class="t-card-sub">InstaComply (Legal-Tech)</h4>
+                            <p class="t-card-desc">
+                                Architected SelfCompl.ai — a modular multi-agent RAG compliance engine for GDPR, ISO-27001, and SOC2. Built compliance-as-code gateway, HITL feedback, and published 5+ AI governance research articles.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>Multi-Agent</span>
+                                <span>LangChain</span>
+                                <span>Pinecone</span>
+                                <span>AWS Textract</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 11. ACCUWIZ III PROMOTION 2025-2026 (POST 2022: VERY BIG) -->
+                    <div class="t-column t-col-large t-wave-up-1" data-year="2025-2026">
+                        <div class="t-elevated-space">
+                            <div class="academic-award-capsule promo-badge">
+                                <i class="fas fa-arrow-trend-up"></i> Promoted to Level III
+                            </div>
+                        </div>
+                        <div class="t-node-point">
+                            <div class="t-dot promo-dot"></div>
+                            <span class="t-year-badge">Jul 2025 – Feb 2026</span>
+                        </div>
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag promo">Promoted</span>
+                            </div>
+                            <h3 class="t-card-title">AI Engineer III</h3>
+                            <h4 class="t-card-sub">Accuwiz Tech</h4>
+                            <p class="t-card-desc">
+                                Architected Signal Healthcare Ecosystem (SignalDX Neo4j GraphRAG with 10k+ CMS rules &amp; MedicareAgent over live MCP; SignalDoc vision LLM zero-disk classifier; SignalMD 100+ biomarkers). Built Lightology perspective homography &amp; Cabinet Design 2D blueprints.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>Neo4j GraphRAG</span>
+                                <span>MCP</span>
+                                <span>Vision LLM</span>
+                                <span>3D Homography</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 12. POINTREF INC. (POST 2022: VERY BIG, ELEVATED WORK IMAGE!) -->
+                    <div class="t-column t-col-large has-image-col t-wave-down-2" data-year="2025-2026-pt">
+                        <div class="t-elevated-space elevated-active">
+                            <div class="elevated-card-cluster">
+                                <div class="elevated-image-card" onclick="openLightbox('Images/pb_ref.png', 'PointRef Inc. — AI Pickleball Officiant System', 'Monocular 2D-to-3D solvePnPRansac camera calibration, sub-inch court homography, parabolic bounce trajectory, and Core ML edge inference on native iOS app.')" title="Click to view full image">
+                                    <div class="elevated-img-wrap">
+                                        <img src="Images/pb_ref.png" alt="PointRef AI Pickleball Officiant" loading="lazy">
+                                        <div class="elevated-hover-overlay"><i class="fas fa-search-plus"></i> View Artifact</div>
+                                    </div>
+                                    <div class="elevated-caption-text">
+                                        <span class="art-title">PointRef Pickleball AI</span>
+                                        <span class="art-sub">Real-Time Court CV (iOS)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vertical-elevation-stem">
+                                <span class="stem-dot top"></span>
+                                <span class="stem-dot bottom"></span>
+                            </div>
+                        </div>
+
+                        <div class="t-node-point">
+                            <div class="t-dot elevated-dot"></div>
+                            <span class="t-year-badge">Jul 2025 – Jul 2026</span>
+                        </div>
+
+                        <div class="t-content-card">
+                            <div class="card-meta">
+                                <span class="badge-tag advisory">Advisory</span>
+                            </div>
+                            <h3 class="t-card-title">AI &amp; Computer Vision Advisor</h3>
+                            <h4 class="t-card-sub">PointRef Inc. (Sports-Tech)</h4>
+                            <p class="t-card-desc">
+                                Advising Mosalam Ebrahimi (ex-Meta Reality Labs). Formulated 2D-to-3D solvePnPRansac camera calibration for metric 20x44 ft courts, planar homography, parabolic bounce detection, and Core ML iOS edge inference.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>3D PnP</span>
+                                <span>Core ML</span>
+                                <span>Homography</span>
+                                <span>Swift iOS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 13. CURRENT: GILES (POST 2022: VERY BIG) -->
+                    <div class="t-column t-col-large active-current-col t-wave-up-2" data-year="2026-present">
+                        <div class="t-elevated-space">
+                            <div class="current-live-beacon">
+                                <span class="beacon-pulse"></span>
+                                <i class="fas fa-circle-nodes"></i> Currently Active
+                            </div>
+                        </div>
+                        <div class="t-node-point">
+                            <div class="t-dot current-live-dot"></div>
+                            <span class="t-year-badge current-badge">Mar 2026 – Present</span>
+                        </div>
+                        <div class="t-content-card current-hero-card">
+                            <div class="card-meta">
+                                <span class="badge-tag current">Current Role</span>
+                            </div>
+                            <h3 class="t-card-title">AI Engineer at Giles</h3>
+                            <h4 class="t-card-sub">Giles (United Kingdom / Remote)</h4>
+                            <p class="t-card-desc">
+                                Currently working at <strong>Giles</strong>. Architecting asynchronous LLM queue middleware decoupling Google ADK agents from Vertex AI via Cloud Tasks. Engineering hierarchical multi-agent trees, declarative MCP tool servers across European HTA bodies, and resilient Qdrant ETL pipelines.
+                            </p>
+                            <div class="tech-chip-row">
+                                <span>Google ADK</span>
+                                <span>MCP</span>
+                                <span>Vertex AI</span>
+                                <span>Qdrant</span>
+                                <span>Cloud Tasks</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 4 (Formerly Page 5): Fractal Philosopher Section -->
+        <section id="philosophy" class="philosophy-section">
+            <div class="philosophy-container">
+                <div class="section-tag-center"><i class="fas fa-infinity"></i> Epistemology &amp; Cognition</div>
+                <h2 class="section-title">A Fractal Philosopher of my Thoughts</h2>
+                <p class="philosophy-intro">
+                    Thoughts are not linear vectors; they are recursive, self-similar geometries. Just as a Mandelbrot set reveals infinite depth under every magnification, human inquiry, neural representations, and life's trajectory fold continuously into one another.
+                </p>
+
+                <div class="fractal-pillars-grid">
+                    <!-- Pillar 1 -->
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>Self-Similarity in Neural Cognition</h3>
+                        <p>
+                            Deep neural networks are inherently fractal. Spatial convolutions mirror token self-attention, and hierarchical latent embeddings mirror the conceptual meta-layers of human consciousness. How an artificial neuron weighs evidence reflects how human intuitions crystallize.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-dumbbell"></i></div>
+                        <h3>Discipline of Iron &amp; Intellect</h3>
+                        <p>
+                            Competitive bodybuilding and deep learning research share an identical fractal law: micro-repetitions under focused tension yield macro-scale transformations. Physical hypertrophy and weight optimization both demand relentless, iterative consistency under load.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-compass-drafting"></i></div>
+                        <h3>Determinism Meets Emergence</h3>
+                        <p>
+                            From calculating exact perspective homographies in computer vision to orchestrating stochastic agentic trees in Giles, engineering sits on the edge between deterministic mathematics and emergent consciousness. Computation is the scaffold; thought is the emergent spark.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="pillar-card">
+                        <div class="pillar-icon"><i class="fas fa-seedling"></i></div>
+                        <h3>The Topology of Growth</h3>
+                        <p>
+                            Looking back through foundational milestones, university honors, deep technical research breakthroughs, personal recovery, and current agentic engineering — life is an iterative branching tree. Every past milestone carries the seed of the next iteration.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="philosophy-quote-box">
+                    <i class="fas fa-quote-left quote-mark"></i>
+                    <p class="quote-text">
+                        "The mind is not a vessel to be filled, but a recursive pattern that contemplates its own recursion. In designing AI, we are not merely tuning loss functions — we are constructing mirrors for the fractal nature of thought itself."
+                    </p>
+                    <span class="quote-author">— Saumya Bhandari</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 5 (Formerly Page 6): Continuous Learning Section -->
+        <section id="studies">
+            <div class="studies-container">
+                <div class="section-tag-center"><i class="fas fa-book-open"></i> Academic Foundation</div>
+                <h2 class="section-title">Selected Continuous Self-Learning</h2>
+                <p class="section-subtitle">
+                    Continuous exploration of deep theoretical foundations from premier institutions.
+                </p>
+
+                <div class="studies-grid">
+                    <div class="study-card">
+                        <div class="study-school">Stanford University</div>
+                        <ul class="study-courses">
+                            <li><i class="fas fa-check"></i> <strong>CS231N:</strong> Convolutional Neural Networks for Visual Recognition</li>
+                            <li><i class="fas fa-check"></i> <strong>CS224N:</strong> Natural Language Processing with Deep Learning</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-card">
+                        <div class="study-school">Massachusetts Institute of Technology (MIT)</div>
+                        <ul class="study-courses">
+                            <li><i class="fas fa-check"></i> <strong>6.034:</strong> Artificial Intelligence</li>
+                            <li><i class="fas fa-check"></i> <strong>18.06:</strong> Linear Algebra (Gilbert Strang)</li>
+                            <li><i class="fas fa-check"></i> <strong>9.13:</strong> The Human Brain &amp; Cognitive Architecture</li>
+                            <li><i class="fas fa-check"></i> <strong>8.04:</strong> Quantum Physics I &bull; Deep Learning Bootcamp</li>
+                        </ul>
+                    </div>
+
+                    <div class="study-card">
+                        <div class="study-school">Harvard &amp; University of Waterloo</div>
+                        <ul class="study-courses">
+                            <li><i class="fas fa-check"></i> <strong>Stat110:</strong> Probability &amp; Stochastic Processes (Harvard)</li>
+                            <li><i class="fas fa-check"></i> <strong>CS480 / CS680:</strong> Introduction &amp; Advanced Deep Learning (Waterloo)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 6 (Formerly Page 4): Life's Work & Deep Dives (Projects Section) -->
         <section id="projects">
-            <h2 class="section-title">Recent Projects</h2>
+            <div class="section-tag-center"><i class="fas fa-briefcase"></i> Portfolio of Systems</div>
+            <h2 class="section-title">Life's Work &amp; Engineering Systems</h2>
+            <p class="section-subtitle">
+                A showcase of production AI systems, computer vision algorithms, and autonomous multi-agent frameworks built throughout my career.
+            </p>
+
             <div class="projects-container">
+                <!-- Project 1: Giles -->
+                <div class="project-card highlight-border">
+                    <div class="project-meta-bar">
+                        <span class="proj-badge current-badge"><i class="fas fa-bolt"></i> Present Role</span>
+                        <span class="proj-year">2026 – Present</span>
+                    </div>
+                    <div class="project-icon-banner">
+                        <i class="fas fa-diagram-project"></i>
+                    </div>
+                    <h3>AI Engineer at Giles</h3>
+                    <p class="project-org">Giles.app &bull; United Kingdom / Remote</p>
+                    <p class="project-summary">
+                        Architected asynchronous LLM Queue middleware decoupling Google ADK agents from Vertex AI (Gemini 2.5/3.5) via Google Cloud Tasks (4 dispatches/sec, DLQ sweeper). Built hierarchical multi-agent trees with turn-scoped contexts, declarative MCP tool servers across European HTA bodies (IQWiG, G-BA, HAS, NICE), and a cluster-global permit scheduler in Qdrant.
+                    </p>
+                    <div class="tech-chip-row">
+                        <span>Google ADK</span>
+                        <span>MCP</span>
+                        <span>Vertex AI</span>
+                        <span>Qdrant</span>
+                        <span>Cloud Tasks</span>
+                        <span>MongoDB ACID</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: PointRef -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="Images/pb_ref.png" alt="Project 1">
+                    <div class="project-meta-bar">
+                        <span class="proj-badge advisory-badge"><i class="fas fa-eye"></i> Advisory</span>
+                        <span class="proj-year">2025 – 2026</span>
+                    </div>
+                    <div class="project-image" onclick="openLightbox('Images/pb_ref.png', 'AI Pickleball Officiant @ PointRef Inc.', 'Real-time pickleball line calling on iOS with sub-inch court registration, solvePnPRansac calibration, and Core ML edge inference.')">
+                        <img src="Images/pb_ref.png" alt="PointRef AI Pickleball Officiant" loading="lazy">
+                        <div class="img-zoom-btn"><i class="fas fa-expand"></i> View Full Image</div>
                     </div>
                     <h3>AI Pickleball Officiant @ PointRef Inc.</h3>
-                    <p>Shipping the world's first real-time AI pickleball officiant on iOS/macOS with 99% foul-call accuracy at &lt;150ms latency. Leading multi-object tracking, 3D court registration, and performance optimization.</p>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="Images/staging.png" alt="Project 3">
+                    <p class="project-org">PointRef Inc. &bull; AI Sports-Tech (Advising Mosalam Ebrahimi, ex-Meta Reality Labs)</p>
+                    <p class="project-summary">
+                        Formulated monocular 2D-to-3D solvePnPRansac camera calibration and planar homography for metric 20x44 ft court registration. Designed parabolic bounce detection, paddle-contact rejection, and converted models to Core ML for sub-150ms real-time inference on native iOS devices.
+                    </p>
+                    <div class="tech-chip-row">
+                        <span>3D PnP</span>
+                        <span>Core ML</span>
+                        <span>Homography</span>
+                        <span>Swift iOS</span>
+                        <span>YOLO</span>
                     </div>
-                    <h3>AI Consultant @ PadStyler</h3>
-                    <p>Increased buyer engagement by 86% with a diffusion-based inpainting pipeline for virtual staging. <br>Tech: Pytorch, Websockets, Redis-Session Management, AWS deployment, FastAPI, Diffusion Models, Photogrammetry, Image Segmentation.</p>
                 </div>
+
+                <!-- Project 3: PadStyler -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="Images/selfcomplai.png" alt="Project 2">
+                    <div class="project-meta-bar">
+                        <span class="proj-badge work-badge"><i class="fas fa-paintbrush"></i> Production AI</span>
+                        <span class="proj-year">2024 – 2025</span>
                     </div>
-                    <h3>Leading AI Division @ InstaComplay</h3>
-                    <p>Architect of a multi-agent RAG system for compliance audits (PDPL, ISO-27001), reducing audit cycles from 6 months to 20 days and auto-generating compliance templates.</p>
+                    <div class="project-image" onclick="openLightbox('Images/staging.png', 'PadStyler Virtual Staging Generative AI', '11 multi-turn renovation modalities with depth-aware scene parsing, SegFormer, YOLOv11, and boolean mask algebra.')">
+                        <img src="Images/staging.png" alt="PadStyler Virtual Staging" loading="lazy">
+                        <div class="img-zoom-btn"><i class="fas fa-expand"></i> View Full Image</div>
+                    </div>
+                    <h3>Virtual Staging Platform @ PadStyler</h3>
+                    <p class="project-org">Accuwiz Tech &bull; PadStyler.com</p>
+                    <p class="project-summary">
+                        Delivered the core generative vision engine across 11 renovation modalities (virtual staging, wall/floor refurnishing, remodels). Combined fine-tuned SegFormer, YOLOv11, and MiDaS depth with boolean mask algebra to strictly lock structural room boundaries. Productionized on AWS FastAPI with Redis session management.
+                    </p>
+                    <div class="tech-chip-row">
+                        <span>SegFormer</span>
+                        <span>MiDaS Depth</span>
+                        <span>YOLOv11</span>
+                        <span>FastAPI</span>
+                        <span>Redis</span>
+                        <span>AWS S3</span>
+                    </div>
                 </div>
+
+                <!-- Project 4: SelfCompl.ai -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="Images/xray.png" alt="Project 3">
+                    <div class="project-meta-bar">
+                        <span class="proj-badge advisory-badge"><i class="fas fa-shield"></i> Legal-Tech</span>
+                        <span class="proj-year">2024 – 2026</span>
                     </div>
-                    <h3>Junior Researcher @ Wiseyak</h3>
-                    <p> Delivered chest X-ray multi-label classiﬁer (10 diseases) AUROC 0.91 on highly-imbalanced data; Grad-CAM explainability integrated in radiologist cockpit.</p>
+                    <div class="project-image" onclick="openLightbox('Images/selfcomplai.png', 'SelfCompl.ai Multi-Agent Compliance System', 'Modular multi-agent RAG system for GDPR, ISO-27001, and SOC2 enterprise audits.')">
+                        <img src="Images/selfcomplai.png" alt="SelfCompl.ai Multi-Agent Compliance" loading="lazy">
+                        <div class="img-zoom-btn"><i class="fas fa-expand"></i> View Full Image</div>
+                    </div>
+                    <h3>Leading AI Architecture @ SelfCompl.ai</h3>
+                    <p class="project-org">InstaComply &bull; SelfCompl.ai</p>
+                    <p class="project-summary">
+                        Architected SelfCompl.ai — a modular multi-agent RAG system powering GDPR, ISO-27001, and SOC2 audits. Reduced audit cycles from 6 months to 20 days with real-time compliance gateways, human-in-the-loop audit trails, and multi-LLM orchestration (Claude, GPT-4o, Gemini). Authored 5+ governance research papers.
+                    </p>
+                    <div class="tech-chip-row">
+                        <span>Multi-Agent</span>
+                        <span>LangChain</span>
+                        <span>Pinecone</span>
+                        <span>AWS Textract</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Wiseyak Medical AI -->
+                <div class="project-card">
+                    <div class="project-meta-bar">
+                        <span class="proj-badge work-badge"><i class="fas fa-heart-pulse"></i> Medical AI</span>
+                        <span class="proj-year">Feb 2022 – 2023</span>
+                    </div>
+                    <div class="project-image" onclick="openLightbox('Images/xray.png', 'Wiseyak Medical AI — Chest X-Ray Diagnosis', 'Multi-label classifier AUROC >0.91 with Grad-CAM explainability integrated into radiologist cockpit.')">
+                        <img src="Images/xray.png" alt="Wiseyak Chest X-Ray Diagnosis" loading="lazy">
+                        <div class="img-zoom-btn"><i class="fas fa-expand"></i> View Full Image</div>
+                    </div>
+                    <h3>Medical Diagnosis &amp; Video TransCNN @ Wiseyak</h3>
+                    <p class="project-org">Wiseyak Inc. &bull; Medical AI &amp; Research</p>
+                    <p class="project-summary">
+                        Joined in February 2022 as Machine Learning Researcher. Engineered chest X-ray report generator (AUROC >0.91) across 10 diseases with Grad-CAM explainability and CLIP embeddings. Designed custom CNN-Transformer hybrid (TransCNN) for medical video denoising &amp; next-frame prediction. Built plant disease DANN via Meta SAM.
+                    </p>
+                    <div class="tech-chip-row">
+                        <span>AUROC >0.91</span>
+                        <span>Grad-CAM</span>
+                        <span>CLIP</span>
+                        <span>TransCNN</span>
+                        <span>Meta SAM</span>
+                    </div>
+                </div>
+
+                <!-- Project 6: Signal Healthcare & Spatial CV -->
+                <div class="project-card">
+                    <div class="project-meta-bar">
+                        <span class="proj-badge promo-badge"><i class="fas fa-dna"></i> Healthcare GraphRAG</span>
+                        <span class="proj-year">2025 – 2026</span>
+                    </div>
+                    <div class="project-icon-banner">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                    <h3>Signal Healthcare Ecosystem &amp; Spatial CV</h3>
+                    <p class="project-org">Accuwiz Tech &bull; SignalDX.ai, Lightology &amp; Cabinet Design</p>
+                    <p class="project-summary">
+                        Architected clinical lab intelligence: SignalDX Neo4j GraphRAG indexing 10,000+ CMS coverage rules with autonomous MedicareAgent over live MCP; SignalDoc stateless Vision LLM classifying 22 document types with 100% in-memory zero-disk multipart buffering; and Cabinet Design CV engine unwarping kitchen photos into 2D orthogonal blueprints.
+                    </p>
+                    <div class="tech-chip-row">
+                        <span>Neo4j GraphRAG</span>
+                        <span>Model Context Protocol</span>
+                        <span>Vision LLM</span>
+                        <span>Spatial Homography</span>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Page 7: Contact Section -->
         <section id="contact">
             <div class="contact-container">
+                <div class="section-tag-center"><i class="fas fa-paper-plane"></i> Let's Connect</div>
                 <h2>Get In Touch</h2>
-                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.</p>
-                <a href="mailto:saumyabhandary22@gmail.com" class="btn">Say Hello</a>
+                <p class="contact-tagline">
+                    Whether discussing frontier multi-agent architectures, computer vision research, philosophical queries, or ambitious collaborations — my door is always open.
+                </p>
+
+                <div class="contact-cards-grid">
+                    <a href="mailto:saumyabhandary22@gmail.com" class="contact-channel-card">
+                        <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+                        <h4>Email</h4>
+                        <p>saumyabhandary22@gmail.com</p>
+                    </a>
+                    <a href="https://linkedin.com/in/saumyabhandari" target="_blank" rel="noopener" class="contact-channel-card">
+                        <div class="channel-icon"><i class="fab fa-linkedin"></i></div>
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/saumyabhandari</p>
+                    </a>
+                    <a href="https://github.com/saumya-bhandari" target="_blank" rel="noopener" class="contact-channel-card">
+                        <div class="channel-icon"><i class="fab fa-github"></i></div>
+                        <h4>GitHub</h4>
+                        <p>github.com/saumya-bhandari</p>
+                    </a>
+                    <div class="contact-channel-card">
+                        <div class="channel-icon"><i class="fas fa-location-dot"></i></div>
+                        <h4>Location</h4>
+                        <p>Kathmandu, Nepal / Remote</p>
+                    </div>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="mailto:saumyabhandary22@gmail.com" class="btn btn-primary btn-large">
+                        <i class="fas fa-envelope-open-text"></i> Send an Email
+                    </a>
+                    <a href="cv.pdf" target="_blank" class="btn btn-secondary btn-large">
+                        <i class="fas fa-file-pdf"></i> Download Curriculum Vitae
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <!-- Ultra-Polished Footer -->
+    <footer class="footer-enhanced">
+        <div class="footer-top-accent"></div>
         <div class="footer-container">
-            <div class="footer-socials">
-                <a href="https://github.com/saumya-bhandari" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/saumyabhandari" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:saumyabhandary22@gmail.com"><i class="fas fa-envelope"></i></a>
+            <div class="footer-grid">
+                <!-- Col 1: Brand & Persona -->
+                <div class="footer-col brand-col">
+                    <div class="footer-brand-header">
+                        <img src="Images/logo.png" alt="Saumya Bhandari Logo" class="footer-brand-logo">
+                        <span class="footer-brand-title">Saumya Bhandari</span>
+                    </div>
+                    <p class="footer-brand-tagline">
+                        A Fractal Philosopher of Thoughts &bull; Machine Learning &amp; Computer Vision Specialist
+                    </p>
+                    <p class="footer-bio-snippet">
+                        Exploring the self-similar geometry of cognition, code, and intelligence. Dedicated to architecting principled, high-impact AI systems at the frontier.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-pulse"></span>
+                        <span>Open for Frontier AI Collaborations</span>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Sitemap -->
+                <div class="footer-col nav-col">
+                    <h4 class="footer-col-title"><i class="fas fa-compass"></i> Navigation</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#hero"><i class="fas fa-chevron-right"></i> Home (Landing)</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Me</a></li>
+                        <li><a href="#timeline"><i class="fas fa-chevron-right"></i> Life's Timeline</a></li>
+                        <li><a href="#philosophy"><i class="fas fa-chevron-right"></i> Fractal Thoughts</a></li>
+                        <li><a href="#studies"><i class="fas fa-chevron-right"></i> Studies &amp; Research</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Life's Work</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Get In Touch</a></li>
+                        <li><a href="cv.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Curriculum Vitae</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Key Systems -->
+                <div class="footer-col systems-col">
+                    <h4 class="footer-col-title"><i class="fas fa-cubes"></i> Featured Systems</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Distributed Agentic Queue (Giles)</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> AI Pickleball Officiant (PointRef)</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Generative Staging Platform (PadStyler)</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Multi-Agent Compliance (SelfCompl.ai)</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Chest X-Ray AI &amp; TransCNN (Wiseyak)</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Healthcare GraphRAG (SignalDX)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Connect & Direct Reach -->
+                <div class="footer-col connect-col">
+                    <h4 class="footer-col-title"><i class="fas fa-paper-plane"></i> Direct Reach</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:saumyabhandary22@gmail.com">saumyabhandary22@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+9779843866411">+977-9843866411</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-location-dot"></i>
+                            <span>Kathmandu, Nepal &bull; Remote</span>
+                        </li>
+                    </ul>
+                    <div class="footer-social-row">
+                        <a href="https://github.com/saumya-bhandari" target="_blank" title="GitHub" rel="noopener"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/saumyabhandari" target="_blank" title="LinkedIn" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:saumyabhandary22@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2024 Saumya Bhandari. All rights reserved.</p>
+
+            <div class="footer-bottom-bar">
+                <p class="footer-copyright">
+                    &copy; 2026 Saumya Bhandari. Handcrafted with mathematical precision &bull; Fractal Philosophy &bull; All rights reserved.
+                </p>
+                <a href="#hero" class="back-to-top-btn" title="Back to top">
+                    <span>Back to Top</span>
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
         </div>
     </footer>
+
+    <!-- Interactive Lightbox Modal for Timeline & Project Visual Artifacts -->
+    <div id="image-lightbox" class="lightbox-modal" aria-hidden="true" role="dialog">
+        <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close modal">&times;</button>
+            <div class="lightbox-img-box">
+                <img id="lightbox-img" src="" alt="Artifact Preview" />
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightbox-title">Artifact Title</h3>
+                <p id="lightbox-desc">Artifact Description</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
