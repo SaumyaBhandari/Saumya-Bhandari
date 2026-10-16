@@ -19,3 +19,5 @@
 .thought-credit a{color:#e1bf81}
 .thought-insert{margin:50px 0;border-top:1px solid #51483c}
 @media(max-width:840px){.thought-figure{margin-left:0;margin-right:0}}
+
+.thought-insert{padding:0;background:transparent;position:static}
