@@ -1,28 +1,274 @@
 (() => {
-'use strict';
-const phrase='I love you Trishna';
-const bits=Array.from(new TextEncoder().encode(phrase)).map(n=>n.toString(2).padStart(8,'0')).join('');
-const states=new Map();
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const TAU=Math.PI*2;
-function setup(id){let canvas=document.getElementById(id);if(!canvas)return;let context=canvas.getContext('2d');if(!context)return;let s={canvas,ctx:context,t:0,last:0,speed:1,playing:!reduced,w:0,h:0};states.set(id,s);resize(s);let btn=document.querySelector('[data-toggle="'+id+'"]');if(btn){btn.textContent=s.playing?'Pause animation':'Play animation';btn.addEventListener('click',()=>{s.playing=!s.playing;btn.textContent=s.playing?'Pause animation':'Play animation';});}let range=document.querySelector('[data-speed="'+id+'"]');if(range)range.addEventListener('input',()=>s.speed=Number(range.value));return s;}
-function resize(s){let rect=s.canvas.getBoundingClientRect();let dpr=Math.min(2,window.devicePixelRatio||1);s.w=Math.max(260,rect.width);s.h=Math.max(180,rect.height);s.canvas.width=Math.round(s.w*dpr);s.canvas.height=Math.round(s.h*dpr);s.ctx.setTransform(dpr,0,0,dpr,0,0);}
-function line(c,a,b,color,width=1){c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(...a);c.lineTo(...b);c.stroke();}
-function dot(c,x,y,r,color,glow=0){c.save();c.shadowBlur=glow;c.shadowColor=color;c.fillStyle=color;c.beginPath();c.arc(x,y,r,0,TAU);c.fill();c.restore();}
-function geometry(s){const mid=s.h*.54;const xl=s.w*.18,xr=s.w*.82;return {mid,xl,xr,scale:Math.min(s.w/780,s.h/310),cx:s.w*.5};}
-function grid(c,s){let {w,h}=s;c.clearRect(0,0,w,h);let g=c.createLinearGradient(0,0,w,h);g.addColorStop(0,'#112032');g.addColorStop(.5,'#0b1320');g.addColorStop(1,'#101a28');c.fillStyle=g;c.fillRect(0,0,w,h);const cy=h*.62;for(let z=0;z<6;z++){let y=cy+z*14;c.strokeStyle='rgba(128,186,205,.085)';line(c,[w*.06,y],[w*.94,y-(z*2)],c.strokeStyle);}for(let i=0;i<=16;i++){let x=w*(.06+i*.055);line(c,[x,h*.48],[x+(x-w*.5)*.18,h*.92],'rgba(128,186,205,.07)');}}
-function ring(c,x,y,r,alpha=1,color='120,211,244',depth=0){if(r<=0||alpha<=0)return;c.save();c.strokeStyle='rgba('+color+','+Math.min(.85,alpha)+')';c.lineWidth=Math.max(.75,2*alpha);c.shadowColor='rgba('+color+','+alpha*.65+')';c.shadowBlur=12*alpha;c.beginPath();c.ellipse(x,y,r*.27,r*.84,depth,0,TAU);c.stroke();c.restore();}
-function particle(c,x,y,phase,name){line(c,[x,y-35],[x,y+38],'rgba(237,208,151,.2)',1);let yy=y+Math.sin(phase)*17;dot(c,x,yy,7,'#f5cf86',19);c.fillStyle='#e2e9ed';c.font='12px system-ui';c.textAlign='center';c.fillText(name,x,y+61);return yy;}
-function pulse(c,s,start,end,progress,alpha=1,color='113,213,255'){if(progress<0||progress>1)return;let x=start+(end-start)*progress;ring(c,x,s.h*.53,25+Math.sin(progress*Math.PI)*14,alpha,color,-.09);ring(c,x,s.h*.53,13+Math.sin(progress*Math.PI)*11,alpha*.48,color,-.09);}
-function frame(s){const c=s.ctx,{w,h}=s,{xl,xr,mid}=geometry(s);grid(c,s);let t=s.t;
-if(s.canvas.id==='scene-one'){for(let i=0;i<7;i++){let p=(t*.36-i*.17)%1;if(p<0)p+=1;pulse(c,s,xl,xr,p,.4+Math.sin(p*Math.PI)*.42);}for(let i=0;i<6;i++){let p=(t*.36-i*.17-.42)%1;if(p<0)p+=1;pulse(c,s,xr,xl,p,.25+Math.sin(p*Math.PI)*.3,'220,160,240');}particle(c,xl,mid,t*TAU,'Charge A');particle(c,xr,mid,t*TAU-1.5,'Charge B');heading(c,s,'LOSSLESS THOUGHT EXPERIMENT','Outbound and returning field disturbances');}
-else if(s.canvas.id==='scene-two'){let barrier=(xl+xr)/2;c.fillStyle='rgba(178,205,216,.11)';c.fillRect(barrier-9,h*.17,18,h*.74);line(c,[barrier-9,h*.17],[barrier-9,h*.91],'rgba(219,193,138,.8)',2);for(let i=0;i<7;i++){let p=(t*.3-i*.2)%1;if(p<0)p+=1;pulse(c,s,xl,xr,p,.55+Math.sin(p*Math.PI)*.26);}for(let i=0;i<4;i++){let p=(t*.3-i*.24)%1;if(p<0)p+=1;let x=xr-(xr-barrier)*Math.min(1,p*2.1);ring(c,x,mid,23,p<.47?.6:.08,'251,122,119');}particle(c,xl,mid,t*TAU,'Source');particle(c,xr,mid,t*TAU-1.1,'Receiver');c.textAlign='center';c.fillStyle='#e4c68f';c.font='11px system-ui';c.fillText('ONE-WAY LAYER',barrier,h*.14);heading(c,s,'HYPOTHETICAL NONRECIPROCITY','Forward: passes  •  Return: rejected');}
-else if(s.canvas.id==='scene-three'){let i=Math.floor(t*3)%bits.length;let sample=bits[i];let phase=sample==='1'?Math.PI:0;let start=xl+12,end=xr-12; c.strokeStyle='#7ed3f5';c.lineWidth=2;c.beginPath();for(let n=0;n<=180;n++){let x=start+(end-start)*n/180;let sentTime=t*3-n/180*7;let bi=((Math.floor(sentTime)%bits.length)+bits.length)%bits.length;let ph=bits[bi]==='1'?Math.PI:0;let yy=mid+Math.sin(n/180*32-t*16+ph)*20;c[n?'lineTo':'moveTo'](x,yy);}c.stroke();particle(c,xl,mid,t*TAU,'TX');particle(c,xr,mid,t*TAU+phase,'RX');heading(c,s,'BINARY PHASE-SHIFT KEYING','Current symbol '+(i+1)+' / '+bits.length+'   •   bit '+sample);let el=document.getElementById('current-bit');if(el)el.textContent='Bit '+(i+1)+'/'+bits.length+': '+sample;}
-else if(s.canvas.id==='scene-four'){for(let i=0;i<5;i++){let p=(t*.26-i*.23)%1;if(p<0)p+=1;pulse(c,s,xl,xr,p,.7,'125,216,255');}block(c,xl,mid,'RAM');block(c,xr,mid,'CPU');heading(c,s,'FREE-SPACE LINE OF SIGHT','Propagation: d / c  •  not end-to-end latency');}
-else {let bx=xl-25,ex=xr+12;for(let i=0;i<5;i++){let p=(t*.31-i*.24)%1;if(p<0)p+=1;pulse(c,s,bx+55,ex-55,p,.65,'138,225,219');}block(c,xl,mid,'RAM');block(c,xr,mid,'CPU');for(let i=0;i<8;i++){let x=xl-30+(i%4)*16,y=mid-68+Math.floor(i/4)*16;dot(c,x,y,3,bits[(Math.floor(t*5)+i)%bits.length]==='1'?'#f4d492':'#466177',5);}heading(c,s,'CONCEPT: ELECTROMAGNETIC MEMORY LINK','Cell select → modulate → propagate → detect');}
-}
-function block(c,x,y,label){c.save();c.translate(x,y);c.fillStyle='#243d50';c.strokeStyle='#9ac3d6';c.lineWidth=1.5;c.beginPath();c.roundRect(-42,-28,84,56,7);c.fill();c.stroke();c.fillStyle='#eff3ee';c.font='bold 14px system-ui';c.textAlign='center';c.fillText(label,0,5);c.restore();}
-function heading(c,s,title,sub){c.textAlign='left';c.font='600 11px system-ui';c.fillStyle='#d9c194';c.fillText(title,17,24);c.font='11px system-ui';c.fillStyle='#aac2d0';c.fillText(sub,17,43);}
-['scene-one','scene-two','scene-three','scene-four','scene-five'].forEach(setup);window.addEventListener('resize',()=>states.forEach(resize),{passive:true});document.addEventListener('visibilitychange',()=>{states.forEach(s=>s.last=0);});let observer=new IntersectionObserver(entries=>entries.forEach(e=>{let s=states.get(e.target.id);if(s)s.visible=e.isIntersecting;}),{threshold:.02});states.forEach(s=>{observer.observe(s.canvas);frame(s);});
-function animate(ms){states.forEach(s=>{if(!s.visible||!s.playing){s.last=ms;return;}let dt=s.last?Math.min(.05,(ms-s.last)/1000):0;s.last=ms;s.t+=dt*s.speed;frame(s);});requestAnimationFrame(animate);}requestAnimationFrame(animate);
+  'use strict';
+  const TAU = 2 * Math.PI;
+  const PHRASE = 'I love you Trishna';
+  const BITS = Array.from(new TextEncoder().encode(PHRASE)).map(v => v.toString(2).padStart(8, '0')).join('');
+  const ids = ['scene-one','scene-two','scene-three','scene-four','scene-five'];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scenes = new Map();
+
+  function create(id) {
+    const canvas = document.getElementById(id);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', {alpha: false});
+    if (!ctx) return;
+    const s = {id,canvas,ctx,w:0,h:0,t:0,last:0,speed:1,playing:!reduceMotion,visible:true};
+    scenes.set(id,s);
+    resize(s);
+    const toggle = document.querySelector('[data-toggle="' + id + '"]');
+    if (toggle) {
+      toggle.textContent = s.playing ? 'Pause animation' : 'Play animation';
+      toggle.addEventListener('click', () => {
+        s.playing = !s.playing;
+        toggle.textContent = s.playing ? 'Pause animation' : 'Play animation';
+        if (s.playing) s.last = 0;
+      });
+    }
+    const speed = document.querySelector('[data-speed="' + id + '"]');
+    if (speed) speed.addEventListener('input', () => { s.speed = Number(speed.value); });
+    draw(s);
+  }
+
+  function resize(s) {
+    const rect = s.canvas.getBoundingClientRect();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    s.w = Math.max(280,rect.width);
+    s.h = Math.max(200,rect.height);
+    s.canvas.width = Math.round(s.w * dpr);
+    s.canvas.height = Math.round(s.h * dpr);
+    s.ctx.setTransform(dpr,0,0,dpr,0,0);
+    draw(s);
+  }
+
+  function circle(c,x,y,r,fill,glow=0) {
+    c.save();
+    c.fillStyle=fill;c.shadowColor=fill;c.shadowBlur=glow;
+    c.beginPath();c.arc(x,y,r,0,TAU);c.fill();c.restore();
+  }
+
+  function line(c,x1,y1,x2,y2,color,width=1) {
+    c.beginPath();c.strokeStyle=color;c.lineWidth=width;
+    c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+  }
+  function arrow(c,x,y,vx,vy,color,alpha) {
+    const size = Math.hypot(vx,vy);
+    if (size<0.00001)return;
+    const ux=vx/size, uy=vy/size;
+    const len=6 + Math.min(12,size*12);
+    const ax=x-ux*len/2,ay=y-uy*len/2;
+    const bx=x+ux*len/2,by=y+uy*len/2;
+    const col='rgba('+color+','+alpha.toFixed(3)+')';
+    line(c,ax,ay,bx,by,col,1.35);
+    const head=4;
+    line(c,bx,by,bx-ux*head-uy*head*.57,by-uy*head+ux*head*.57,col,1.25);
+    line(c,bx,by,bx-ux*head+uy*head*.57,by-uy*head-ux*head*.57,col,1.25);
+  }
+  function background(s) {
+    const {ctx:c,w,h}=s;
+    c.fillStyle='#050a11';c.fillRect(0,0,w,h);
+    const gradient=c.createRadialGradient(w*.5,h*.5,5,w*.5,h*.5,w*.7);
+    gradient.addColorStop(0,'rgba(25,46,62,.36)');
+    gradient.addColorStop(1,'rgba(0,0,0,0)');
+    c.fillStyle=gradient;c.fillRect(0,0,w,h);
+    line(c,0,h*.56,w,h*.56,'rgba(119,144,158,.18)',1);
+  }
+  function labels(s,title,sub) {
+    const c=s.ctx;c.textAlign='left';
+    c.font='600 11px system-ui';c.fillStyle='#e4c994';c.fillText(title,15,22);
+    c.font='11px system-ui';c.fillStyle='#9db4c0';c.fillText(sub,15,39);
+  }
+  const origin = (s,side) => ({x:s.w*(side==='right'?.79:.21),y:s.h*.57});
+  // A deliberately simplified transverse radiation field:
+  // E proportional to sin(theta) * acceleration(t-r/v) / sqrt(r)
+  // with a finite, smooth source radius. The time-retarded source supplies
+  // the visible outward-moving phase fronts. This is not a Maxwell solver.
+  function oscillator(t) {return Math.sin(TAU*1.05*t);}
+  function gate(t,delay=0) {
+    const x=t-delay;
+    return x<=0 ? 0 : Math.min(1,x/.45);
+  }
+  function field(x,y,t,src,params={}) {
+    const dx=x-src.x,dy=y-src.y;
+    const r=Math.hypot(dx,dy);
+    const effectiveR=Math.sqrt(r*r+14*14);
+    const ux=dx/effectiveR,uy=dy/effectiveR;
+    const speed=params.speed || 110;
+    const rt=t-r/speed;
+    if (rt<0)return {x:0,y:0,amp:0};
+    const amp=gate(rt,params.start||0)*Math.sin(TAU*(params.freq||1.05)*rt+(params.phase||0));
+    const atten = 2.9 / Math.sqrt(1+r/33);
+    const transverse=Math.max(.03, 1-uy*uy);
+    const ey=amp*atten*transverse;
+    const ex=-ey*ux*uy*.65;
+    return {x:ex,y:ey,amp:Math.abs(amp)*atten*transverse};
+  }
+  function composite(x,y,s,mode) {
+    const left=origin(s,'left'),right=origin(s,'right');
+    const a=field(x,y,s.t,left);
+    if(mode===1) {
+      // Reverse response arrives at B after the forward propagation delay,
+      // then travels back toward A: schematic two-way coupling.
+      const b=field(x,y,s.t,right,{start:(right.x-left.x)/110,phase:-.45});
+      return {x:a.x+b.x*.7,y:a.y+b.y*.7,amp:a.amp+b.amp*.7};
+    }
+    if(mode===2) {
+      const b=field(x,y,s.t,right,{start:(right.x-left.x)/110,phase:-.45});
+      const boundary=(left.x+right.x)*.5;
+      const screen=1/(1+Math.exp(-Math.max(-40,Math.min(40,(x-boundary+10)/8))));
+      // Leftwards moving radiation is suppressed through the isolator.
+      return {x:a.x+b.x*screen*.62,y:a.y+b.y*screen*.62,amp:a.amp+b.amp*screen*.62};
+    }
+    if(mode===3) return bpskField(x,y,s,left);
+    return a;
+  }
+  function bitAt(symbol) {
+    return BITS[((symbol%BITS.length)+BITS.length)%BITS.length]==='1'?1:0;
+  }
+  function carrier(time) {
+    if(time<0)return 0;
+    // Whole carrier cycles inside each bit interval make each bit boundary
+    // a zero crossing. This avoids discontinuous line jumps on bit changes.
+    const symbol=Math.floor(time*2.25);
+    const local=time*2.25-symbol;
+    return Math.sin(TAU*3*local+Math.PI*bitAt(symbol));
+  }
+  function bpskField(x,y,s,src) {
+    const dx=x-src.x,dy=y-src.y;
+    const r=Math.hypot(dx,dy);
+    const u=dy/Math.max(14,r);
+    const ret=s.t-r/128;
+    if(ret<=0)return {x:0,y:0,amp:0};
+    const v=carrier(ret)*gate(ret);
+    const a=3.1/Math.sqrt(1+r/40)*(1-u*u);
+    return {x:-u*dx/Math.max(r,14)*v*a*.65,y:v*a,amp:Math.abs(v*a)};
+  }
+  function pixelVectorGrid(s,mode) {
+    const c=s.ctx;
+    const spacing=s.w<520?24:22;
+    const yStart=63;
+    const xStart=13;
+    for(let y=yStart;y<s.h-13;y+=spacing) {
+      for(let x=xStart;x<s.w-11;x+=spacing) {
+        const f=composite(x,y,s,mode);
+        const mag=Math.hypot(f.x,f.y);
+        // Keep the neutral lattice visible so a passing wavefront
+        // is a recognizable change in local arrow orientation.
+        const vx=f.x*.68, vy=f.y*.68+.095;
+        const alpha=Math.min(.98,.19+mag*.42);
+        arrow(c,x,y,vx,vy,'102,211,245',alpha);
+      }
+    }
+  }
+  function particles(s,mode) {
+    const c=s.ctx;const a=origin(s,'left'),b=origin(s,'right');
+    const span=(b.x-a.x)/110;
+    const dyA=13*oscillator(s.t)*gate(s.t);
+    const dyB=13*oscillator(s.t-span)*gate(s.t,span);
+    line(c,a.x,a.y-36,a.x,a.y+36,'rgba(249,220,173,.23)');
+    line(c,b.x,b.y-36,b.x,b.y+36,'rgba(249,220,173,.23)');
+    circle(c,a.x,a.y+dyA,7,'#ffd18a',14);
+    circle(c,b.x,b.y+dyB,7,'#ffd18a',14);
+    c.fillStyle='#e9d4ac';c.font='11px system-ui';c.textAlign='center';
+    c.fillText(mode===1?'CHARGE A':'TX',a.x,a.y+57);
+    c.fillText(mode===1?'CHARGE B':'RX',b.x,b.y+57);
+  }
+  function isolator(s) {
+    const c=s.ctx,x=s.w*.5;
+    c.fillStyle='rgba(218,184,119,.075)';c.fillRect(x-9,52,18,s.h-67);
+    line(c,x-9,52,x-9,s.h-15,'rgba(242,194,103,.7)',1.7);
+    line(c,x+9,52,x+9,s.h-15,'rgba(242,194,103,.7)',1.7);
+    c.textAlign='center';c.fillStyle='#f4d298';c.font='10px system-ui';
+    c.fillText('ONE-WAY LAYER',x,56);
+    // Incoming reverse pulses appear only to the right of the isolator.
+    const b=origin(s,'right'),right=b.x;
+    const t=s.t - (right-origin(s,'left').x)/110;
+    if(t>0) {
+      let progress=((t*.65)%1);
+      const xPulse=right-progress*(right-(x+15));
+      if(xPulse>x+15) {
+        circle(c,xPulse,s.h*.57,Math.max(1.5,3*Math.sin(Math.PI*progress)),'rgba(255,128,153,.65)');
+      }
+    }
+  }
+  function bpskTrace(s) {
+    const c=s.ctx;
+    const a=origin(s,'left'),b=origin(s,'right');
+    const left=a.x+12,right=b.x-12;
+    const N=Math.max(160,Math.floor(right-left));
+    c.beginPath();c.lineWidth=2.15;c.strokeStyle='#99e4fc';
+    for(let i=0;i<=N;i++) {
+      const x=left+(right-left)*i/N;
+      const ret=s.t-(x-a.x)/128;
+      const val=ret>=0 ? carrier(ret)*gate(ret) : 0;
+      const y=s.h*.57-val*17;
+      if(i===0)c.moveTo(x,y);else c.lineTo(x,y);
+    }
+    c.stroke();
+    const index=Math.floor(s.t*2.25)%BITS.length;
+    const el=document.getElementById('current-bit');
+    if(el)el.textContent='Symbol '+(index+1)+' / 144 · bit '+bitAt(index);
+  }
+  function block(s,x,title) {
+    const c=s.ctx,y=s.h*.57;
+    c.fillStyle='#182c3b';c.strokeStyle='#97bacc';c.lineWidth=1.3;
+    c.beginPath();c.roundRect(x-37,y-22,74,44,6);c.fill();c.stroke();
+    c.fillStyle='#ecedec';c.textAlign='center';c.font='600 12px system-ui';
+    c.fillText(title,x,y+4);
+  }
+  function packet(s) {
+    const c=s.ctx,a=origin(s,'left'),b=origin(s,'right');
+    const p=((s.t*.34)%1+1)%1;
+    const x=a.x+(b.x-a.x)*p,y=s.h*.57;
+    c.save();c.strokeStyle='rgba(241,203,128,.82)';c.lineWidth=1.5;
+    for(let j=1;j<=3;j++) {
+      c.beginPath();c.ellipse(x,y,5+j*4,8+j*4,0,0,TAU);c.stroke();
+    }
+    c.restore();
+  }
+  function draw(s) {
+    if(!s.w||!s.h)return;
+    background(s);
+    const mode=ids.indexOf(s.id)+1;
+    pixelVectorGrid(s,mode);
+    if(mode===2)isolator(s);
+    if(mode===3)bpskTrace(s);
+    if(mode<=3)particles(s,mode);
+    if(mode===4||mode===5) {
+      if(mode===5) {
+        const a=origin(s,'left');
+        for(let i=0;i<8;i++) {
+          circle(s.ctx,a.x-24+(i%4)*16,a.y-54+Math.floor(i/4)*14,2.5,bitAt(Math.floor(s.t*2.25)+i)?'#f4cd8f':'#587584');
+        }
+      }
+      block(s,origin(s,'left').x,'RAM');
+      block(s,origin(s,'right').x,'CPU');
+      packet(s);
+    }
+    const titles=[
+      ['TWO VIBRATING CHARGES','Retarded disturbances in a 2D field'],
+      ['DIRECTIONAL LAYER','A hypothetical nonreciprocal screen'],
+      ['BINARY PHASE-SHIFT KEYING','144 bits • “I love you Trishna”'],
+      ['FREE-SPACE MEMORY LINK','Direct propagation between memory and CPU'],
+      ['RAM → FIELD → CPU','Address • modulate • transmit • decode']
+    ];
+    labels(s,...titles[mode-1]);
+  }
+  ids.forEach(create);
+  window.addEventListener('resize',()=>scenes.forEach(resize),{passive:true});
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    const s=scenes.get(entry.target.id);
+    if(s){s.visible=entry.isIntersecting;s.last=0;}
+  }),{threshold:0.01});
+  scenes.forEach(s=>observer.observe(s.canvas));
+  document.addEventListener('visibilitychange',()=>scenes.forEach(s=>s.last=0));
+  function animate(now) {
+    scenes.forEach(s=>{
+      if(!s.visible||!s.playing){s.last=now;return;}
+      const dt=s.last ? Math.min(.05,(now-s.last)/1000) : 0;
+      s.last=now;s.t+=dt*s.speed;
+      draw(s);
+    });
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
 })();
