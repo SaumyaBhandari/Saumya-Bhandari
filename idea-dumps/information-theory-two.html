@@ -31,7 +31,7 @@
 <p>Now imagine I can control the vibration precisely. I could choose one pattern to mean 0 and another to mean 1. For a simple example, I'll use binary phase-shift keying (BPSK). Both bits use the same repeating wave. For a 1, I flip its phase halfway around the cycle. A receiver with the same clock can measure the difference and reconstruct the bits.</p>
 <p>My first instinct was to say an upward-moving electron means 1 and a downward-moving one means 0. That can work as a sampling rule when both sides agree exactly when to look. Since any vibrating charge keeps changing direction, the clock matters a lot. Phase gives me a convenient way of putting that timing rule into the wave.</p>
 <div class="formula">s<sub>b</sub>(t) = A cos(2πf<sub>c</sub>t + πb), &nbsp; b ∈ {0, 1}</div>
-<p>I'll try the sentence <strong>I love you Trishna</strong>. Each character gets an eight-bit binary code, including the spaces. That gives me 18 bytes, or 144 bits. The blue trace below shows the wave pattern for the message, and the field arrows show the signal spreading from the sender toward the receiver. I'm sending the whole bitstream repeatedly so you can watch it.</p>
+<p>I'll try the sentence <strong>I love you Trishna</strong> (my dear wife’s name). Each character gets an eight-bit binary code, including the spaces. That gives me 18 bytes, or 144 bits. The blue trace below shows the wave pattern for the message, and the field arrows show the signal spreading from the sender toward the receiver. I'm sending the whole bitstream repeatedly so you can watch it.</p>
 <div class="seq" id="binary-sequence" aria-label="Binary ASCII encoding of I love you Trishna">01001001 00100000 01101100 01101111 01110110 01100101 00100000 01111001 01101111 01110101 00100000 01010100 01110010 01101001 01110011 01101000 01101110 01100001</div>
 <p class="compact"><a href="#maxwell-lab">Try this in the interactive Maxwell laboratory ↑</a></p>
 <p>Now I can picture a message riding on a vibration. To decode it reliably I'd need a good oscillator, shared timing, enough signal at the receiver, and ways to catch errors when noise gets in. All of that takes real circuitry and energy. Still, it's a starting point for making my thought concrete.</p>
@@ -59,5 +59,5 @@
 <p class="compact">Further reading: Shannon (1948), <em>A Mathematical Theory of Communication</em>; Maxwell (1865), <em>A Dynamical Theory of the Electromagnetic Field</em>; standard treatments of antenna radiation, binary phase-shift keying, nonreciprocity, and computer memory hierarchies.</p>
 <div class="next"><a href="../index.html#idea-dumps">← Back to Idea dumps<span>More questions from the open notebook</span></a><a href="../index.html#philosophy-articles">Explore Philosophy Articles →<span>Ideas about physics, ontology and meaning</span></a></div>
 </article><footer>© 2026 Saumya Bhandari · <a href="../index.html">Home</a> · <a href="../index.html#idea-dumps">Idea dumps</a></footer>
-<script src="maxwell.js?v=fdtd-20261017a" defer></script>
+<script src="maxwell.js?v=20261017-pulse2" defer></script>
 </body></html>
