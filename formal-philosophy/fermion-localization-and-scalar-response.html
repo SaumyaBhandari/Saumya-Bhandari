@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A Cubic Cancellation and a Fifth-Order Obstruction | Saumya Bhandari</title><meta name="description" content="Fermion localization, perturbative mass corrections, and scalar response."><link rel="icon" href="../Images/logo.png"><link rel="stylesheet" href="../editorial.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script></head><body><header><nav><a href="../index.html">Saumya Bhandari</a><a href="../index.html#philosophy-articles">Philosophy Articles</a><a href="../index.html#formal-philosophy">Formal Philosophy</a></nav></header><div class="hero"><div><div class="eyebrow">Formal Philosophy · Paper 01</div><h1>A Cubic Cancellation and a Fifth-Order Obstruction</h1><p class="deck">Fermion localization, perturbative mass corrections, and scalar response.</p><div class="byline">Saumya Bhandari · October 2026</div></div></div><article>
+<div class="note"><strong>Research status.</strong> Independent exploratory mathematical study. The fermionic fields are assumed rather than derived; the result is not a unified theory or a peer-reviewed discovery.</div>
+<h2>Abstract</h2><p>A two-channel localization operator exhibits an exact cancellation of the cubic correction to its light eigenmass at a particular localization offset. The fifth-order correction survives and is strictly negative. A separately calculated scalar condensate shows why the cancellation does not imply exact physical Higgs-coupling alignment.</p>
+<h2>1. Operator and zero modes</h2><p>Define the first-order operator and its self-adjoint extension:</p>
+<div class="math">\(\displaystyle \mathcal H_\varepsilon=\begin{pmatrix}0&A_\varepsilon^\dagger\\ A_\varepsilon&0\end{pmatrix},\quad A_\varepsilon=\partial_z+M_\varepsilon(z).\)</div>
+<div class="math">\(\displaystyle M_\varepsilon(z)=bI+a\tanh z\,\sigma_3+\varepsilon\operatorname{sech}z\,\sigma_1.\)</div>
+<p>The confinement parameter is (a), the relative offset is (b), and the mixing amplitude is (arepsilon). At zero mixing the normalized modes are proportional to</p>
+<div class="math">\(\displaystyle f(z)=Ne^{-bz}\operatorname{sech}^a z,\qquad g(z)=Ne^{bz}\operatorname{sech}^a z.\)</div>
+<p>The normalization and overlap integrals are expressible through beta functions:</p>
+<div class="math">\(\displaystyle J(P,Q)=\int_{-\infty}^{\infty}e^{-Qz}\operatorname{sech}^{P}z\,dz=2^{P-1}B\left(\frac{P-Q}{2},\frac{P+Q}{2}\right).\)</div>
+<h2>2. Perturbative eigenmass</h2>
+<p>The light mass branch has the expansion (mu(\varepsilon)=c_1\varepsilon+c_3\varepsilon^3+c_5\varepsilon^5+\cdots). Its leading coefficient is</p>
+<div class="math">\(\displaystyle c_1=\frac{J(2a+1,0)}{J(2a,2b)}.\)</div>
+<p>When all components of the state are permitted to adjust, the cubic term is the difference between induced mixing and normalization terms:</p>
+<div class="math">\(\displaystyle c_3=\int\operatorname{sech}z\,uv\,dz-\frac{c_1}{2}\int(u^2+v^2)\,dz.\)</div>
+<p>At (b=1/2), the first-order corrections satisfy (u=-g/(2a)) and (v=-f/(2a)). The two cubic contributions cancel. Continuing to fifth order yields the central conditional result:</p>
+<div class="math">\(\displaystyle \boxed{\mu(\varepsilon)=\left(1-\frac1{2a}\right)\varepsilon\left[1-\frac{\psi_1(a+1/2)}{16a^4}\varepsilon^4+O(\varepsilon^6)\right],\quad a>\frac12.}\)</div>
+<p>Here (psi_1(x)=\sum_{n\ge0}(x+n)^{-2}>0), so the fifth-order coefficient is negative. The cubic cancellation is not an all-orders symmetry.</p>
+<h2>3. Scalar response and its limitation</h2>
+<p>If the scalar simply rescales the mixing amplitude, its normalized response is</p>
+<div class="math">\(\displaystyle \kappa_{\mathrm{amp}}=\frac{\varepsilon}{\mu}\frac{d\mu}{d\varepsilon}=1-\frac{\psi_1(a+1/2)}{4a^4}\varepsilon^4+O(\varepsilon^6).\)</div>
+<p>But the fluctuation of a physical scalar condensate is generally not the same profile as the condensate itself. To check this, consider the energy</p>
+<div class="math">\(\displaystyle E[U]=\int dz\left[\frac12(U')^2+\frac12(1-\delta-2\operatorname{sech}^2z)U^2+\frac14U^4\right].\)</div>
+<p>Its stationary profile and radial mode satisfy separate equations:</p>
+<div class="math">\(\displaystyle -U''+(1-\delta-2\operatorname{sech}^2z)U+U^3=0.\)</div>
+<div class="math">\(\displaystyle [-\partial_z^2+1-\delta-2\operatorname{sech}^2z+3U^2]q=\lambda_hq.\)</div>
+<p>The physical coupling receives a profile-shape correction that survives at the cubic-cancellation point. This defeats an attempted claim of exact Higgs-like mass proportionality.</p>
+<h2>4. Interpretation and limits</h2><p>The calculation supplies a restricted spectral identity, not electron or quark masses. Fermionic statistics, gauge representations, observed Yukawa couplings, and the Standard Model Higgs are not derived. The result's novelty relative to all prior literature has not been independently established.</p>
+<h2>Research provenance</h2><p>Web adaptation of an AI-assisted October 2026 analytical and numerical investigation. Background methods include domain-wall fermions, overlap-generated masses, and perturbation theory; these established ingredients are not claimed as discoveries.</p>
+<div class="next"><a href="dynamical-complex-order-on-an-interface.html">Study 02<span>Dynamic complex interface →</span></a><a href="../philosophy/what-if-the-particle-was-already-everywhere.html">Philosophical essay<span>Why investigate localized configurations? →</span></a></div></article><footer><a href="../index.html">Home</a> · <a href="../index.html#formal-philosophy">Formal Philosophy</a></footer></body></html>
