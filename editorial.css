@@ -1,1 +1,21 @@
 :root{color-scheme:dark;--gold:#c5a059}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#151619;color:#e8e5de;font-family:Inter,system-ui,sans-serif;line-height:1.8}a{color:#dfbc76}a:hover{color:#ffe0a1}header{position:sticky;top:0;background:#1c1d20ee;backdrop-filter:blur(12px);border-bottom:1px solid #454039;z-index:5}nav{max-width:1100px;margin:auto;padding:17px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 25px}nav a{font-size:.86rem;text-decoration:none;color:#d0c7bb}nav a:first-child{font-weight:700;color:#fff;margin-right:auto}.hero{padding:75px 24px 55px;background:radial-gradient(ellipse at top,#303b50,#151619 70%);border-bottom:1px solid #3d3832}.hero>div{max-width:820px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:700;color:var(--gold)}h1,h2{font-family:Georgia,serif;font-weight:400;line-height:1.2}h1{font-size:clamp(2.6rem,6vw,4.5rem);margin:18px 0}h2{font-size:2.05rem;margin:55px 0 19px;color:#f5eee4}h3{font-size:1.25rem;margin-top:35px;color:#e6ca91}.deck{font-size:1.17rem;color:#c5bfb7;line-height:1.7}.byline{color:#a8a29b;font-size:.85rem;margin-top:20px}article{max-width:800px;margin:auto;padding:55px 24px 90px;font-size:1.08rem}p{margin:0 0 25px}blockquote{font-family:Georgia,serif;font-size:1.42rem;border-left:2px solid var(--gold);padding:9px 0 9px 25px;margin:40px 0;color:#f1e1c3}strong{color:#f7eee1}.math{overflow-x:auto;padding:19px;background:#24262b;border:1px solid #494139;border-radius:10px;margin:25px 0;text-align:center}.note{padding:20px 23px;background:#24231f;border-left:3px solid var(--gold);font-size:.96rem;margin:30px 0}.next{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:30px 0}.next a{border:1px solid #544738;border-radius:12px;padding:21px;background:#232429;text-decoration:none;font-weight:600}.next span{display:block;font-weight:400;font-size:.84rem;color:#bcb5aa;margin-top:7px}footer{padding:35px;text-align:center;background:#1c1d20;border-top:1px solid #413b34;font-size:.9rem}@media(max-width:650px){.next{grid-template-columns:1fr}article{font-size:1rem}.hero{padding-top:55px}}
+/* Full portfolio navbar on all editorial pages */
+.article-site-nav{height:80px;padding:0;position:sticky;display:flex;background:rgba(30,30,30,.96);border-bottom:1px solid #383838}
+.article-site-nav .nav-container{max-width:1500px;display:flex;justify-content:space-between;padding:0 16px;width:100%}
+.article-site-nav .nav-menu{margin:0;padding:0;display:flex;align-items:center;gap:0;list-style:none}
+.article-site-nav .nav-item{height:80px;margin:0}
+.article-site-nav .nav-link{font-size:.81rem;padding:8px}
+.article-site-nav .nav-logo{display:flex;gap:12px;text-decoration:none;font-family:Poppins,Inter,sans-serif;font-size:1.05rem;color:white}
+.article-site-nav .nav-logo img{height:38px;width:auto}
+.article-site-nav .nav-toggle{border:0}
+@media(max-width:1100px) and (min-width:769px){.article-site-nav .logo-text{display:none}}
+@media(max-width:768px){.article-site-nav .nav-menu{display:none;position:absolute;top:80px;left:0;width:100%;background:#1c1c1c;flex-direction:column;padding:15px 0;max-height:calc(100vh - 80px);overflow:auto}.article-site-nav .nav-menu.active{display:flex}.article-site-nav .nav-item{width:100%;height:auto}.article-site-nav .nav-link{display:block;width:100%;padding:13px 28px;text-align:center}.article-site-nav .nav-toggle{display:block}}
+.thought-figure{margin:40px -42px 50px;background:#22252b;border:1px solid #494037;border-radius:18px;overflow:hidden}
+.thought-figure img{display:block;width:100%;max-height:610px;object-fit:contain;background:#f3f2ee}
+.thought-figure figcaption{padding:22px 25px;color:#e6e1d7;line-height:1.65}
+.thought-figure figcaption strong{display:block;font:600 1.1rem Inter,sans-serif;margin-bottom:9px;color:#edd39e}
+.thought-explainer{display:block;font-size:.96rem;color:#d3cec5}
+.thought-credit{display:block;font-size:.73rem;color:#a9a49b;margin-top:12px}
+.thought-credit a{color:#e1bf81}
+.thought-insert{margin:50px 0;border-top:1px solid #51483c}
+@media(max-width:840px){.thought-figure{margin-left:0;margin-right:0}}
