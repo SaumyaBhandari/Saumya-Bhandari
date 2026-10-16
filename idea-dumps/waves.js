@@ -1,274 +1,166 @@
 (() => {
-  'use strict';
-  const TAU = 2 * Math.PI;
-  const PHRASE = 'I love you Trishna';
-  const BITS = Array.from(new TextEncoder().encode(PHRASE)).map(v => v.toString(2).padStart(8, '0')).join('');
-  const ids = ['scene-one','scene-two','scene-three','scene-four','scene-five'];
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const scenes = new Map();
-
-  function create(id) {
-    const canvas = document.getElementById(id);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d', {alpha: false});
-    if (!ctx) return;
-    const s = {id,canvas,ctx,w:0,h:0,t:0,last:0,speed:1,playing:!reduceMotion,visible:true};
-    scenes.set(id,s);
-    resize(s);
-    const toggle = document.querySelector('[data-toggle="' + id + '"]');
-    if (toggle) {
-      toggle.textContent = s.playing ? 'Pause animation' : 'Play animation';
-      toggle.addEventListener('click', () => {
-        s.playing = !s.playing;
-        toggle.textContent = s.playing ? 'Pause animation' : 'Play animation';
-        if (s.playing) s.last = 0;
-      });
-    }
-    const speed = document.querySelector('[data-speed="' + id + '"]');
-    if (speed) speed.addEventListener('input', () => { s.speed = Number(speed.value); });
-    draw(s);
+"use strict";
+const TAU=Math.PI*2, ids=["scene-one","scene-two","scene-three","scene-four","scene-five"];
+const message="I love you Trishna";
+const bits=Array.from(new TextEncoder().encode(message),n=>n.toString(2).padStart(8,"0")).join("");
+const scenes=[];
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const sin=Math.sin,cos=Math.cos,hyp=Math.hypot;
+const C=142, HZ=1.5, BITRATE=3;
+function bit(n){return Number(bits[((n%bits.length)+bits.length)%bits.length]);}
+// Smooth coherent BPSK: use carrier with integer cycles/symbol and
+// a short smooth phase transition inside each symbol boundary.
+function binaryCarrier(t){
+ if(t<0)return 0;
+ const k=Math.floor(t*BITRATE),u=t*BITRATE-k;
+ const previous=bit(k-1),current=bit(k);
+ const transition=Math.min(1,Math.max(0,u/.22));
+ const blend=transition*transition*(3-2*transition);
+ const phase=Math.PI*(previous+(current-previous)*blend);
+ return sin(TAU*4*u+phase);
+}
+function sourceSignal(t,encoded){
+ if(t<0)return 0;
+ const startup=Math.min(1,t/0.35);
+ return startup*(encoded?binaryCarrier(t):sin(TAU*HZ*t));
+}
+function fieldAt(px,py,s,side,encoded){
+ const srcX=s.w*(side==="left"?.18:.82), srcY=s.h*.59;
+ const dx=px-srcX,dy=py-srcY,r=hyp(dx,dy);
+ const time=s.time-r/C;
+ if(time<0)return 0;
+ // A simplified radiative dipole cross-section. Finite core radius
+ // prevents a singularity at the drawn charge.
+ const angular=(dx*dx+100)/(r*r+100);
+ const envelope=1/Math.sqrt(1+r/62);
+ return sourceSignal(time,encoded)*envelope*angular;
+}
+function totalField(x,y,s){
+ const m=s.mode,base=fieldAt(x,y,s,"left",m===3);
+ if(m===1){
+  const delay=(s.w*.64)/C;
+  // Idealized return response starts after arrival at B.
+  const former=s.time;s.time=former-delay;
+  const back=fieldAt(x,y,s,"right",false)*.68;
+  s.time=former;return base+back;
+ }
+ if(m===2){
+  const delay=(s.w*.64)/C,former=s.time;
+  s.time=former-delay;
+  const back=fieldAt(x,y,s,"right",false);
+  s.time=former;
+  const boundary=s.w*.5;
+  const admit=Math.max(0,Math.min(1,(x-boundary)/27));
+  return base+.6*back*admit;
+ }
+ return base;
+}
+function line(c,x,y,X,Y,color,width=1){
+ c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(x,y);c.lineTo(X,Y);c.stroke();
+}
+function vector(c,x,y,value){
+ const intensity=Math.min(1,Math.abs(value));
+ const len=4+intensity*19;
+ const up=value>=0?1:-1;
+ const alpha=.25+.75*intensity;
+ const color=value>=0?"91,220,244":"250,173,132";
+ const stroke="rgba("+color+","+alpha+")";
+ const a=y+len*up*.5,b=y-len*up*.5;
+ line(c,x,a,x,b,stroke,1.6);
+ const head=3.6;
+ line(c,x,b,x-head,b+up*head*1.4,stroke,1.45);
+ line(c,x,b,x+head,b+up*head*1.4,stroke,1.45);
+}
+function circle(c,x,y,r,color){
+ c.fillStyle=color;c.beginPath();c.arc(x,y,r,0,TAU);c.fill();
+}
+function label(c,text,x,y,color="#bed1db",size=12){
+ c.font=size+"px system-ui";c.fillStyle=color;c.fillText(text,x,y);
+}
+function draw(s){
+ const c=s.context,w=s.w,h=s.h,t=s.time;
+ c.fillStyle="#070e17";c.fillRect(0,0,w,h);
+ c.textAlign="left";
+ const names=["TWO CHARGES • FIELD RESPONSE","ONE-WAY LAYER • DIRECTIONAL FILTER","BINARY PHASE SHIFT KEYING • FIELD AND SIGNAL","DIRECT EM PROPAGATION • MEMORY LINK","RAM → TRANSMITTER → SPACE → RECEIVER → CPU"];
+ label(c,names[s.mode-1],16,22,"#efd19a",11);
+ label(c,"Cyan / coral arrows show signed field displacement · time slowed for visibility",16,42,"#91adbe",10);
+ const bottom=h*.85, spacing=w<550?25:23;
+ // The complete field consists of local arrows sampled independently.
+ // No fake 3D ground plane or manually drawn discontinuous sine path.
+ for(let y=68;y<bottom;y+=spacing){
+  for(let x=17;x<w-10;x+=spacing){
+   const f=totalField(x,y,s);
+   vector(c,x,y,f);
   }
-
-  function resize(s) {
-    const rect = s.canvas.getBoundingClientRect();
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    s.w = Math.max(280,rect.width);
-    s.h = Math.max(200,rect.height);
-    s.canvas.width = Math.round(s.w * dpr);
-    s.canvas.height = Math.round(s.h * dpr);
-    s.ctx.setTransform(dpr,0,0,dpr,0,0);
-    draw(s);
+ }
+ const ax=w*.18,bx=w*.82,cy=h*.59;
+ if(s.mode===2){
+  const x=w*.5;c.fillStyle="rgba(231,194,133,.13)";c.fillRect(x-7,58,14,bottom-54);
+  line(c,x,58,x,bottom,"rgba(242,205,136,.85)",1.5);
+  c.textAlign="center";label(c,"ISOLATOR",x-26,56,"#ecd29e",10);
+ }
+ if(s.mode===3){
+  // Correctly sampled 1D signal: time at each location is retarded.
+  // The phase is a smooth function of retarded time (no jumps).
+  c.strokeStyle="#f5d487";c.lineWidth=2.2;c.beginPath();
+  const x0=ax+12,x1=bx-12;
+  for(let i=0;i<=320;i++){
+   const x=x0+(x1-x0)*i/320;
+   const v=sourceSignal(t-(x-ax)/C,true);
+   const y=h*.79-v*17;
+   if(i===0)c.moveTo(x,y);else c.lineTo(x,y);
   }
-
-  function circle(c,x,y,r,fill,glow=0) {
-    c.save();
-    c.fillStyle=fill;c.shadowColor=fill;c.shadowBlur=glow;
-    c.beginPath();c.arc(x,y,r,0,TAU);c.fill();c.restore();
-  }
-
-  function line(c,x1,y1,x2,y2,color,width=1) {
-    c.beginPath();c.strokeStyle=color;c.lineWidth=width;
-    c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
-  }
-  function arrow(c,x,y,vx,vy,color,alpha) {
-    const size = Math.hypot(vx,vy);
-    if (size<0.00001)return;
-    const ux=vx/size, uy=vy/size;
-    const len=6 + Math.min(12,size*12);
-    const ax=x-ux*len/2,ay=y-uy*len/2;
-    const bx=x+ux*len/2,by=y+uy*len/2;
-    const col='rgba('+color+','+alpha.toFixed(3)+')';
-    line(c,ax,ay,bx,by,col,1.35);
-    const head=4;
-    line(c,bx,by,bx-ux*head-uy*head*.57,by-uy*head+ux*head*.57,col,1.25);
-    line(c,bx,by,bx-ux*head+uy*head*.57,by-uy*head-ux*head*.57,col,1.25);
-  }
-  function background(s) {
-    const {ctx:c,w,h}=s;
-    c.fillStyle='#050a11';c.fillRect(0,0,w,h);
-    const gradient=c.createRadialGradient(w*.5,h*.5,5,w*.5,h*.5,w*.7);
-    gradient.addColorStop(0,'rgba(25,46,62,.36)');
-    gradient.addColorStop(1,'rgba(0,0,0,0)');
-    c.fillStyle=gradient;c.fillRect(0,0,w,h);
-    line(c,0,h*.56,w,h*.56,'rgba(119,144,158,.18)',1);
-  }
-  function labels(s,title,sub) {
-    const c=s.ctx;c.textAlign='left';
-    c.font='600 11px system-ui';c.fillStyle='#e4c994';c.fillText(title,15,22);
-    c.font='11px system-ui';c.fillStyle='#9db4c0';c.fillText(sub,15,39);
-  }
-  const origin = (s,side) => ({x:s.w*(side==='right'?.79:.21),y:s.h*.57});
-  // A deliberately simplified transverse radiation field:
-  // E proportional to sin(theta) * acceleration(t-r/v) / sqrt(r)
-  // with a finite, smooth source radius. The time-retarded source supplies
-  // the visible outward-moving phase fronts. This is not a Maxwell solver.
-  function oscillator(t) {return Math.sin(TAU*1.05*t);}
-  function gate(t,delay=0) {
-    const x=t-delay;
-    return x<=0 ? 0 : Math.min(1,x/.45);
-  }
-  function field(x,y,t,src,params={}) {
-    const dx=x-src.x,dy=y-src.y;
-    const r=Math.hypot(dx,dy);
-    const effectiveR=Math.sqrt(r*r+14*14);
-    const ux=dx/effectiveR,uy=dy/effectiveR;
-    const speed=params.speed || 110;
-    const rt=t-r/speed;
-    if (rt<0)return {x:0,y:0,amp:0};
-    const amp=gate(rt,params.start||0)*Math.sin(TAU*(params.freq||1.05)*rt+(params.phase||0));
-    const atten = 2.9 / Math.sqrt(1+r/33);
-    const transverse=Math.max(.03, 1-uy*uy);
-    const ey=amp*atten*transverse;
-    const ex=-ey*ux*uy*.65;
-    return {x:ex,y:ey,amp:Math.abs(amp)*atten*transverse};
-  }
-  function composite(x,y,s,mode) {
-    const left=origin(s,'left'),right=origin(s,'right');
-    const a=field(x,y,s.t,left);
-    if(mode===1) {
-      // Reverse response arrives at B after the forward propagation delay,
-      // then travels back toward A: schematic two-way coupling.
-      const b=field(x,y,s.t,right,{start:(right.x-left.x)/110,phase:-.45});
-      return {x:a.x+b.x*.7,y:a.y+b.y*.7,amp:a.amp+b.amp*.7};
-    }
-    if(mode===2) {
-      const b=field(x,y,s.t,right,{start:(right.x-left.x)/110,phase:-.45});
-      const boundary=(left.x+right.x)*.5;
-      const screen=1/(1+Math.exp(-Math.max(-40,Math.min(40,(x-boundary+10)/8))));
-      // Leftwards moving radiation is suppressed through the isolator.
-      return {x:a.x+b.x*screen*.62,y:a.y+b.y*screen*.62,amp:a.amp+b.amp*screen*.62};
-    }
-    if(mode===3) return bpskField(x,y,s,left);
-    return a;
-  }
-  function bitAt(symbol) {
-    return BITS[((symbol%BITS.length)+BITS.length)%BITS.length]==='1'?1:0;
-  }
-  function carrier(time) {
-    if(time<0)return 0;
-    // Whole carrier cycles inside each bit interval make each bit boundary
-    // a zero crossing. This avoids discontinuous line jumps on bit changes.
-    const symbol=Math.floor(time*2.25);
-    const local=time*2.25-symbol;
-    return Math.sin(TAU*3*local+Math.PI*bitAt(symbol));
-  }
-  function bpskField(x,y,s,src) {
-    const dx=x-src.x,dy=y-src.y;
-    const r=Math.hypot(dx,dy);
-    const u=dy/Math.max(14,r);
-    const ret=s.t-r/128;
-    if(ret<=0)return {x:0,y:0,amp:0};
-    const v=carrier(ret)*gate(ret);
-    const a=3.1/Math.sqrt(1+r/40)*(1-u*u);
-    return {x:-u*dx/Math.max(r,14)*v*a*.65,y:v*a,amp:Math.abs(v*a)};
-  }
-  function pixelVectorGrid(s,mode) {
-    const c=s.ctx;
-    const spacing=s.w<520?24:22;
-    const yStart=63;
-    const xStart=13;
-    for(let y=yStart;y<s.h-13;y+=spacing) {
-      for(let x=xStart;x<s.w-11;x+=spacing) {
-        const f=composite(x,y,s,mode);
-        const mag=Math.hypot(f.x,f.y);
-        // Keep the neutral lattice visible so a passing wavefront
-        // is a recognizable change in local arrow orientation.
-        const vx=f.x*.68, vy=f.y*.68+.095;
-        const alpha=Math.min(.98,.19+mag*.42);
-        arrow(c,x,y,vx,vy,'102,211,245',alpha);
-      }
-    }
-  }
-  function particles(s,mode) {
-    const c=s.ctx;const a=origin(s,'left'),b=origin(s,'right');
-    const span=(b.x-a.x)/110;
-    const dyA=13*oscillator(s.t)*gate(s.t);
-    const dyB=13*oscillator(s.t-span)*gate(s.t,span);
-    line(c,a.x,a.y-36,a.x,a.y+36,'rgba(249,220,173,.23)');
-    line(c,b.x,b.y-36,b.x,b.y+36,'rgba(249,220,173,.23)');
-    circle(c,a.x,a.y+dyA,7,'#ffd18a',14);
-    circle(c,b.x,b.y+dyB,7,'#ffd18a',14);
-    c.fillStyle='#e9d4ac';c.font='11px system-ui';c.textAlign='center';
-    c.fillText(mode===1?'CHARGE A':'TX',a.x,a.y+57);
-    c.fillText(mode===1?'CHARGE B':'RX',b.x,b.y+57);
-  }
-  function isolator(s) {
-    const c=s.ctx,x=s.w*.5;
-    c.fillStyle='rgba(218,184,119,.075)';c.fillRect(x-9,52,18,s.h-67);
-    line(c,x-9,52,x-9,s.h-15,'rgba(242,194,103,.7)',1.7);
-    line(c,x+9,52,x+9,s.h-15,'rgba(242,194,103,.7)',1.7);
-    c.textAlign='center';c.fillStyle='#f4d298';c.font='10px system-ui';
-    c.fillText('ONE-WAY LAYER',x,56);
-    // Incoming reverse pulses appear only to the right of the isolator.
-    const b=origin(s,'right'),right=b.x;
-    const t=s.t - (right-origin(s,'left').x)/110;
-    if(t>0) {
-      let progress=((t*.65)%1);
-      const xPulse=right-progress*(right-(x+15));
-      if(xPulse>x+15) {
-        circle(c,xPulse,s.h*.57,Math.max(1.5,3*Math.sin(Math.PI*progress)),'rgba(255,128,153,.65)');
-      }
-    }
-  }
-  function bpskTrace(s) {
-    const c=s.ctx;
-    const a=origin(s,'left'),b=origin(s,'right');
-    const left=a.x+12,right=b.x-12;
-    const N=Math.max(160,Math.floor(right-left));
-    c.beginPath();c.lineWidth=2.15;c.strokeStyle='#99e4fc';
-    for(let i=0;i<=N;i++) {
-      const x=left+(right-left)*i/N;
-      const ret=s.t-(x-a.x)/128;
-      const val=ret>=0 ? carrier(ret)*gate(ret) : 0;
-      const y=s.h*.57-val*17;
-      if(i===0)c.moveTo(x,y);else c.lineTo(x,y);
-    }
-    c.stroke();
-    const index=Math.floor(s.t*2.25)%BITS.length;
-    const el=document.getElementById('current-bit');
-    if(el)el.textContent='Symbol '+(index+1)+' / 144 · bit '+bitAt(index);
-  }
-  function block(s,x,title) {
-    const c=s.ctx,y=s.h*.57;
-    c.fillStyle='#182c3b';c.strokeStyle='#97bacc';c.lineWidth=1.3;
-    c.beginPath();c.roundRect(x-37,y-22,74,44,6);c.fill();c.stroke();
-    c.fillStyle='#ecedec';c.textAlign='center';c.font='600 12px system-ui';
-    c.fillText(title,x,y+4);
-  }
-  function packet(s) {
-    const c=s.ctx,a=origin(s,'left'),b=origin(s,'right');
-    const p=((s.t*.34)%1+1)%1;
-    const x=a.x+(b.x-a.x)*p,y=s.h*.57;
-    c.save();c.strokeStyle='rgba(241,203,128,.82)';c.lineWidth=1.5;
-    for(let j=1;j<=3;j++) {
-      c.beginPath();c.ellipse(x,y,5+j*4,8+j*4,0,0,TAU);c.stroke();
-    }
-    c.restore();
-  }
-  function draw(s) {
-    if(!s.w||!s.h)return;
-    background(s);
-    const mode=ids.indexOf(s.id)+1;
-    pixelVectorGrid(s,mode);
-    if(mode===2)isolator(s);
-    if(mode===3)bpskTrace(s);
-    if(mode<=3)particles(s,mode);
-    if(mode===4||mode===5) {
-      if(mode===5) {
-        const a=origin(s,'left');
-        for(let i=0;i<8;i++) {
-          circle(s.ctx,a.x-24+(i%4)*16,a.y-54+Math.floor(i/4)*14,2.5,bitAt(Math.floor(s.t*2.25)+i)?'#f4cd8f':'#587584');
-        }
-      }
-      block(s,origin(s,'left').x,'RAM');
-      block(s,origin(s,'right').x,'CPU');
-      packet(s);
-    }
-    const titles=[
-      ['TWO VIBRATING CHARGES','Retarded disturbances in a 2D field'],
-      ['DIRECTIONAL LAYER','A hypothetical nonreciprocal screen'],
-      ['BINARY PHASE-SHIFT KEYING','144 bits • “I love you Trishna”'],
-      ['FREE-SPACE MEMORY LINK','Direct propagation between memory and CPU'],
-      ['RAM → FIELD → CPU','Address • modulate • transmit • decode']
-    ];
-    labels(s,...titles[mode-1]);
-  }
-  ids.forEach(create);
-  window.addEventListener('resize',()=>scenes.forEach(resize),{passive:true});
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    const s=scenes.get(entry.target.id);
-    if(s){s.visible=entry.isIntersecting;s.last=0;}
-  }),{threshold:0.01});
-  scenes.forEach(s=>observer.observe(s.canvas));
-  document.addEventListener('visibilitychange',()=>scenes.forEach(s=>s.last=0));
-  function animate(now) {
-    scenes.forEach(s=>{
-      if(!s.visible||!s.playing){s.last=now;return;}
-      const dt=s.last ? Math.min(.05,(now-s.last)/1000) : 0;
-      s.last=now;s.t+=dt*s.speed;
-      draw(s);
-    });
-    requestAnimationFrame(animate);
-  }
-  requestAnimationFrame(animate);
+  c.stroke();
+  const i=Math.floor(t*BITRATE)%bits.length;
+  const status=document.getElementById("current-bit");
+  if(status)status.textContent="Symbol "+(i+1)+"/"+bits.length+": "+bit(i);
+  label(c,"Coherent phase-coded carrier (field slice)",Math.max(14,ax-25),h*.92,"#b2c7d0",11);
+ }
+ const transmitted=sourceSignal(t,s.mode===3),delay=(bx-ax)/C;
+ const received=sourceSignal(t-delay,s.mode===3);
+ const chargeY=(v)=>cy-18*v;
+ for(const [x,v,name] of [[ax,transmitted,s.mode>=4?"RAM / TX":"A / TX"],[bx,received,s.mode>=4?"CPU / RX":"B / RX"]]){
+   line(c,x,cy-34,x,cy+34,"rgba(239,210,158,.24)");
+   c.save();c.shadowColor="#f5ca7f";c.shadowBlur=17;circle(c,x,chargeY(v),8,"#ffd493");c.restore();
+   c.textAlign="center";label(c,name,x-24,bottom+23,"#e2ebef",11);
+ }
+ if(s.mode>=4){
+   label(c,"ADDRESS → MODULATE → PROPAGATE → DETECT",16,h-12,"#99bdcc",10);
+ }
+}
+function resize(s){
+ const rect=s.canvas.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);
+ s.w=Math.max(280,rect.width);s.h=Math.max(200,rect.height);
+ s.canvas.width=Math.round(s.w*dpr);s.canvas.height=Math.round(s.h*dpr);
+ s.context.setTransform(dpr,0,0,dpr,0,0);draw(s);
+}
+ids.forEach((id,i)=>{
+ const canvas=document.getElementById(id);
+ if(!canvas)return;
+ const ctx=canvas.getContext("2d");
+ if(!ctx)return;
+ const s={canvas,context:ctx,mode:i+1,w:300,h:250,time:0,speed:1,playing:!reduce,visible:true,last:0};
+ scenes.push(s);
+ const button=document.querySelector('[data-toggle="'+id+'"]');
+ if(button){button.textContent=s.playing?"Pause animation":"Play animation";button.addEventListener("click",()=>{s.playing=!s.playing;s.last=0;button.textContent=s.playing?"Pause animation":"Play animation";});}
+ const speed=document.querySelector('[data-speed="'+id+'"]');
+ if(speed)speed.addEventListener("input",()=>{s.speed=Number(speed.value);});
+ resize(s);
+});
+addEventListener("resize",()=>scenes.forEach(resize),{passive:true});
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
+ const s=scenes.find(v=>v.canvas===e.target);
+ if(s){s.visible=e.isIntersecting;s.last=0;}
+}));
+scenes.forEach(s=>observer.observe(s.canvas));
+document.addEventListener("visibilitychange",()=>scenes.forEach(s=>s.last=0));
+function tick(now){
+ for(const s of scenes){
+  if(!s.playing||!s.visible){s.last=0;continue;}
+  const dt=s.last?Math.min(.045,(now-s.last)/1000):0;
+  s.last=now;s.time+=dt*s.speed;draw(s);
+ }
+ requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
 })();
