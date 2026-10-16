@@ -4,11 +4,10 @@
   const TAU = Math.PI * 2;
   const SPEED = 335; // Visual pixels per second (illustrative, not SI units).
   const PULSE_LENGTH = 0.96;
-  const FIRST_PUSH = 0.35;
+  const FIRST_PUSH = 0.08;
   const MESSAGE = 'I love you Trishna';
   const BITS = Array.from(new TextEncoder().encode(MESSAGE), n => n.toString(2).padStart(8, '0')).join('');
   const SCENE_IDS = ['scene-one', 'scene-two', 'scene-three', 'scene-four', 'scene-five'];
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const scenes = new Map();
 
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
@@ -37,26 +36,39 @@
     if (!ctx) return;
     const state = {
       id, index, canvas, ctx, w: 760, h: 310, time: 0,
-      visible: false, seen: false, playing: !prefersReducedMotion,
+      visible: false, seen: false, playing: true,
       speed: 1, last: 0, grid: [],
       phaseNode: document.getElementById('phase-' + id)
     };
     scenes.set(id, state);
-    const toggle = document.querySelector('[data-toggle="' + id + '"]');
-    const restart = document.querySelector('[data-restart="' + id + '"]');
+    const startButton = document.querySelector('[data-start="' + id + '"]');
+    const pauseButton = document.querySelector('[data-pause="' + id + '"]');
+    const resetButton = document.querySelector('[data-reset="' + id + '"]');
     const slider = document.querySelector('[data-speed="' + id + '"]');
-    const updateButton = () => { if (toggle) toggle.textContent = state.playing ? 'Pause' : 'Play'; };
-    updateButton();
-    if (toggle) toggle.addEventListener('click', () => {
-      state.playing = !state.playing;
+    const updateButtons = () => {
+      if (startButton) startButton.disabled = state.playing;
+      if (pauseButton) pauseButton.disabled = !state.playing;
+      if (state.phaseNode) state.phaseNode.dataset.playback = state.playing ? 'running' : 'paused';
+    };
+    updateButtons();
+    if (startButton) startButton.addEventListener('click', () => {
+      state.playing = true;
       state.last = 0;
-      updateButton();
+      updateButtons();
       draw(state);
     });
-    if (restart) restart.addEventListener('click', () => {
+    if (pauseButton) pauseButton.addEventListener('click', () => {
+      state.playing = false;
+      state.last = 0;
+      updateButtons();
+      draw(state);
+    });
+    if (resetButton) resetButton.addEventListener('click', () => {
       state.time = 0;
       state.seen = true;
+      state.playing = false;
       state.last = 0;
+      updateButtons();
       draw(state);
     });
     if (slider) slider.addEventListener('input', () => { state.speed = Number(slider.value); });
@@ -262,9 +274,8 @@
   }
 
   function phaseLabel(s, text) {
-    const c=s.ctx;
-    c.font='11px system-ui';c.textAlign='left';c.fillStyle='#f0c992';
-    c.fillText(text,15,23);
+    // Keep the current phase in a readable caption beneath the canvas.
+    // Avoid duplicating this text over the moving vector field.
     if(s.phaseNode)s.phaseNode.textContent=text;
     s.canvas.dataset.phase=text;
   }
@@ -376,7 +387,7 @@
 
   document.addEventListener('visibilitychange',()=>scenes.forEach(s=>{s.last=0;}));
   function tick(now){
-    for(const s of scenes){
+    for(const s of scenes.values()){
       if(!s.visible||!s.playing) {s.last=0;continue;}
       const seconds=s.last?Math.min(.045,(now-s.last)/1000):0;
       s.last=now;s.time+=seconds*s.speed;
