@@ -1,0 +1,83 @@
+/* Scoped presentation for the two Context-Lifted Predictive States articles. */
+.context-article { --ink: #f1e9dd; --muted: #c2b9ab; --line: #514634; }
+.context-article .hero { background: radial-gradient(ellipse at 80% 0, #37413b, transparent 60%), #191b1d; }
+.context-article .hero > div { max-width: 1040px; }
+.context-article .hero h1 { max-width: 950px; }
+.context-article .article-label { color: #a9cbbf; }
+.context-article article { max-width: 880px; font-size: 1.08rem; }
+.context-article h2, .context-article h3, .context-article [id] { scroll-margin-top: 105px; }
+.context-article h2 { margin-top: 70px; padding-top: 26px; border-top: 1px solid var(--line); }
+.context-article p { line-height: 1.85; }
+.context-article .reading-meta { display: flex; gap: 10px 24px; flex-wrap: wrap; font-size: .83rem; color: #b8bdaf; margin: 25px 0; }
+.context-article .series-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
+.context-article .series-links a { border: 1px solid #766244; padding: 10px 16px; border-radius: 6px; text-decoration: none; font: 600 .86rem system-ui,sans-serif; }
+.context-article .series-links a[aria-current="page"] { background: #c5a059; color: #171717; }
+.context-article .skip-link { position: fixed; top: -100px; left: 12px; z-index: 1000; background: #ffe2a1; color: #111; padding: 12px; }
+.context-article .skip-link:focus { top: 10px; }
+.context-article a:focus-visible, .context-article summary:focus-visible, .context-article button:focus-visible { outline: 3px solid #e6c27c; outline-offset: 5px; }
+.context-article .reading-toc { padding: 25px 28px; border: 1px solid var(--line); background: #202323; border-radius: 10px; margin: 30px 0 45px; }
+.context-article .reading-toc summary { cursor: pointer; color: #e8cd99; font-size: 1.05rem; font-weight: 650; }
+.context-article .reading-toc ol { padding-left: 24px; margin-bottom: 0; columns: 2; column-gap: 35px; }
+.context-article .reading-toc li { break-inside: avoid; margin: 9px 0; font-size: .9rem; line-height: 1.6; }
+.context-article .reading-toc a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.context-article .example { margin: 28px 0; padding: 22px 25px 1px; background: #222426; border-left: 3px solid #a8c9bd; border-radius: 0 8px 8px 0; }
+.context-article .example h3 { margin: 0 0 14px; font: 600 .96rem system-ui,sans-serif; color: #bdd8ca; line-height: 1.5; }
+.context-article .example p { font-size: 1rem; }
+.context-article .equation-guide { margin: 32px 0; padding: 25px; border: 1px solid #665237; border-radius: 10px; background: linear-gradient(135deg,#282720,#202224); }
+.context-article .equation-guide h3 { margin: 0 0 18px; line-height: 1.5; font-size: 1.07rem; }
+.context-article .equation-label { display: block; font-size: .69rem; text-transform: uppercase; letter-spacing: .13em; color: #bda779; margin-bottom: 5px; }
+.context-article .equation-guide p, .context-article .equation-guide li { font-size: .97rem; }
+.context-article .equation-guide ul { margin: 10px 0 20px; padding-left: 22px; }
+.context-article .equation-guide li { line-height: 1.8; margin-bottom: 12px; padding-left: 4px; }
+.context-article .equation-caution { color: #c7bca8; border-top: 1px solid #4b4537; padding-top: 15px; }
+.context-article .equation-guide p:last-child { margin-bottom: 0; }
+.context-article .math-scroll { max-width: 100%; overflow-x: auto; padding: 17px 10px; background: #171b1c; border-radius: 6px; margin: 20px 0; }
+.context-article math { font-family: "STIX Two Math", "Cambria Math", "Latin Modern Math", math; font-size: 1.08em; }
+.context-article math[display="block"] { margin: 8px auto; width: max-content; min-width: min-content; max-width: none; }
+.context-article .equation-source { display: inline-block; margin-top: 17px; font-size: .8rem; }
+.context-article .diagram { margin: 42px 0; border: 1px solid #4c5148; background: #1b2527; border-radius: 12px; overflow: hidden; }
+.context-article .diagram svg { display: block; width: 100%; height: auto; }
+.context-article .diagram figcaption { margin: 0; padding: 20px 24px; font-size: .92rem; line-height: 1.75; background: #222927; color: #d0d2c5; }
+.context-article .diagram figcaption strong { display: block; margin-bottom: 7px; color: #c7decf; }
+.context-article .glossary { padding: 22px 25px; border: 1px solid #454a47; border-radius: 8px; }
+.context-article .glossary summary { cursor: pointer; color: #c7decf; font-weight: 600; }
+.context-article .glossary dl { font-size: .94rem; margin: 20px 0 0; }
+.context-article .glossary dt { color: #ead2a3; font-weight: 650; margin-top: 13px; }
+.context-article .glossary dd { margin: 5px 0 12px; }
+.context-article .paper-body blockquote { font: inherit; color: inherit; margin: 25px 0; }
+.context-article .paper-body .centralclaim { border-left: 3px solid #c5a059; background: #26251f; padding: 20px 25px 1px; }
+.context-article .paper-body h3 { margin-top: 36px; }
+.context-article .paper-body > p { overflow-wrap: anywhere; }
+.context-article .paper-body li { margin: 9px 0; }
+.context-article .paper-body table { width: 100%; border-collapse: collapse; min-width: 610px; font-size: .88rem; }
+.context-article .paper-body th, .context-article .paper-body td { padding: 12px; border-bottom: 1px solid #47453c; text-align: left; vertical-align: top; }
+.context-article .paper-body th { color: #e4c58b; background: #272924; }
+.context-article .table-scroll { overflow-x: auto; margin: 30px 0; }
+.context-article .paper-equation { display: block; margin: 24px 0; font-style: normal; }
+.context-article .paper-equation .math-scroll { margin-bottom: 4px; }
+.context-article .paper-equation > a { display: block; text-align: right; font: .75rem system-ui,sans-serif; }
+.context-article .paper-body #references ~ p { font-size: .92rem; overflow-wrap: anywhere; }
+.context-article .back-top { position: fixed; right: 16px; bottom: 18px; padding: 10px 14px; background: #2e302c; border: 1px solid #89734a; color: #f0d6a0; border-radius: 30px; font-size: .78rem; text-decoration: none; z-index: 4; }
+.context-article .paper-note { margin: 0 0 30px; }
+@media (max-width: 650px) {
+  .context-article article { padding: 35px 18px 70px; font-size: 1rem; }
+  .context-article .hero { padding: 48px 20px 35px; }
+  .context-article h1 { font-size: 2.55rem; }
+  .context-article h2 { font-size: 1.8rem; }
+  .context-article .reading-toc ol { columns: 1; }
+  .context-article .reading-toc, .context-article .equation-guide { padding: 20px 17px; }
+  .context-article .example { padding: 20px 19px 1px; }
+  .context-article .math-scroll { font-size: .88rem; }
+  .context-article .diagram figcaption { padding: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { .context-article { scroll-behavior: auto; } html { scroll-behavior: auto; } }
+@media print {
+  .context-article { color: #111; background: white; }
+  .context-article .article-site-nav, .context-article .back-top, .context-article .series-links, .context-article footer, .context-article .reading-toc, .context-article .skip-link { display: none; }
+  .context-article .hero, .context-article .example, .context-article .equation-guide, .context-article .note, .context-article .math-scroll { background: #fff; color: #111; }
+  .context-article h1, .context-article h2, .context-article h3, .context-article strong, .context-article a, .context-article .deck, .context-article .byline, .context-article .equation-caution { color: #111; }
+  .context-article article { max-width: none; padding: 20px 0; font-size: 10pt; }
+  .context-article .hero { padding: 0; }
+  .context-article .example, .context-article .equation-guide { break-inside: avoid; }
+  .context-article .math-scroll { overflow: visible; }
+}

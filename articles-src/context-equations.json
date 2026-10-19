@@ -1,0 +1,212 @@
+[
+  {
+    "title": "Build the current state from what has arrived",
+    "meaning": "Hₜ is the observed history (W₁,…,Wₜ); W can be a word or token, and t marks the current position. Φₜ is a rule that turns that history into the state Xₜ. The σ symbols describe the information available from each variable. The inclusion means the state cannot contain evidence from observations that have not arrived. In Appendix C this same requirement is written Xₜ = Φ(W≤ₜ).",
+    "examples": ["‘Ravi put the key under the mat.’ After hearing this, the state can record the key's location without waiting for another sentence.", "‘Tomorrow I will tell you where I hid it.’ At this point, the state may record that the location is unknown; it cannot use tomorrow's disclosure today."],
+    "note": "This is causality as an information-access restriction. It does not require the state to be a perfect interpretation or to be cheap to compute."
+  },
+  {
+    "title": "When the saved state is enough",
+    "meaning": "Fₜ is the future target. The perpendicular sign means conditional independence: once Xₜ is known, consulting Hₜ adds no information about Fₜ. The equivalent probability statement is P(Fₜ | Hₜ) = P(Fₜ | Xₜ), except on zero-probability cases. The vertical bar means ‘given’. This is the definition of predictive sufficiency.",
+    "examples": ["‘The door is locked, and Ravi has its only key.’ If a toy task asks only who can unlock it, a state retaining those two facts can be sufficient under that task's rules.", "‘Maya ordered the blue notebook.’ A state retaining only ‘Maya ordered stationery’ is insufficient for a question about which colour will arrive."],
+    "note": "A state can be sufficient for one target and insufficient for another. An exact quote and an event prediction need not require the same memory."
+  },
+  {
+    "title": "Useful information equals what you kept plus what you missed",
+    "meaning": "I measures mutual information: how much one variable tells us about another, averaged across possible cases. The history's information about the future equals the state's information plus the extra information still in the history after the state is known. The last term cannot be negative, so I(Xₜ;Fₜ) ≤ I(Hₜ;Fₜ). Equality holds when that leftover term is zero, under the paper's sufficiency conditions.",
+    "examples": ["‘The meeting is at school at four.’ A note saying ‘at school’ retains location while leaving useful timing information in the original sentence.", "‘The meeting is at school at four.’ A note preserving both relevant facts can eliminate that leftover advantage for a task concerned only with place and time."],
+    "note": "The identity does not say every detail must survive. It says no genuinely future-relevant information can be discarded without a corresponding loss."
+  },
+  {
+    "title": "Putting your own summary beside the original adds no new evidence",
+    "meaning": "The pair (Hₜ,Xₜ) means the full history together with a state deterministically computed from it. Because that state is already fixed by the history, the pair carries exactly the same information about the future as the history alone. This is the first intermediate step in Proposition 2.2's proof.",
+    "examples": ["‘The parcel arrives Friday.’ Copying ‘Friday delivery’ onto a sticky note creates a convenient reminder, not an independent second delivery forecast.", "‘Ravi scored twice.’ Writing ‘Ravi: 2’ beneath the same sentence does not tell you something absent from the sentence."],
+    "note": "The summary may make a limited reader's job easier. The equality concerns available information, not effort."
+  },
+  {
+    "title": "Read the summary first, then ask what the transcript adds",
+    "meaning": "The chain rule splits the information in the pair into two parts: what Xₜ tells us about Fₜ, and what Hₜ adds after we know Xₜ. Combining this step with the previous equation gives the no-free-information identity. The order is deliberate: first the proposed state, then the residual history.",
+    "examples": ["‘Sita bought a red bicycle yesterday.’ A summary saying ‘Sita owns a bicycle’ helps with ownership; the original still helps with a question about colour.", "‘The red team won 2–1.’ If the state already retains the teams, winner, and score, rereading the same statement adds nothing for a toy task limited to those facts."],
+    "note": "Conditional information means additional evidence after something else is already known; it avoids counting the same clue twice."
+  },
+  {
+    "title": "Find the cheapest acceptable machine",
+    "meaning": "P is the task, M is a model, and ℳ is the allowed family of models. Rₚ(M) is its average prediction loss; Rₚ* is the best theoretically attainable loss. ε is the extra error we are willing to tolerate. Among models that meet that accuracy condition, take the infimum—the greatest lower bound—of the declared cost c(M). If no eligible finite-cost model exists, the cost can be infinite.",
+    "examples": ["‘Tell me who borrowed the book.’ We could compare machines that achieve the same answer accuracy and ask which uses less memory, including the memory needed to identify the borrower.", "‘Complete this sentence naturally.’ A tiny memory with a huge output generator may be expensive once both parts are charged to the same system."],
+    "note": "Cost must be declared in advance: for example, bytes, time, or a specified combination. A better result under one measure need not win under another."
+  },
+  {
+    "title": "The three-part working state",
+    "meaning": "qₜ is local control or predictive activity. Γₜ = (γ₁,…,γdₜ) is the stack of open typed frames; dₜ is its depth. Rₜ holds live referents and their equality, types, roles, salience, and finite status features. CALL opens a frame, RETURN closes one, and INTERNAL updates within the current frame. These are distinct operational roles, not three spatial directions.",
+    "examples": ["‘At the café, Maya handed Ravi the bill.’ The local event is handing; the context concerns a café; the register distinguishes Maya, Ravi, and the bill.", "‘In Ravi's dream, the dog could talk.’ The dream frame contains the talking-dog claim, while the system can retain Ravi as the person having the dream."],
+    "note": "The theory proposes this decomposition. It does not establish that every thought fits it or that each component has a unique biological location."
+  },
+  {
+    "title": "A route through sporting context",
+    "meaning": "Read the triangle as an illustrative ‘within’ relation: a match inside football, football inside sport, and sport inside an event in the world. These frame labels make background expectations explicit. This chain helps explain why the same utterance can receive a different interpretation in different settings.",
+    "examples": ["‘The captain raised the cup after the final whistle.’ The match context supports reading the object as a trophy.", "‘The substitute waited by the touchline.’ The football frame helps interpret both the person's role and the location."],
+    "note": "These semantic layers are illustrative. A learned parser still has to decide how and when a real discourse opens and closes frames."
+  },
+  {
+    "title": "A route through shopping context",
+    "meaning": "Here the active setting narrows through commerce, shopping, a department store, and ceramics. The words can now trigger expectations about buying, prices, shelves, and breakable drinking vessels. The point is the change in predictive setting, not a claim that this is the only correct classification tree.",
+    "examples": ["‘He chose the cup with the blue handle.’ In the ceramics aisle, a drinking vessel is a natural interpretation.", "‘She asked whether the bowl was dishwasher-safe.’ The shopping and ceramics context helps predict a product question rather than a sporting result."],
+    "note": "A trophy could still be sold in a shop, and a football player could still drink tea. Context changes probabilities."
+  },
+  {
+    "title": "Keep uncertainty about both the person and the meaning",
+    "meaning": "A denotes the antecedent—the person or thing a referring expression points back to. S denotes the sense of an ambiguous expression. U is the local utterance. P(A,S | U,Xₜ) is a joint distribution over those two answers given the words and current state; the paper also packages them as Y = (A,S).",
+    "examples": ["‘Ravi won the final. He lifted the cup.’ The state can favour Ravi as the antecedent and trophy as the sense together.", "‘Ravi and Nikhil entered the kitchen. He picked up the cup.’ Drinking vessel may be clear while the identity of ‘he’ remains uncertain."],
+    "note": "A distribution can retain several possibilities. Assigning slots does not justify pretending an ambiguous sentence has only one interpretation."
+  },
+  {
+    "title": "The average value of available context",
+    "meaning": "Rᵤ* is the best average log-loss risk when only the utterance U is known. Rᵤ,꜀* is the best risk when context C is also known. Their difference is I(Y;C | U), the extra information context gives about the interpretation. The proof writes these optimal risks as H(Y | U) and H(Y | U,C): uncertainty before and after context.",
+    "examples": ["‘She stood at the crease.’ Knowing the conversation concerns cricket can reduce uncertainty about what ‘crease’ means.", "‘She stood at the crease.’ Knowing an unrelated neighbour owns a bicycle may provide no relevant information, giving zero improvement in an idealized task."],
+    "note": "Nonnegativity is an average optimal-prediction statement. A particular clue can lower confidence in a candidate; a limited real model can also use context badly."
+  },
+  {
+    "title": "Credit each layer only for its new contribution",
+    "meaning": "C = (F₁,…,Fd) is a stack of d context layers. The sum adds what layer Fⱼ contributes after the utterance and all earlier layers F<ⱼ are known. These Fⱼ symbols are frames in this section; Fₜ elsewhere denotes a future target. The total contribution is exactly the information supplied by the whole stack.",
+    "examples": ["‘He received the cup.’ ‘Sport’ may help, then ‘football final’ may add a more specific clue beyond it.", "‘She bought a mouse.’ ‘Shopping’ supplies one setting; ‘computer accessories’ adds the distinction that points towards an electronic device."],
+    "note": "The assignment to individual layers depends on the order of conditioning. Repeated or redundant information is not counted twice."
+  },
+  {
+    "title": "How one layer changes confidence in one answer",
+    "meaning": "Choose a candidate interpretation y. Divide its probability after the new layer by its probability before that layer, then take a logarithm. A ratio above one gives a positive signal; below one gives a negative signal; one gives zero. Both probabilities must be nonzero for this expression. Using base-two logs makes a doubling worth one bit.",
+    "examples": ["‘He got the cup.’ In an invented example, a football clue raises the trophy probability from 0.25 to 0.5, producing log₂(2) = 1.", "‘It was full of tea.’ If that clue lowers the trophy probability from 0.5 to 0.125, the corresponding signal is log₂(0.25) = −2."],
+    "note": "These numbers illustrate the formula; they are not measurements from the paper. The signal concerns a chosen answer, not a physical wave."
+  },
+  {
+    "title": "All the little confidence changes add up",
+    "meaning": "Adding the per-layer log ratios gives the log ratio between final confidence and starting confidence. Intermediate probabilities cancel: multiplying 0.4/0.2 by 0.8/0.4 leaves 0.8/0.2. Taking logarithms turns that product into a sum. This is the telescoping step in the proof.",
+    "examples": ["‘She served an ace.’ Suppose successive sporting clues move the tennis interpretation from 0.2 to 0.4 to 0.8; the total base-two signal is 1 + 1 = 2.", "‘He got the cup.’ If later tea-related evidence exactly reverses an earlier probability increase, the two signals sum to zero and confidence returns to its starting value."],
+    "note": "The identity describes successive conditional probabilities, not a promise that useful interpretations always become more certain."
+  },
+  {
+    "title": "A compressed clue cannot contain more evidence than its source",
+    "meaning": "Z = φ(C) is a summary computed from context C. Its conditional information about Y cannot exceed the context's. Equality holds precisely when Y is conditionally independent of the full context given (U,Z): the summary leaves no additional context information useful for that target. Here Z is a compressed context, not the discrete coordinate set also named Z in Section 6.",
+    "examples": ["‘Maya ordered vegetarian momo; Ravi ordered chicken.’ A summary preserving the two assignments can retain the plate-delivery distinction.", "‘Maya ordered vegetarian momo; Ravi ordered chicken.’ A summary saying only ‘food ordered’ throws that distinction away."],
+    "note": "This is a test of retained predictive content. Low dimension, smoothness, or a pleasing visualization is insufficient evidence."
+  },
+  {
+    "title": "A table of beginnings and endings",
+    "meaning": "u is a beginning and v is an ending; uv means join them. Σ* is the set of all finite strings over the allowed symbol alphabet. Dₘ contains properly nested strings with m bracket types, and f = 1Dₘ outputs 1 for membership and 0 otherwise. The ordinary Hankel entry Hf(u,v) records the joined string's answer.",
+    "examples": ["‘Open a round bracket, then close a round bracket.’ With u = ‘(’ and v = ‘)’, the entry is 1.", "‘Open a round bracket, then close a square bracket.’ With u = ‘(’ and v = ‘]’, the entry is 0."],
+    "note": "This is an exact artificial language, deliberately chosen so that correctness is unambiguous."
+  },
+  {
+    "title": "There are always more independent nesting patterns",
+    "meaning": "With m opening types and depth k, the proof finds an mᵏ-by-mᵏ identity submatrix: diagonal ones, zeros elsewhere. Its independent rows force rank(Hf) to be at least mᵏ. Because k can grow without bound and m ≥ 2, the paper concludes rank(Hf) = ∞. A finite sampled matrix, by contrast, always has finite dimensions and rank.",
+    "examples": ["‘Open two brackets, choosing round or square each time.’ There are 2² = 4 opening-type sequences, each requiring its own matching reverse ending.", "‘Open three brackets, choosing round or square each time.’ There are 2³ = 8 such sequences; increasing the permitted depth keeps expanding the independent subtable."],
+    "note": "Infinite rank is a property of the idealized unbounded language, not a measured number for a finite collection of English sentences."
+  },
+  {
+    "title": "Write down the opening sequence",
+    "meaning": "The bold a is a list (a₁,…,aₖ) of k type choices, each from [m] = {1,…,m}. cₐ₁ through cₐₖ are the corresponding opening symbols. Writing them together defines a row prefix uₐ. Different lists give different outstanding obligations about how the sequence must eventually close.",
+    "examples": ["‘Open red, then blue.’ For a = (red,blue), the prefix contains those two openings in that order.", "‘Open blue, then red.’ The reversed choice gives a different prefix, even though the same two colours occur."],
+    "note": "The colour sentences explain the bracket types. The formal symbols carry no real-world colour semantics."
+  },
+  {
+    "title": "Close those openings in reverse order",
+    "meaning": "The suffix vᵦ closes the type list b from its last element back to its first. The joined sequence uₐvᵦ is well matched exactly when a = b. That is why the selected table is an identity matrix Iₘᵏ: one correct partner per row and column, with all other pairings failing.",
+    "examples": ["‘Open red, open blue, close blue, close red.’ This pairs the opening sequence with its matching reversed ending.", "‘Open red, open blue, close red, close blue.’ This closes the outer type too soon and fails the matching test."],
+    "note": "The intermediate construction makes the rank claim concrete rather than relying only on a verbal appeal to complexity."
+  },
+  {
+    "title": "The permitted memory operations change what a finite description can do",
+    "meaning": "For exact recognition of this f, no finite weighted word automaton (WFA) suffices under the stated cost convention. A visibly-pushdown automaton (VPA) does have a finite controller and finite stack alphabet. Its stack can still grow. The two cost statements therefore distinguish realization classes, not an infinite-memory task magically becoming fixed-memory.",
+    "examples": ["‘Check any depth of correctly matched round and square brackets.’ A fixed finite weighted-word realization cannot represent the constructed function exactly.", "‘On opening, push the type; on closing, check and pop it.’ This finite stack procedure handles increasing depth by storing more stack entries."],
+    "note": "This is not a theorem separating the proposal from all neural networks, and it does not give an end-to-end language benchmark result."
+  },
+  {
+    "title": "Rename labels while respecting their types",
+    "meaning": "𝒯 is the finite set of types. 𝒩τ is the name set for type τ. Sym(𝒩τ) is the collection of one-to-one, reversible renamings within that set. The product combines one permitted renaming for each type, forming the group 𝒢. People stay people; locations stay locations. Equality relationships survive a bijection.",
+    "examples": ["‘Maya visited Pokhara.’ Renaming Maya to Tara and Pokhara to another place label preserves the person–place relation in the formal story.", "‘Maya called Maya.’ Consistently replacing Maya by Tara produces ‘Tara called Tara,’ preserving the repeated identity."],
+    "note": "Collapsing two different names into one is not a permutation. Neither is exchanging a person with an object of another declared type."
+  },
+  {
+    "title": "Rename first or update first: the structure agrees",
+    "meaning": "T updates a state x using an observation a. g·x means rename x consistently. The first equality says renaming both input and state before an update has the same effect as renaming the updated state afterwards. The second says the structural output O stays unchanged. Name-valued answers instead change consistently with the renaming.",
+    "examples": ["‘Maya lent Ravi a book.’ Whether we rename them before or after recording the loan, the same lender–borrower relation should result.", "‘Who borrowed the book?’ A structural answer ‘the second person’ stays the same; an answer using the literal name must change from Ravi to the replacement label."],
+    "note": "For probabilistic transitions, the renaming acts on the resulting probability distribution. Exact canonical-trace claims require the corresponding specified allocation/update discipline."
+  },
+  {
+    "title": "Already known, or new to the live memory?",
+    "meaning": "κR turns a name into a finite code using the current register. EQ[i] means it equals the name in live slot i, or that slot's equality block if duplicates are allowed. NEWτ means no current live name matches, and the incoming name has type τ. Allocation and eviction are additional specified actions. This is causal because it only checks the current register.",
+    "examples": ["‘Maya entered. Maya waved.’ If the first mention occupies slot 1, the next name receives an equality-to-slot-1 code.", "‘Maya entered. Ravi waved.’ If Ravi is absent from every live slot, his name receives a typed-new code."],
+    "note": "NEW means new relative to live memory, not necessarily never encountered in the entire past. Coreference between different expressions still needs to be resolved."
+  },
+  {
+    "title": "Count shapes of register memory rather than literal names",
+    "meaning": "N counts canonical register arrangements with B slots, |𝒯| types, and A finite attribute combinations. The generous bound includes occupancy, pin flags, equality partitions counted by Bell(B), types, and attributes. Renaming labels leaves these arrangements unchanged. The finite number can nevertheless be extremely large.",
+    "examples": ["‘Maya and Ravi are both present.’ Two occupied slots containing distinct people form a different pattern from two slots that point to the same person.", "‘Maya is still needed in an open quotation.’ A pinned slot and an otherwise identical unpinned slot have different allowed eviction behaviour."],
+    "note": "The bound intentionally overcounts. It proves a finite upper limit under finite assumptions, not an efficient implementation. Appendix A expands the factors."
+  },
+  {
+    "title": "Combine the finite choices into one controller",
+    "meaning": "|Q| counts local-control settings, |Z| counts discrete predictive-coordinate settings, and N counts canonical register arrangements. Their product bounds the combined canonical controller's states n. Finite frame labels and finite slot pointers give a finite stack alphabet. Under the theorem's assumptions, the constructed weighted VPA has a nested Hankel rank at most n².",
+    "examples": ["‘The toy assistant is waiting or answering.’ With two local settings, three discrete predictive settings, and four register patterns, the product bound is 2 × 3 × 4 = 24.", "‘The toy assistant adds one more waiting mode.’ Raising the local count from two to three, while keeping the other counts fixed, raises that bound to 36."],
+    "note": "The numerical machines are illustrations. The paper does not establish these counts for English, cheap context extraction, or a bound on unbounded stack height."
+  },
+  {
+    "title": "Give the approximation four explicit budgets",
+    "meaning": "This notation names a bounded approximation to the ideal state: B live entities, K retained ontology items, D explicit nesting depth, and R continuous predictive dimensions. Ωₜᴮ,ᴷ,ᴰ denotes the event that a required discrete resource exceeds its budget. R here is a dimension budget, while Rₜ earlier was a register; q in the following equations denotes a forecast distribution rather than local control.",
+    "examples": ["‘Six players are involved in this exchange.’ A four-entity state may overflow even when the conversation is only one frame deep.", "‘Asha thinks Ravi believes Maya suspects Nima is lying.’ A depth-limited state may overflow even if it has enough entity slots."],
+    "note": "A resource setting identifies the approximation being tested. It does not certify that the predictor has learned the right interpretation."
+  },
+  {
+    "title": "Cap the loss of a very confident mistake",
+    "meaning": "q(y) is the probability assigned to the outcome that actually occurs. The maximum with α replaces probabilities below α by the floor for scoring. Minus the logarithm gives clipped loss, with 0 < α < 1. Its range is from zero to Lα = log(1/α). The cap makes the later worst-case bound possible.",
+    "examples": ["‘The next word is red.’ With an illustrative base-two floor α = 1/16, predicting the actual word with probability 1/2 costs one bit.", "‘The next word is blue.’ Assigning that actual word probability 1/1024 still costs only four bits under the same clipped score, because the floor replaces it by 1/16."],
+    "note": "Clipping changes the scoring rule and is not ordinary unbounded log loss. The bound should not be advertised as an automatic guarantee for standard perplexity."
+  },
+  {
+    "title": "Bound the damage if mistakes occur only on overflow",
+    "meaning": "Rα is expected clipped loss; p* is the ideal forecast. If the bounded predictor agrees with the ideal whenever no overflow occurs and the continuous state is exact, their loss difference can arise only on overflow. Its average is at most the maximum loss range Lα times the overflow probability.",
+    "examples": ["‘The story needs a fifth live person.’ In a toy setting with Lα = 4 and overflow probability 0.02, the upper bound on the average excess clipped loss is 0.08.", "‘Every story fits the notebook.’ If overflow never occurs and the agreement assumption really holds, this particular bound gives zero extra loss."],
+    "note": "The agreement assumption is strong. Learning errors or a faulty context lift can violate it even with plenty of unused memory. This is an upper bound, not an observed error rate."
+  },
+  {
+    "title": "Add the three overflow risks without assuming independence",
+    "meaning": "Nlive counts live entities, dₜ is context depth, and oₜ is the needed ontology item. 𝒪K is the retained K-item ontology. The chance of at least one overflow is no greater than the sum of the three individual chances. Multiplying by Lα converts that union bound into a risk envelope under the previous assumptions.",
+    "examples": ["‘This passage mentions too many people and nests too many beliefs.’ It can be counted in both component risks, so their sum can overestimate the chance of any failure.", "‘Entity overflow occurs in 2%, depth overflow in 1%, and ontology overflow in 1% of toy cases.’ The combined overflow chance is at most 4%, without an independence assumption."],
+    "note": "These percentages are hypothetical. Overlapping events explain why the bound may be loose; it is not an exact decomposition of error."
+  },
+  {
+    "title": "Add the error from a coarser predictive coordinate",
+    "meaning": "ηR bounds the expected total-variation difference between the ideal and approximated forecasts outside overflow. Total variation measures how far probability distributions differ. Clipped loss changes by at most the probability change divided by α; using the paper's L1 bound gives ∥p*−q∥₁/α = 2 TV(p*,q)/α. Averaging adds the term 2ηR/α to the overflow contribution.",
+    "examples": ["‘It may rain or remain dry.’ An approximated forecast close to the ideal still has a nonzero projection term even when all discrete memory budgets fit.", "‘Will the parcel arrive today?’ With hypothetical ηR = 0.001 and α = 0.1, the additional upper-bound term is 0.02 in the formula's log-loss units."],
+    "note": "The Lipschitz constant 1/α is for natural logarithms; another log base changes it by a constant factor. A smaller floor can make the bound much looser."
+  },
+  {
+    "title": "First predict the category, then the word inside it",
+    "meaning": "H in upright information notation measures entropy, while the conditioning H denotes the observed history. W is the next token and S = g(W) is its deterministic coarser category. The total uncertainty equals uncertainty about the category plus the remaining uncertainty about the token once category and history are known.",
+    "examples": ["‘She chose the…’ In a controlled vocabulary, knowing the next token is one of four equally likely colour words still leaves two bits to choose which colour.", "‘He whispered, “…”’ Knowing that the next token belongs to a greeting category can still leave a choice among hello, hi, and hey."],
+    "note": "The category must satisfy the deterministic-coarsening assumption. A spelling alone does not deterministically identify an ambiguous word's semantic sense."
+  },
+  {
+    "title": "Why counting the word and its fixed category does not double the uncertainty",
+    "meaning": "The entropy chain rule first counts uncertainty about S, then about W given S and history. Because S is fixed by W, H(S | W,H) = 0 and H(W,S | H) = H(W | H). Substituting that fact yields the preceding structural-versus-lexical identity. There is no additional unknown category after a token and its fixed classification are known.",
+    "examples": ["‘The chosen word is blue.’ If a toy dictionary always classifies blue as a colour word, learning blue also reveals its category without another guess.", "‘The chosen word is hello.’ If hello always belongs to the toy greeting class, reporting both the word and that class adds no independent uncertainty."],
+    "note": "If the category is not determined even after word and history are known, the simple decomposition requires subtracting the remaining H(S | W,H) term."
+  },
+  {
+    "title": "Open up the counting bound",
+    "meaning": "The first 2ᴮ allows for occupied versus empty slots; Bell(B) overcounts equality partitions; (|𝒯|A)ᴮ allows types and finite attributes; the final 2ᴮ allows pin flags. Multiplying the two powers of two gives 4ᴮ. Appendix A notes that forbidding duplicate slot values removes the Bell factor and that a sum over occupied counts can tighten the bound.",
+    "examples": ["‘Only Maya is currently tracked.’ With two available slots, the occupancy pattern differs from one in which Maya and Ravi both occupy slots.", "‘Both saved references point to Maya.’ Allowing this equality pattern requires counting same-versus-different arrangements; forbidding duplicates removes that choice."],
+    "note": "Many counted combinations may be impossible, such as inconsistent types inside an equality class. An overcount is acceptable for an upper bound."
+  },
+  {
+    "title": "Compare the state's observed gain with the full-history gain",
+    "meaning": "CE is measured cross-entropy: smaller is better. Lₜ is a local baseline, Xₜ the structured state, and Hₜ the full raw history. The numerator measures the improvement from giving the local predictor the state. The denominator measures the improvement from giving it full history. Their ratio is an operational capture metric; only Bayes-optimal models justify reading it as an information ratio.",
+    "examples": ["‘The answer depends on an earlier promise.’ With illustrative losses 5 locally, 3.5 with the state, and 3 with full history, the ratio is (5−3.5)/(5−3) = 0.75.", "‘All useful clues are already in the local words.’ If local and full-history losses are identical, the denominator is zero and the ratio is undefined."],
+    "note": "Learned-model ratios can fall outside [0,1], and a near-zero denominator is unstable. Report the underlying losses and uncertainty instead of treating the ratio as a literal percentage of understanding."
+  },
+  {
+    "title": "Ask what the original history still contributes",
+    "meaning": "Subtract the loss of a predictor receiving both state and full history from the loss of a state-only predictor. A positive Δhist means raw history still gives an observed gain. Under ideal log-loss prediction, this corresponds to residual conditional information. With actual fitted models, a small gain can also reflect a history model that failed to use the extra evidence.",
+    "examples": ["‘Ravi promised to return the red book.’ If the state forgot the colour, adding the transcript may improve prediction of the returned object's description.", "‘The state already preserved the relevant promise.’ If a strong transcript-assisted predictor gains almost nothing across careful tests, that supports—but does not by itself prove—the sufficiency of the retained state."],
+    "note": "The paper's Appendix B uses state-only and state-plus-history losses here. This metric is distinct from the local-baseline capture ratio above."
+  }
+]
