@@ -95,6 +95,9 @@ python3 -m http.server 8765
 Inspect the homepage, the article collection, and the article itself at
 `http://localhost:8765`. Check the title, categories, links, mobile layout, and any
 figures or equations. Commit the article, manifest, and generated files together.
+The builder also versions local CSS and JavaScript under `assets/` and updates
+every page to use matching filenames, including the print stylesheet. Include
+these generated files in the same commit; keep older versions for cached pages.
 GitHub Pages serves the resulting static files using the repository's deployment
 configuration.
 

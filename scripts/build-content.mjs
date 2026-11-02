@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { estimateReadingMinutes } from './content-utils.mjs';
+import { versionAssetReferences, syncAssetFiles, syncPageAssets } from './assets.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const check = process.argv.includes('--check');
@@ -149,8 +150,10 @@ if (generatedHome.includes(timelineStart) || generatedHome.includes(timelineEnd)
   outputs.set('index.html', generatedHome.slice(0, generatedHome.indexOf(timelineStart) + timelineStart.length) + '\n' + timeline + '\n' + generatedHome.slice(generatedHome.indexOf(timelineEnd)));
 }
 
+syncAssetFiles({ check });
 const stale = [];
-for (const [filename, content] of outputs) {
+for (const [filename, raw] of outputs) {
+  const content = filename.endsWith('.html') ? versionAssetReferences(raw, filename) : raw;
   const target = path.join(root, filename);
   const current = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : null;
   if (current === content) continue;
@@ -158,4 +161,5 @@ for (const [filename, content] of outputs) {
   else fs.writeFileSync(target, content);
 }
 if (stale.length) fail(`Generated content is stale: ${stale.join(', ')}. Run node scripts/build-content.mjs`);
+syncPageAssets({ check, skip: [...outputs.keys()] });
 console.log(`${check ? 'Verified' : 'Built'} ${published.length} published articles, ${featured.length} featured cards, RSS, and sitemap. Drafts excluded: ${entries.length - published.length}.`);

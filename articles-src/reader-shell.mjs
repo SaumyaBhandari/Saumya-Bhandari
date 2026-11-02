@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { estimateReadingMinutes } from '../scripts/content-utils.mjs';
+import { versionAssetReferences, unversionAssetReferences } from '../scripts/assets.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const escape = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -27,6 +28,7 @@ const footer = `<footer class="site-footer"><div class="container"><a class="foo
 
 /** html must be a complete page with a single <article>. Existing IDs are preserved. */
 export function decorateReader(html, { topic = 'Writing & research', path: articlePath = '' } = {}) {
+  html = unversionAssetReferences(html, articlePath || 'philosophy/article.html');
   // Decoration is deliberately idempotent, so either content generator can call it.
   const match = html.match(/<article\b([^>]*)>([\s\S]*?)<\/article>/i);
   if (!match) throw new Error(`Reader page needs one <article>: ${articlePath}`);
@@ -90,7 +92,8 @@ export function decorateReader(html, { topic = 'Writing & research', path: artic
     .replace(/^\s*<\/div>\s*/, '').trim();
   const tools = `<div class="reader-tools"><span class="reader-duration">${readMinutes} min read</span><span class="reader-tools-rule" aria-hidden="true"></span><span class="reader-format">${articlePath.startsWith('formal-philosophy/') || articlePath.includes('states-paper') ? 'Research manuscript' : articlePath.startsWith('idea-dumps/') ? 'Thought experiment' : 'Essay & explanation'}</span><button class="reader-copy" type="button" data-copy-article hidden>Copy article link <span aria-hidden="true">↗</span></button><span class="reader-copy-status" role="status" aria-live="polite"></span></div>`;
   const end = `<!-- READER-END:START --><div class="reader-end"><span>Keep exploring.</span><a href="../articles.html">Browse all articles <span aria-hidden="true">↗</span></a><a href="#top">Back to top <span aria-hidden="true">↑</span></a></div><!-- READER-END:END -->`;
-  return `<!doctype html>\n<html lang="en"><head>${head}</head><body class="${classes}" id="top"><a class="skip-link" href="#main-content">Skip to article</a>${readerHeader}<!-- READER-BEFORE:START --><div class="reader-progress" aria-hidden="true"><span></span></div><!-- READER-BEFORE:END --><main>${before}<!-- READER-TOOLS:START --><div class="reader-tools-wrap">${tools}</div><!-- READER-TOOLS:END --><div class="reader-layout">${toc}<article id="main-content">${content}${end}</article></div></main>${footer}${tail}</body></html>\n`;
+  const decorated = `<!doctype html>\n<html lang="en"><head>${head}</head><body class="${classes}" id="top"><a class="skip-link" href="#main-content">Skip to article</a>${readerHeader}<!-- READER-BEFORE:START --><div class="reader-progress" aria-hidden="true"><span></span></div><!-- READER-BEFORE:END --><main>${before}<!-- READER-TOOLS:START --><div class="reader-tools-wrap">${tools}</div><!-- READER-TOOLS:END --><div class="reader-layout">${toc}<article id="main-content">${content}${end}</article></div></main>${footer}${tail}</body></html>\n`;
+  return versionAssetReferences(decorated, articlePath || 'philosophy/article.html');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

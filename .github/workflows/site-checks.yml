@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -22,8 +24,16 @@ jobs:
           node --check articles.js
           node --check career.js
           node --check reader.js
+          node --check scripts/assets.mjs
+          node --check scripts/check-browser.mjs
           node --check articles-src/reader-shell.mjs
       - name: Verify generated catalogs and feeds are current
         run: node scripts/build-content.mjs --check
       - name: Check navigation, assets, and article references
         run: node scripts/check-site.mjs
+      - name: Install browser regression dependencies
+        run: |
+          npm install --no-save --package-lock=false playwright@1.51.1
+          npx playwright install --with-deps chromium
+      - name: Check returning visitors with old assets cached
+        run: node scripts/check-browser.mjs

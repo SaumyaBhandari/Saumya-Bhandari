@@ -36,6 +36,7 @@ reading times from the article bodies, and produces:
 - The homepage timeline from `content/timeline.html`.
 - `feed.xml`: an RSS feed of published articles.
 - `sitemap.xml`: the main pages and published article URLs.
+- Content-hashed CSS and JavaScript in `assets/`, with matching references on every page.
 
 All article links and content remain available without JavaScript. Search,
 filtering, sorting, mobile navigation, and reader enhancements use small local
@@ -55,6 +56,8 @@ scripts. Existing mathematical articles retain their original rendering tools.
 | `articles.js`, `catalog.css` | Article search, filters, sort, and catalog layout |
 | `philosophy/`, `formal-philosophy/`, `idea-dumps/` | Existing public article URLs |
 | `reader.css`, `reader.js` | Shared reading layout and enhancements |
+| `print.css` | Shared paper and PDF presentation |
+| `assets/` | Generated, versioned copies of browser styles and scripts |
 | `articles-src/` | Publishing template, source manuscripts, and context-paper builder |
 | `papers/` | Original research PDFs |
 
@@ -81,9 +84,23 @@ node scripts/check-site.mjs
 ```
 
 The second command checks all local assets and links, article anchors, duplicate
-IDs, shared navigation, and featured-card consistency. GitHub Actions runs these
-checks on pull requests and pushes to `main`. The mathematical edition has its
+IDs, shared navigation, and featured-card consistency. GitHub Actions also runs
+a browser regression that caches the previous site's CSS and JavaScript, then
+loads the current page and checks the article layout and mobile navigation.
+This needs Playwright with Chromium and full Git history; run it locally with
+`node scripts/check-browser.mjs`. The mathematical edition has its
 additional integrity checks in `articles-src/README.md`.
+
+## Update styles or browser behavior
+
+Edit the original CSS or JavaScript files, then run
+`node scripts/build-content.mjs`. The builder copies each browser asset to a
+filename containing a hash of its contents and updates the pages to match.
+Commit the generated assets and HTML together. This ensures returning visitors
+fetch the matching styles and scripts even while older files remain cached.
+Do not edit generated files in `assets/` or remove older fingerprints: cached
+pages may still refer to them. `--check` rejects missing assets and stale page
+references.
 
 Design previews are included in `docs/previews/`. The site uses the existing
 GitHub Pages deployment and custom domain; no new hosting service is needed.
