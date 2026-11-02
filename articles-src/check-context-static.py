@@ -86,14 +86,17 @@ source_displays = [normalize_math(item[1]) for item in math_nodes(ast) if item[0
 guide_displays = [normalize_math(''.join(item.itertext())) for item in guide.xpath('//math[@display="block"]//annotation')]
 assert source_displays == guide_displays, 'Guide equations must match source order and content'
 
-original_nav = parse(ROOT / 'philosophy/when-light-takes-time.html').xpath('//ul[@class="nav-menu"]//a')
+original_nav = parse(ROOT / 'philosophy/when-light-takes-time.html').xpath('//nav[@id="primary-navigation"]//a')
+assert len(original_nav) == 5, 'All readers must use the shared five-link navigation'
 for name in NAMES:
-    new_nav = parse(ROOT / 'philosophy' / name).xpath('//ul[@class="nav-menu"]//a')
+    new_nav = parse(ROOT / 'philosophy' / name).xpath('//nav[@id="primary-navigation"]//a')
     assert [(a.get('href'),a.text_content()) for a in original_nav] == [(a.get('href'),a.text_content()) for a in new_nav]
 home = parse(ROOT / 'index.html')
-article_links = home.xpath('//*[@id="philosophy-articles"]//a/@href')
+article_links = home.xpath('//*[@id="articles"]//a/@href')
 assert all(f'philosophy/{name}' in article_links for name in NAMES)
-assert len(article_links) == 4, 'Keep both existing philosophy articles'
-assert 'philosophy/context-lifted-predictive-states-paper.html' in home.xpath('//*[@id="formal-philosophy"]//a/@href')
+catalog = parse(ROOT / 'articles.html')
+catalog_links = catalog.xpath('//main//a/@href')
+manifest = json.loads((ROOT / 'content/articles.json').read_text())
+assert all(item['path'] in catalog_links for item in manifest['articles'] if item['status'] == 'published'), 'Every published article stays discoverable in the unified catalog'
 assert hashlib.sha256((ROOT / 'papers/context-lifted-predictive-states-v1.pdf').read_bytes()).hexdigest() == '65066801808f7d967ff79b4f9f0511fb5512d5190c8b5ce101c51b4edefe671c'
 print(json.dumps({'passed':True,'pages':results,'numbered_examples':50,'equation_sentence_examples':sum(len(c.xpath('./ul/li')) for c in cards),'source_math_expressions':sum(source_math.values()),'paper_proofs':10,'bibliography_entries':18,'pdf_unchanged':True},indent=2))
