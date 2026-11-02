@@ -1,0 +1,102 @@
+{
+  "siteUrl": "https://www.saumyabhandari.com.np",
+  "author": "Saumya Bhandari",
+  "articles": [
+    {
+      "id": "how-words-build-a-world",
+      "path": "philosophy/how-words-build-a-world.html",
+      "title": "How Words Build a World",
+      "summary": "How context changes meaning. Fifty everyday examples, from the two meanings of ‘bank’ to the mathematics of memory and identity.",
+      "topic": "Language & thinking machines",
+      "tags": ["Explanation"],
+      "published": "2026-10-19",
+      "status": "published",
+      "featured": 1,
+      "art": "language"
+    },
+    {
+      "id": "context-lifted-predictive-states",
+      "path": "philosophy/context-lifted-predictive-states-paper.html",
+      "title": "Context-Lifted Predictive States",
+      "summary": "The complete theory manuscript on representation complexity, nested discourse, and referential symmetry. Definitions, proofs, and the original paper.",
+      "topic": "Language & thinking machines",
+      "tags": ["Formal Philosophy", "Explanation"],
+      "published": "2026-08-10",
+      "status": "published",
+      "featured": 2,
+      "art": "states"
+    },
+    {
+      "id": "when-light-takes-time",
+      "path": "philosophy/when-light-takes-time.html",
+      "title": "When Light Takes Time",
+      "summary": "From Einstein’s clock tower to the double slit: an illustrated journey through delayed light, moving observers, and quantum possibilities.",
+      "topic": "Philosophy of physics",
+      "tags": ["Explanation", "Idea"],
+      "published": "2026-10",
+      "status": "published",
+      "featured": 3,
+      "art": "light"
+    },
+    {
+      "id": "particle-already-everywhere",
+      "path": "philosophy/what-if-the-particle-was-already-everywhere.html",
+      "title": "What If the Particle Was Already Everywhere?",
+      "summary": "Feynman’s many paths, waves, and knots. An exploration of particles as localized manifestations of something already everywhere.",
+      "topic": "Philosophy of physics",
+      "tags": ["Explanation", "Idea"],
+      "published": "2026-10",
+      "status": "published",
+      "featured": null,
+      "art": "particle"
+    },
+    {
+      "id": "relativistic-plasma-lensing",
+      "path": "formal-philosophy/relativistic-plasma-lensing-quantum-interference.html",
+      "title": "Relativistic Plasma-Lensing and Quantum Interference",
+      "summary": "A research hypothesis connecting material fields, classical caustics, and quantum interference, with its mathematical claims and outstanding tests.",
+      "topic": "Quantum foundations",
+      "tags": ["Formal Philosophy"],
+      "published": "2026-10",
+      "status": "published",
+      "featured": null,
+      "art": "lensing"
+    },
+    {
+      "id": "cubic-cancellation",
+      "path": "formal-philosophy/fermion-localization-and-scalar-response.html",
+      "title": "A Cubic Cancellation and a Fifth-Order Obstruction",
+      "summary": "Localized fermion modes, perturbative mass corrections, and the scalar response. A concise technical note in spectral theory.",
+      "topic": "Spectral theory",
+      "tags": ["Formal Philosophy"],
+      "published": "2026-10",
+      "status": "published",
+      "featured": null,
+      "art": "spectral"
+    },
+    {
+      "id": "complex-order",
+      "path": "formal-philosophy/dynamical-complex-order-on-an-interface.html",
+      "title": "Spontaneous Complex Order on a Stable Interface",
+      "summary": "A real scalar action, a localized complex order, an exact energy bound, and a stable fluctuation spectrum.",
+      "topic": "Field theory",
+      "tags": ["Formal Philosophy"],
+      "published": "2026-10",
+      "status": "published",
+      "featured": null,
+      "art": "interface"
+    },
+    {
+      "id": "information-theory-two",
+      "path": "idea-dumps/information-theory-two.html",
+      "title": "What If Memory Could Travel as a Ripple?",
+      "summary": "Information Theory 2: a thought experiment about vibrating charges, messages in waves, and a computer that listens to electromagnetic space.",
+      "topic": "Electromagnetism & computing",
+      "tags": ["Idea"],
+      "published": "2026-10-17",
+      "status": "published",
+      "featured": null,
+      "art": "ripple"
+    }
+  ]
+}

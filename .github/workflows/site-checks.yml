@@ -1,0 +1,29 @@
+name: Site checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+          node --check articles.js
+          node --check career.js
+          node --check reader.js
+          node --check articles-src/reader-shell.mjs
+      - name: Verify generated catalogs and feeds are current
+        run: node scripts/build-content.mjs --check
+      - name: Check navigation, assets, and article references
+        run: node scripts/check-site.mjs

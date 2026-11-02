@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { decorateReader, readerHeader } from './reader-shell.mjs';
 
 const sourceDir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.dirname(sourceDir);
@@ -62,10 +63,7 @@ function equationCard(number) {
   return `<section class="equation-guide" id="equation-${number}" aria-labelledby="equation-title-${number}"><h3 id="equation-title-${number}"><span class="equation-label">Equation guide ${String(number).padStart(2,'0')} · From the original paper</span>${escape(item.title)}</h3><div class="math-scroll" tabindex="0" role="region" aria-label="Equation ${number}, horizontally scrollable on small screens">${renderMath(expressions[number-1])}</div><p>${escape(item.meaning)}</p><p><strong>Two sentence examples</strong></p><ul>${item.examples.map(e=>`<li>${escape(e)}</li>`).join('')}</ul>${item.note?`<p class="equation-caution">${escape(item.note)}</p>`:''}<a class="equation-source" href="context-lifted-predictive-states-paper.html#paper-equation-${number}">Find this expression in Part II →</a></section>`;
 }
 
-const navSource = fs.readFileSync(path.join(root,'philosophy/when-light-takes-time.html'),'utf8');
-const header = navSource.match(/<header\b[\s\S]*?<\/header>/)[0]
-  .replace('id="mobile-menu"','id="mobile-menu" aria-controls="article-menu"')
-  .replace('<ul class="nav-menu">','<ul class="nav-menu" id="article-menu">');
+const header = readerHeader;
 function toc(html) {
   const entries = [...html.matchAll(/<h2\b[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g)];
   return `<details class="reading-toc" open><summary>On this page · jump to any chapter</summary><ol>${entries.map(([,id,title])=>`<li><a href="#${id}">${title.replace(/^\d+\.\s*/, '')}</a></li>`).join('')}</ol></details>`;
@@ -126,6 +124,6 @@ paper = paper.replace(/<math display="block"[\s\S]*?<\/math>/g, math=>{
 paper = paper.replace(/(<table\b[\s\S]*?<\/table>)/g,'<div class="table-scroll" tabindex="0" role="region" aria-label="Original paper comparison table">$1</div>');
 if(equationIndex!==35) throw new Error(`Formal paper rendered ${equationIndex} display equations`);
 if(/\[thm:|\[prop:|\[lem:|<span class="math(?: display| inline)?"/.test(paper)) throw new Error('Unresolved reference or math');
-fs.writeFileSync(path.join(root,'philosophy',filenames.guide),page('guide',guide));
-fs.writeFileSync(path.join(root,'philosophy',filenames.paper),page('paper',paper));
+fs.writeFileSync(path.join(root,'philosophy',filenames.guide),decorateReader(page('guide',guide),{path:`philosophy/${filenames.guide}`,topic:'Language & thinking machines'}));
+fs.writeFileSync(path.join(root,'philosophy',filenames.paper),decorateReader(page('paper',paper),{path:`philosophy/${filenames.paper}`,topic:'Language & thinking machines'}));
 console.log(JSON.stringify({examples:50,guideEquations:guides.length,paperEquations:equationIndex,figures:Object.keys(diagrams).length,outputs:Object.values(filenames)},null,2));

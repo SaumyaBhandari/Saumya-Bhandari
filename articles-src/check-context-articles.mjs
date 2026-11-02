@@ -10,7 +10,7 @@ const screenshotDirectory = process.env.ARTICLE_QA_SCREENSHOTS;
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const names=['how-words-build-a-world.html','context-lifted-predictive-states-paper.html'];
 const assert=(condition,message)=>{if(!condition) throw new Error(message);};
-const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+const browser=await chromium.launch({headless:true,args:['--no-sandbox'],...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});
 const checks=[];
 try {
   for(const width of [1440,390]) {
