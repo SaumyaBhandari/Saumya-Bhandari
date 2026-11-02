@@ -51,7 +51,7 @@ scripts. Existing mathematical articles retain their original rendering tools.
 | `style.css`, `script.js` | Shared design system and site behavior |
 | `content/articles.json` | Single source for the public article collection |
 | `content/timeline.html` | Timeline milestones; run the content builder after editing |
-| `career.css`, `career.js` | Career presentation, project navigation, and timeline filters |
+| `career.css`, `career.js` | Career presentation, project navigation, and the winding life timeline |
 | `Images/optimized/` | Lightweight WebP previews; originals remain available for full-size viewing |
 | `articles.js`, `catalog.css` | Article search, filters, sort, and catalog layout |
 | `philosophy/`, `formal-philosophy/`, `idea-dumps/` | Existing public article URLs |
@@ -90,6 +90,13 @@ loads the current page and checks the article layout and mobile navigation.
 This needs Playwright with Chromium and full Git history; run it locally with
 `node scripts/check-browser.mjs`. The mathematical edition has its
 additional integrity checks in `articles-src/README.md`.
+
+The life timeline has a separate browser check, `node scripts/check-timeline.mjs`,
+covering desktop and phone layouts, point selection, keyboard navigation, and
+readable print and no-JavaScript views. Its chapter text and links live in
+`content/timeline.html`; the route is drawn automatically from the chronological
+list. Keep the unique chapter/card IDs together when editing a milestone and run
+the content builder afterward.
 
 ## Update styles or browser behavior
 
