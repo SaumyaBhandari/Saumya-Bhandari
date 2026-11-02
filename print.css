@@ -51,13 +51,18 @@
   .agent-art .system-core { border:1px solid #777!important; }
   .visual-label { font-size:5pt!important; }
   .timeline-heading { margin-bottom:5mm!important; }
-  .timeline-layout { display:block!important; }
-  .timeline-item { break-inside:avoid-page; grid-template-columns:15mm minmax(0,1fr)!important; gap:4mm!important; }
-  .timeline-copy { border-color:#aaa!important; padding-left:5mm!important; padding-bottom:5mm!important; }
-  .timeline-copy h3 { font-size:12pt!important; }
-  .timeline-description,.timeline-company { font-size:9pt!important; }
-  .timeline-meta,.timeline-year { font-size:7pt!important; }
-  .timeline-history>summary { margin-left:19mm!important; padding-left:5mm!important; }
+  .timeline-heading { display:block!important; }
+  .timeline-range { text-align:left!important; padding:0!important; margin-top:3mm!important; }
+  .life-journey { width:100%!important; }
+  .life-map,.timeline-ready .life-map { height:auto!important; }
+  .life-events,.timeline-ready .life-events { display:block!important; }
+  .life-route,.life-node,.life-watermark,.life-instructions,.life-footer,.life-status { display:none!important; }
+  .life-entry { break-inside:avoid-page; margin-bottom:4mm!important; }
+  .life-card,.timeline-ready .life-card,.timeline-ready .life-card[hidden] { display:block!important; position:static!important; width:100%!important; padding:4mm!important; border:1px solid #aaa!important; transform:none!important; animation:none!important; }
+  .life-card::after { display:none!important; }
+  .life-card h3 { font-size:12pt!important; margin:2mm 0!important; }
+  .life-description,.life-organization { font-size:9pt!important; }
+  .life-card-meta { font-size:7pt!important; }
   .about-layout { display:grid!important; grid-template-columns:36mm minmax(0,1fr)!important; gap:7mm!important; align-items:start!important; }
   .about-visual { width:36mm!important; max-width:none!important; margin:0!important; order:0!important; }
   .about-photo { width:36mm!important; height:47mm!important; aspect-ratio:auto!important; }
