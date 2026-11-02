@@ -1,0 +1,107 @@
+/* Print-only presentation. Loaded after screen styles; never changes the browser layout. */
+@media print {
+  @page { margin: 14mm; }
+  :root { color-scheme: light; --bg-color:#fff; --bg-surface:#fff; --primary-color:#fff; --secondary-color:#fff; --text-color:#222; --text-muted:#444; --heading-color:#111; --accent-color:#705321; --reader-ink:#111; --reader-muted:#444; }
+  html, body, body.reader-page, body.career-page { width:auto!important; min-width:0!important; margin:0!important; background:#fff!important; color:#222!important; overflow:visible!important; font-size:10pt; }
+  body *:not(svg):not(svg *) { color:#222!important; background-color:transparent!important; background-image:none!important; box-shadow:none!important; text-shadow:none!important; -webkit-text-fill-color:currentColor!important; animation:none!important; transition:none!important; }
+  h1,h2,h3,h4 { color:#111!important; break-after:avoid-page; }
+  p,li { orphans:3; widows:3; }
+  a { text-decoration:none!important; }
+  .navbar,.skip-link,.hero-bottom,#fractal-canvas,.hero-cta-group,.hero-focus,.portrait-coordinate,.portrait-caption,.portrait-edition,.contact-circle,.site-footer,.article-arrow,.article-read,.work-open,.work-art-label,.work-footnote,.writing-bottom,.about-links,.interests-line,.career-back,.career-jump-wrap,.career-artifact-overlay,.career-secondary-artifact,.reader-sidebar,.reader-tools-wrap,.reader-progress,.reader-end,.reader-copy,.catalog-toolbar,.catalog-results-bar,.catalog-empty,.timeline-sidebar,.timeline-feedback,.timeline-history-icon,.study-toggle,.image-dialog,button { display:none!important; }
+  .container,.career-page .container,.timeline-section .container,.reader-tools-wrap { width:100%!important; max-width:none!important; padding-inline:0!important; margin-inline:0!important; }
+  main { width:auto!important; min-width:0!important; }
+  .section,.timeline-section,.career-hero,.career-entry,.catalog-page,.contact-section { break-inside:auto!important; padding:6mm 0!important; min-height:0!important; border-color:#bbb!important; }
+  .hero-section { min-height:0!important; overflow:visible!important; break-inside:avoid-page; border-bottom:1px solid #bbb; }
+  .hero-container { display:grid!important; grid-template-columns:minmax(0,1fr) 45mm!important; align-items:center!important; gap:10mm!important; padding:3mm 0 7mm!important; }
+  .hero-name { font-size:34pt!important; line-height:1.08!important; letter-spacing:-1.5pt!important; }
+  .hero-eyebrow { font-size:7pt!important; margin-bottom:4mm!important; }
+  .hero-role { font-size:12pt!important; margin-top:4mm!important; }
+  .hero-bio { max-width:none!important; font-size:9pt!important; margin-top:3mm!important; line-height:1.65!important; }
+  .hero-portrait-col { margin:0!important; padding:0!important; width:auto!important; max-width:none!important; }
+  .portrait-frame { width:45mm!important; height:58mm!important; aspect-ratio:auto!important; border:1px solid #bbb!important; }
+  .portrait-frame::before,.about-photo::before { display:none!important; }
+  .hero-avatar { height:100%!important; width:100%!important; object-fit:cover!important; }
+  .section-heading { display:block!important; margin-bottom:5mm!important; }
+  .section-heading,.timeline-heading { break-inside:avoid-page; break-after:avoid-page; }
+  .section-heading>.text-link { display:none!important; }
+  .section-heading h2,.timeline-heading h2,.about-copy h2,.studies-layout h2,.contact-layout h2 { font-size:23pt!important; line-height:1.2!important; letter-spacing:-.5pt!important; margin:3mm 0!important; }
+  .section-intro,.timeline-heading>p:last-child { font-size:10pt!important; max-width:none!important; margin-top:3mm!important; }
+  .eyebrow,.section-tag,.timeline-heading .section-kicker { color:#705321!important; font-size:7pt!important; }
+  .article-list { display:block!important; }
+  .article-card { display:grid!important; grid-template-columns:28mm minmax(0,1fr)!important; gap:5mm!important; padding:4mm!important; margin-bottom:4mm!important; border:1px solid #bbb!important; break-inside:avoid-page; transform:none!important; }
+  .article-art { width:28mm!important; height:27mm!important; }
+  .article-art svg { width:100%!important; height:100%!important; }
+  .article-art svg g { stroke:#705321!important; }
+  .article-art svg text { fill:#222!important; }
+  .article-copy h3 { font-size:13pt!important; line-height:1.3!important; margin:2mm 0!important; }
+  .article-meta { font-size:7pt!important; }
+  .article-excerpt { font-size:9pt!important; line-height:1.6!important; display:block!important; overflow:visible!important; -webkit-line-clamp:unset!important; }
+  .article-tags { margin-top:2mm!important; margin-bottom:0!important; }
+  .article-tags span { font-size:7pt!important; border-color:#bbb!important; }
+  .work-grid { display:block!important; }
+  .work-card { display:grid!important; grid-template-columns:45mm minmax(0,1fr)!important; margin-bottom:4mm!important; border:1px solid #bbb!important; break-inside:avoid-page; transform:none!important; }
+  .work-art { height:40mm!important; min-height:0!important; border:0!important; align-self:center!important; }
+  .work-art img { height:40mm!important; object-fit:contain!important; filter:none!important; }
+  .work-copy { padding:4mm!important; }
+  .work-copy h3 { font-size:14pt!important; margin-bottom:2mm!important; }
+  .work-copy h3 br { display:none; }
+  .work-copy p,.work-tags span,.work-meta { font-size:8pt!important; }
+  .work-copy p { margin-bottom:2mm!important; }
+  .agent-art .system-orbit,.agent-art .system-node,.system-grid { display:none!important; }
+  .agent-art .system-core { border:1px solid #777!important; }
+  .visual-label { font-size:5pt!important; }
+  .timeline-heading { margin-bottom:5mm!important; }
+  .timeline-layout { display:block!important; }
+  .timeline-item { break-inside:avoid-page; grid-template-columns:15mm minmax(0,1fr)!important; gap:4mm!important; }
+  .timeline-copy { border-color:#aaa!important; padding-left:5mm!important; padding-bottom:5mm!important; }
+  .timeline-copy h3 { font-size:12pt!important; }
+  .timeline-description,.timeline-company { font-size:9pt!important; }
+  .timeline-meta,.timeline-year { font-size:7pt!important; }
+  .timeline-history>summary { margin-left:19mm!important; padding-left:5mm!important; }
+  .about-layout { display:grid!important; grid-template-columns:36mm minmax(0,1fr)!important; gap:7mm!important; align-items:start!important; }
+  .about-visual { width:36mm!important; max-width:none!important; margin:0!important; order:0!important; }
+  .about-photo { width:36mm!important; height:47mm!important; aspect-ratio:auto!important; }
+  .about-copy p,.about-copy p.about-lead { font-size:9pt!important; line-height:1.7!important; }
+  .about-photo-caption { font-size:6pt!important; }
+  .studies-layout { display:block!important; }
+  .studies-layout .section-intro { max-width:none!important; }
+  .study-list { margin-top:4mm!important; }
+  .study-item { break-inside:avoid-page; }
+  .study-item summary { padding:3mm 0!important; font-size:10pt!important; }
+  .contact-section { display:block!important; break-inside:avoid-page; }
+  .contact-layout { display:block!important; }
+  .contact-email { font-size:10pt!important; margin-top:3mm!important; }
+  .career-hero h1,.catalog-header h1 { font-size:29pt!important; line-height:1.15!important; }
+  .career-hero-row,.career-contact { display:block!important; }
+  .career-intro,.catalog-header>p { font-size:10pt!important; max-width:none!important; }
+  .career-card-grid { grid-template-columns:45mm minmax(0,1fr)!important; gap:6mm!important; }
+  .career-artifact-button { display:block!important; border:1px solid #aaa!important; }
+  .career-artifact-button img,.career-system-art { height:40mm!important; max-width:100%!important; }
+  .career-card-topline { margin-bottom:4mm!important; }
+  .career-copy h2 { font-size:17pt!important; }
+  .career-summary,.career-details li { font-size:9pt!important; }
+  .career-system-art { display:none!important; }
+  .career-contact-link { display:none!important; }
+  .reader-page .hero { padding:0 0 5mm!important; }
+  .reader-page .hero>div,.reader-layout { max-width:none!important; padding:0!important; }
+  .reader-page .hero h1 { max-width:none!important; font-size:26pt!important; margin:3mm 0!important; }
+  .reader-page .deck { max-width:none!important; font-size:10pt!important; }
+  .reader-page .reader-breadcrumb { margin-bottom:3mm!important; }
+  .reader-layout { display:block!important; }
+  .reader-page article { max-width:none!important; width:100%!important; padding:3mm 0!important; font-size:10pt!important; line-height:1.7!important; }
+  .reader-page article p { font-size:10pt!important; line-height:1.7!important; margin-bottom:4mm!important; }
+  .reader-page article h2 { margin-top:7mm!important; padding-top:4mm!important; font-size:17pt!important; }
+  .reader-page article h3 { font-size:12pt!important; }
+  .reader-page article section { break-inside:auto!important; }
+  .reader-page .note,.reader-page article section.equation-guide,.reader-page .math,.reader-page .next a { border-color:#aaa!important; padding:4mm!important; }
+  .reader-page figure,.reader-page .math { break-inside:avoid-page; }
+  .reader-page .math,.reader-page .math-scroll,.reader-page .formula,.reader-page .katex-display { max-width:100%!important; overflow:visible!important; font-size:9pt!important; }
+  .reader-page math[display="block"] { font-size:9pt!important; }
+  .reader-page img,.reader-page svg,.reader-page canvas { max-width:100%!important; height:auto; }
+  .reader-page svg text { fill:#222!important; }
+  .reader-page .diagram svg rect { fill:#f3f3f3!important; stroke:#888!important; }
+  .reader-page .diagram svg>rect:first-child { fill:#fff!important; stroke:none!important; }
+  .reader-page .control,.reader-page .phase-status { display:none!important; }
+  .reader-page table { max-width:100%!important; width:100%!important; font-size:8pt!important; }
+  .reader-page th,.reader-page td { border-color:#aaa!important; overflow-wrap:anywhere; }
+}
